@@ -1,0 +1,12 @@
+{
+  "name": "MCS",
+  "version": "0.0.1",
+  "dependencies": {
+    "compression": "^1.5.2",
+    "express": "^4.13.3",
+    "mysql": "^2.9.0",
+    "oop-module": "0.0.5",
+    "serve-static": "^1.10.0",
+    "spdy": "^2.0.5"
+  }
+}
