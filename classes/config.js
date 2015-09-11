@@ -3,10 +3,6 @@
  * @module classes/config
  */
 
-/**
- * Constructs a new config object
- * @constructor Config
- */
 var config = require('../config.json');
 
 /**
