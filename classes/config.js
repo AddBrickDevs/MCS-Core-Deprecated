@@ -66,7 +66,7 @@ exports.getMySQLDatabase = function() {
  * @param value The mysql database name
  */
 exports.setMySQLDatabase = function(value) {
-    config.mysql.password = value;
+    config.mysql.database = value;
 };
 
 /**
