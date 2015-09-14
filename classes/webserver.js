@@ -6,14 +6,16 @@
 // Core modules
 var Config = require('./config.js');
 var log = require('./log.js');
+var fs = require('fs');
 
 // Webserver
 var http = require('http');
 var https = require('https');
 var spdy = require('spdy');
+var express = require('express');
 var app;
 
-// Additionals e.g. gzip compression
+// Additionals e.g. compression
 var compression = require('compression');
 var serve = require('serve-static')('./web/');
 
@@ -27,12 +29,16 @@ var instance;
 exports.getInstance = function(options) {
     if(options && instance === undefined) instance = new Webserver(options);
     return instance;
-}
+};
 
 var Webserver = function(options) {
-    this.app = require('express')();
+    this.app = express();
     this.app.use(compression());
     this.app.use(serve);
+
+    this.app.use(function(req, res) {                                                       ////////////////
+        res.status(404).send(fs.readFileSync('./web/index.html', {encoding: "UTF-8"}));     //experimental//
+    });                                                                                     ////////////////
 
     if(Config.isHTTPSEnabled()) {
         if (Config.isSPDYEnabled()) {
@@ -45,18 +51,20 @@ var Webserver = function(options) {
     }
 };
 
+Webserver.prototype.start = function() {
+    this.webserver.listen(Config.getWebInterfacePort(), Config.getListenIP(), function(err){
+        if(err){throw err;}
+        log.info("Webserver listening on "+Config.getListenIP()+":"+Config.getWebInterfacePort()+"!");
+    });
+};
+
 /**
  * Gets the webserver (http, https, spdy)
  * @returns {*}
  */
 Webserver.prototype.getWebserver = function() {
     return this.webserver;
-}
-
-Webserver.prototype.start = function() {
-    this.webserver.listen(Config.getWebInterfacePort(), Config.getListenIP());
-    log.info("Webserver started!");
-}
+};
 
 /**
  * Gets the express app
@@ -64,4 +72,4 @@ Webserver.prototype.start = function() {
  */
 Webserver.prototype.getExpressApp = function() {
     return this.app;
-}
+};

@@ -21,9 +21,7 @@ function MySQL(host, username, password, database, poolSize) {
     this.username = username;
     this.password = password;
     this.database = database;
-    if(poolSize) {
-        this.poolSize = poolSize;
-    }
+    this.poolSize = poolSize;
 }
 
 /**

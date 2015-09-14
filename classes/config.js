@@ -113,7 +113,7 @@ exports.isHTTPSEnabled = function() {
  * Sets the value whether to enable https or not
  * @param value true or false
  */
-exports.setIsHTTPSEnabled = function(value) {
+exports.setHTTPSEnabled = function(value) {
     config.https.enabled = value;
 };
 
@@ -129,7 +129,7 @@ exports.isSPDYEnabled = function() {
  * Sets the value whether to enable SPDY (HTTP/2.0) or not
  * @param value true or false
  */
-exports.setIsSPDYEnabled = function(value) {
+exports.setSPDYEnabled = function(value) {
     config.https.spdy = value;
 };
 
@@ -193,6 +193,6 @@ exports.isDebugMode = function() {
  * Sets the value whether the cloudsystem is in debug mode or not
  * @param value The value
  */
-exports.setIsDebugMode = function(value) {
+exports.setDebugMode = function(value) {
     config.debug = value;
 };

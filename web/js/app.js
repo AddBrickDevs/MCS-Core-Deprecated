@@ -3,36 +3,45 @@ $(document).ready(function() {
 });
 
 var loaderTexts = [
-    "Pulling bytes ...",
-    "Please wait ...",
-    "Load libraries ...",
-    "Cloudifying servers ...",
-    "Loading plugins ..."
+    "Pulling Bytes...",
+    "Please wait...",
+    "Loading Libraries...",
+    "Cloudifying Servers...",
+    "Loading Plugins...",
+    "Soon™...",
+    "Doing random things..."
 ];
 
 /*
     Angular magic
  */
 
-angular.module('app', ['ngRoute', 'Services', 'ngCookies', 'pascalprecht.translate']);
+var app = angular.module('app', ['ngRoute', 'Services', 'ngCookies', 'pascalprecht.translate']);
 
 /*
     Routes for part of page
  */
-angular.module('app').config(function($routeProvider) {
-    $routeProvider.when('/dashboard', {
-        templateUrl: 'parts/dashboard.html',
-        controller: 'dashboardctrl'
-    });
-    $routeProvider.when('/', {
-        redirectTo: '/dashboard'
-    });
+app.config(function($routeProvider, $locationProvider) {
+    $routeProvider
+        .when('/dashboard', {
+            templateUrl: 'parts/dashboard.html',
+            controller: 'dashboardctrl'
+        })
+        .when('/', {
+            templateUrl: 'parts/dashboard.html',
+            controller: 'dashboardctrl'
+        })
+        .otherwise({
+            templateUrl: 'parts/404.html',
+            controller: 'navctrl'
+        });
+    $locationProvider.html5Mode(true);
 });
 
 /*
     Translate config for use of lang files
  */
-angular.module('app').config(function ($translateProvider) {
+app.config(function ($translateProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: 'lang/',
         suffix: '.json'
@@ -43,16 +52,33 @@ angular.module('app').config(function ($translateProvider) {
     $translateProvider.fallbackLanguage('en_US');
 });
 
-angular.module('app').run(function($rootScope) {
+app.run(function($rootScope, $templateCache, $http) {
+    var templates = ['404', 'dashboard'];
+    angular.forEach(templates, function(templateUrl) {
+        templateUrl = 'parts/'+templateUrl+'.html';
+        $http({method: 'GET', url: templateUrl}).success(function(data) {
+            $templateCache.put(templateUrl, data);
+        });
+    });
+
     $rootScope.loaderText = loaderTexts[Math.floor(Math.random() * loaderTexts.length)];
     $('.loaderText').css("display", "inline");
     var unlink = $rootScope.$on('$translateChangeEnd', function(){
         setTimeout(function() {
             var loader = $('#loader');
-            loader.fadeOut(1100);
+            loader.fadeOut(950);
+            unlink();
         }, 500);
     });
 });
+
+app.controller('dashboardctrl', ['$scope', function($scope) {
+
+}]);
+
+app.controller('navctrl', ['$scope', function($scope) {
+
+}]);
 
 /*
     Services for easy use of socket.io etc.

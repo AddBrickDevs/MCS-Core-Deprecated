@@ -1,19 +1,18 @@
 /**
- * Helper class for logging
+ * Console logger with global callback support
  * @module classes/log
  */
 
 var Config = require('./config.js');
-
 var log = [];
 var logcb;
 
-function doCallback(msg) {
+var doCallback = function(msg) {
     log.push(msg);
     if(logcb != undefined) logcb(msg);
-}
+};
 
-function getDateTime() {
+var getDateTime = function() {
     var date = new Date();
 
     var hour = date.getHours();
@@ -25,7 +24,16 @@ function getDateTime() {
     var sec = date.getSeconds();
     sec = (sec < 10 ? "0" : "") + sec;
     return hour + ":" + min + ":" + sec;
-}
+};
+
+/**
+ * Enables processwide exception handling
+ */
+exports.handleuncaughtExceptions = function(){
+    process.on('uncaughtException', function(errmsg) {
+        this.error(errmsg);
+    });
+};
 
 /**
  * Sets the callback for logging
@@ -74,9 +82,16 @@ exports.warn = function(msg){
 };
 
 /**
- * Gets the log
+ * Returns full log
  * @returns {Array}
  */
 exports.getLog = function() {
     return log;
+};
+
+/**
+ * Clears log array
+ */
+exports.clearLog = function() {
+    this.log = [];
 };
