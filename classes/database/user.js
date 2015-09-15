@@ -3,8 +3,6 @@
  *  @module classes/database/user
  */
 
-module.exports = User;
-
 var User = function(username, password, rank, twofa) {
     this.username = username;
     this.password = password;
@@ -53,4 +51,6 @@ User.prototype.toJSON = function() {
         rank: this.getRank(),
         twofa: this.getTwoFA()
     };
-}
+};
+
+module.exports = User;

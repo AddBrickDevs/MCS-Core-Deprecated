@@ -52,6 +52,6 @@ MySQL.prototype.query = function(query, cb) {
         if(err) {
             log.error(err);
         }
-        if(cb) cb(rows);
+        if(cb){cb(rows);}
     });
 };

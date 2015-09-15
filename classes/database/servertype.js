@@ -3,8 +3,6 @@
  *  @module classes/database/servertype
  */
 
-module.exports = Servertype;
-
 /**
  * Constructs the servertype object
  * @param name The name
@@ -71,3 +69,5 @@ Servertype.prototype.toJSON = function() {
         csc: this.getCustomServerCommand()
     };
 };
+
+module.exports = Servertype;

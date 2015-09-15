@@ -3,8 +3,6 @@
  *  @module classes/database/plugin
  */
 
-module.exports = Plugin;
-
 /**
  * Constructs the plugin object
  * @param name The name of the plugin
@@ -96,3 +94,5 @@ Plugin.prototype.toJSON = function() {
         hash: this.getHash()
     };
 };
+
+module.exports = Plugin;

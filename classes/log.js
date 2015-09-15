@@ -9,7 +9,7 @@ var logcb;
 
 var doCallback = function(msg) {
     log.push(msg);
-    if(logcb != undefined) logcb(msg);
+    if(logcb !== undefined){logcb(msg);}
 };
 
 var getDateTime = function() {
@@ -30,8 +30,9 @@ var getDateTime = function() {
  * Enables processwide exception handling
  */
 exports.handleuncaughtExceptions = function(){
-    process.on('uncaughtException', function(errmsg) {
-        this.error(errmsg);
+    process.on('uncaughtException', function(msg) {
+        doCallback('[uncaughtException] [' + getDateTime() + '] ' + msg);
+        console.log('[uncaughtException] \x1b[31m[ERROR '+getDateTime()+'] \x1b[37m'+msg);
     });
 };
 

@@ -13,23 +13,12 @@ var http = require('http');
 var https = require('https');
 var spdy = require('spdy');
 var express = require('express');
-var app;
 
 // Additionals e.g. compression
 var compression = require('compression');
 var serve = require('serve-static')('./web/');
 
 var instance;
-
-/**
- * Get instance of the webserver
- * @param options Webserver options.
- * @returns {*}
- */
-exports.getInstance = function(options) {
-    if(options && instance === undefined) instance = new Webserver(options);
-    return instance;
-};
 
 var Webserver = function(options) {
     this.app = express();
@@ -72,4 +61,14 @@ Webserver.prototype.getWebserver = function() {
  */
 Webserver.prototype.getExpressApp = function() {
     return this.app;
+};
+
+/**
+ * Get instance of the webserver
+ * @param options Webserver options.
+ * @returns {*}
+ */
+exports.getInstance = function(options) {
+    if(options && instance === undefined){instance = new Webserver(options);}
+    return instance;
 };

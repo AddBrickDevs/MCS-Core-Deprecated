@@ -5,8 +5,6 @@
 
 var crypto = require('crypto');
 
-module.exports = Daemon;
-
 /**
  * Constructs the daemon object
  * @param name The name
@@ -95,7 +93,7 @@ Daemon.prototype.setMaxPort = function(value) {
  * @returns {*}
  */
 Daemon.prototype.getAPIKey = function() {
-    if(this.apikey == undefined) this.generateAPIKey();
+    if(this.apikey === undefined){this.generateAPIKey();}
     return this.apikey;
 };
 
@@ -119,3 +117,5 @@ Daemon.prototype.toJSON = function() {
         apikey: this.getAPIKey()
     };
 };
+
+module.exports = Daemon;

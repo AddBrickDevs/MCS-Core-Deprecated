@@ -3,8 +3,6 @@
  *  @module classes/database/world
  */
 
-module.exports = World;
-
 var World = function(name, size, hash) {
     this.name = name;
     this.size = size;
@@ -66,3 +64,5 @@ World.prototype.toJSON = function() {
         hash: this.getHash()
     };
 };
+
+module.exports = World;
