@@ -27,6 +27,30 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'parts/dashboard.html',
             controller: 'dashboardctrl'
         })
+        .when('/daemons', {
+            templateUrl: 'parts/daemons.html',
+            controller: 'pluginsctrl'
+        })
+        .when('/plugins', {
+            templateUrl: 'parts/plugins.html',
+            controller: 'pluginsctrl'
+        })
+        .when('/worlds', {
+            templateUrl: 'parts/worlds.html',
+            controller: 'worldsctrl'
+        })
+        .when('/games', {
+            templateUrl: 'parts/games.html',
+            controller: 'pluginsctrl'
+        })
+        .when('/statistics', {
+            templateUrl: 'parts/statistics.html',
+            controller: 'pluginsctrl'
+        })
+        .when('/settings', {
+            templateUrl: 'parts/settings.html',
+            controller: 'pluginsctrl'
+        })
         .when('/', {
             templateUrl: 'parts/dashboard.html',
             controller: 'dashboardctrl'
