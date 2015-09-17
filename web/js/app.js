@@ -29,7 +29,7 @@ app.config(function($routeProvider, $locationProvider) {
         })
         .when('/daemons', {
             templateUrl: 'parts/daemons.html',
-            controller: 'pluginsctrl'
+            controller: 'daemonsctrl'
         })
         .when('/plugins', {
             templateUrl: 'parts/plugins.html',
@@ -41,15 +41,15 @@ app.config(function($routeProvider, $locationProvider) {
         })
         .when('/games', {
             templateUrl: 'parts/games.html',
-            controller: 'pluginsctrl'
+            controller: 'gamesctrl'
         })
         .when('/statistics', {
             templateUrl: 'parts/statistics.html',
-            controller: 'pluginsctrl'
+            controller: 'statisticsctrl'
         })
         .when('/settings', {
             templateUrl: 'parts/settings.html',
-            controller: 'pluginsctrl'
+            controller: 'settingsctrl'
         })
         .when('/', {
             templateUrl: 'parts/dashboard.html',
