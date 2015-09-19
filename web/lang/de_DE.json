@@ -3,8 +3,8 @@
   "shutdown": "Herunterfahren",
   "restart": "Neustarten",
   "restart_daemons": "Neustarten + Daemons",
-  "dashboard": "Dashboard",
-  "daemons": "Daemons124",
+  "dashboard": "Dashboard Test",
+  "daemons": "Daemons",
   "daemons_description": "Hier kannst du Daemons hinzufügen, bearbeiten oder löschen.",
   "plugins": "Plugins",
   "plugins_description": "Hier kannst du Plugins hinzufügen, bearbeiten oder löschen.",
@@ -15,5 +15,5 @@
   "statistics": "Statistiken",
   "statistics_description": "Hier kannst du des Netzwerkes einsehen.",
   "settings": "Einstellungen",
-  "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern.",
+  "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern."
 }
