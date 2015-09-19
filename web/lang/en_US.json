@@ -2,5 +2,5 @@
   "logout": "Logout",
   "shutdown": "Shutdown",
   "restart": "Restart",
-  "restart_daemons"_ "Restart + Daemons"
+  "restart_daemons": "Restart + Daemons"
 }

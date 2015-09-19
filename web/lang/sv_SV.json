@@ -2,5 +2,5 @@
   "logout": "Logga ut",
   "shutdown": "Stäng ner",
   "restart": "Omstart",
-  "restart_daemons"_ "Omstart + Daemons"
+  "restart_daemons": "Omstart + Daemons"
 }

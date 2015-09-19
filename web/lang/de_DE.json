@@ -2,5 +2,5 @@
   "logout": "Abmelden",
   "shutdown": "Herunterfahren",
   "restart": "Neustarten",
-  "restart_daemons"_ "Neustarten + Daemons"
+  "restart_daemons": "Neustarten + Daemons"
 }
