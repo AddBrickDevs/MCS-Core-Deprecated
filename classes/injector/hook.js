@@ -4,7 +4,6 @@ module.exports = {
         self.hookcb = function() {
             console.log("Standard hook! When this appears, create an issue on github!");
         };
-        Object.prototype.hook = self.hook;
     }).bind(this),
     hook: (function(hookName) {
         var self = this;
