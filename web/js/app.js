@@ -39,9 +39,9 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'parts/worlds.html',
             controller: 'worldsctrl'
         })
-        .when('/games', {
-            templateUrl: 'parts/games.html',
-            controller: 'gamesctrl'
+        .when('/servertypes', {
+            templateUrl: 'parts/servertypes.html',
+            controller: 'servertypesctrl'
         })
         .when('/statistics', {
             templateUrl: 'parts/statistics.html',
