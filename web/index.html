@@ -9,37 +9,80 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
     <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lumen.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <base href="/">
 </head>
 <body>
+	<div class="modal fade" id="info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{'mcs' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+					<p>{{'mcs_version' | translate}}: 0.1 DEV ALPHA</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="action_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{'actions' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+					<p>{{'actions_description' | translate}}<br/>
+						<div class="row">
+							<div class="col-md-4"><a href="#" class="btn btn-danger"><i class="fa fa-power-off"></i> {{'shutdown' | translate}}</a></div>
+							<div class="col-md-4"><a href="#" class="btn btn-warning"><i class="fa fa-power-off"></i> {{'restart' | translate}}</a></div>
+							<div class="col-md-4"><a href="#" class="btn btn-warning"><i class="fa fa-power-off"></i> {{'restart_daemons' | translate}}</a></div>
+						</div>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
     <ul class="nav nav-pills nav-stacked nav-sidebar">
         <li class="fa-side">
-            <a href="/" data-toggle="tooltip" data-placement="right" title="MCS"><i class="fa fa-cloud"></i></a>
+            <a href="" data-toggle="modal" data-target="#info_modal"><i class="fa fa-cloud"></i></a></a>
         </li>
         <li class="side-divider"></li>
-        <li class="fa-side">
-            <a href="/" data-toggle="tooltip" data-placement="right" title="Dashboard"><i class="fa fa-tachometer"></i></a>
+		<li class="fa-side">
+            <a href="" data-toggle="modal" data-target="#action_modal"><i class="fa fa-power-off"></i></a></a>
         </li>
         <li class="fa-side">
-            <a href="/daemons" data-toggle="tooltip" data-placement="right" title="Daemons"><i class="fa fa-server"></i></a>
+            <a href="/" data-toggle="tooltip" data-placement="right" title="{{'dashboard' | translate}}"><i class="fa fa-tachometer"></i></a>
         </li>
         <li class="fa-side">
-            <a href="/plugins" data-toggle="tooltip" data-placement="right" title="Plugins"><i class="fa fa-plug"></i></a>
+            <a href="/daemons" data-toggle="tooltip" data-placement="right" title="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
         </li>
         <li class="fa-side">
-            <a href="/worlds" data-toggle="tooltip" data-placement="right" title="Worlds"><i class="fa fa-globe"></i></a>
+            <a href="/plugins" data-toggle="tooltip" data-placement="right" title="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
         </li>
         <li class="fa-side">
-            <a href="/games" data-toggle="tooltip" data-placement="right" title="Games"><i class="fa fa-gamepad"></i></a>
+            <a href="/worlds" data-toggle="tooltip" data-placement="right" title="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
         </li>
         <li class="fa-side">
-            <a href="/statistics" data-toggle="tooltip" data-placement="right" title="Statistiken"><i class="fa fa-sitemap"></i></a>
+            <a href="/servertypes" data-toggle="tooltip" data-placement="right" title="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
         </li>
         <li class="fa-side">
-            <a href="/settings" data-toggle="tooltip" data-placement="right" title="Settings"><i class="fa fa-gears"></i></a>
+            <a href="/statistics" data-toggle="tooltip" data-placement="right" title="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
         </li>
-		<li class="fa-side side-down dropdown">
+        <li class="fa-side">
+            <a href="/settings" data-toggle="tooltip" data-placement="right" title="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
+        </li>
+		<!--<li class="fa-side side-down dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-power-off"></i>
             </a>
@@ -50,7 +93,7 @@
 				<li role="separator" class="divider"></li>
 				<li><a href="#"><i class="fa fa-power-off"></i> {{'restart_daemons' | translate}}</a></li>
             </ul>
-        </li>
+        </li>-->
         <li class="fa-side side-down dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user"></i>

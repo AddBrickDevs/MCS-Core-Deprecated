@@ -3,4 +3,8 @@
   "shutdown": "Shutdown",
   "restart": "Restart",
   "restart_daemons": "Restart + Daemons"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> MinecraftCloudSystem/master

@@ -1,6 +1,29 @@
 {
+  "mcs": "Minecraft Cloud System",
+  "mcs_version": "Version",
+  "actions": "Aktionen",
+  "actions_description": "Welche Aktionen möchtest du durchführen?",
+  "close": "Schließen",
   "logout": "Abmelden",
   "shutdown": "Herunterfahren",
   "restart": "Neustarten",
+<<<<<<< HEAD
   "restart_daemons": "Neustarten + Daemons"
 }
+=======
+  "restart_daemons": "Neustarten + Daemons",
+  "dashboard": "Dashboard",
+  "daemons": "Daemons",
+  "daemons_description": "Hier kannst du Daemons hinzufügen, bearbeiten oder löschen.",
+  "plugins": "Plugins",
+  "plugins_description": "Hier kannst du Plugins hinzufügen, bearbeiten oder löschen.",
+  "worlds": "Welten",
+  "worlds_description": "Hier kannst du Welten hinzufügen, bearbeiten oder löschen.",
+  "servertypes": "Servertypen",
+  "servertypes_description": "Hier kannst du Servertypen hinzufügen, bearbeiten oder löschen.",
+  "statistics": "Statistiken",
+  "statistics_description": "Hier kannst du des Netzwerkes einsehen.",
+  "settings": "Einstellungen",
+  "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern."
+}
+>>>>>>> MinecraftCloudSystem/master
