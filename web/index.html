@@ -75,6 +75,66 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="add_daemon_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{'add_daemon_title' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">{{'add_daemon_name' | translate}}</span>
+							<input type="text" class="form-control" placeholder="{{'add_daemon_name' | translate}}" aria-describedby="basic-addon1">
+						</div>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="add_servertype_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{'add_servertype_title' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">{{'add_servertype_name' | translate}}</span>
+							<input type="text" class="form-control" placeholder="{{'add_servertype_name' | translate}}" aria-describedby="basic-addon1">
+						</div>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="add_world_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{'add_world_title' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">{{'add_world_name' | translate}}</span>
+							<input type="text" class="form-control" placeholder="{{'add_world_name' | translate}}" aria-describedby="basic-addon1">
+						</div>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <ul class="nav nav-pills nav-stacked nav-sidebar">
         <li class="fa-side">
@@ -129,9 +189,16 @@
         </li>
     </ul>
 
-    <div class="view">
-        <div ng-view></div>
-    </div>
+	<div class="view">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div ng-view></div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+    
 
     <div class="loader" id="loader">
         <div class="animated zoomIn">

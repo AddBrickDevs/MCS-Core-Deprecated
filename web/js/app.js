@@ -104,6 +104,30 @@ app.controller('navctrl', ['$scope', function($scope) {
 
 }]);
 
+app.controller('daemonsctrl', ['$scope', function($scope) {
+
+}]);
+
+app.controller('pluginsctrl', ['$scope', function($scope) {
+
+}]);
+
+app.controller('worldsctrl', ['$scope', function($scope) {
+
+}]);
+
+app.controller('servertypesctrl', ['$scope', function($scope) {
+
+}]);
+
+app.controller('statisticsctrl', ['$scope', function($scope) {
+
+}]);
+
+app.controller('settingsctrl', ['$scope', function($scope) {
+
+}]);
+
 /*
     Services for easy use of socket.io etc.
  */
