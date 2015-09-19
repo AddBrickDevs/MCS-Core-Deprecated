@@ -2,7 +2,7 @@
   "mcs": "Minecraft Cloud System",
   "mcs_version": "Version",
   "actions": "Aktionen",
-  "actions_description": "Welche Aktionen möchtest du durchführen?",
+  "actions_description": "Welche Aktion möchtest du durchführen?",
   "close": "Schließen",
   "logout": "Abmelden",
   "shutdown": "Herunterfahren",

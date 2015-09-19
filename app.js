@@ -24,6 +24,6 @@ Webserver.getInstance({}).start();
 Hook.hook('onWebserverStart');
 
 Cloudserver.startServer(function(port){
-    log.info('Cloudserver listening on port '+port);
+    log.info('Cloudserver listening on port ' + port);
 });
 Hook.hook('onCloudserverStart');
