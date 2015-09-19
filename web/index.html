@@ -24,7 +24,8 @@
 					<h4 class="modal-title">{{'mcs' | translate}}</h4>
 				</div>
 				<div class="modal-body">
-					<p>{{'mcs_version' | translate}}: 0.1 DEV ALPHA</p>
+					<p><b>{{'mcs_version' | translate}}:</b> 0.1 DEV ALPHA<br/>
+					<b>{{'mcs_info_time' | translate}}:</b> 11 Minuten</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
@@ -54,14 +55,34 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="add_plugin_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{'add_plugin_title' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">{{'add_plugin_name' | translate}}</span>
+							<input type="text" class="form-control" placeholder="Pluginname" aria-describedby="basic-addon1">
+						</div>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <ul class="nav nav-pills nav-stacked nav-sidebar">
         <li class="fa-side">
-            <a href="" data-toggle="modal" data-target="#info_modal"><i class="fa fa-cloud"></i></a></a>
+            <a href="#" data-toggle="modal" data-target="#info_modal"><i class="fa fa-cloud"></i></a></a>
         </li>
         <li class="side-divider"></li>
 		<li class="fa-side">
-            <a href="" data-toggle="modal" data-target="#action_modal"><i class="fa fa-power-off"></i></a></a>
+            <a href="#" data-toggle="modal" data-target="#action_modal"><i class="fa fa-power-off"></i></a></a>
         </li>
         <li class="fa-side">
             <a href="/" data-toggle="tooltip" data-placement="right" title="{{'dashboard' | translate}}"><i class="fa fa-tachometer"></i></a>

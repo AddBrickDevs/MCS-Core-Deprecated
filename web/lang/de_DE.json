@@ -20,5 +20,8 @@
   "statistics": "Statistiken",
   "statistics_description": "Hier kannst du des Netzwerkes einsehen.",
   "settings": "Einstellungen",
-  "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern."
+  "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern.",
+  "mcs_info_time": "Online seit",
+  "add_plugin_title": "Plugin hinzufügen",
+  "add_plugin_name": "Pluginname"
 }
