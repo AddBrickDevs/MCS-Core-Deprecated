@@ -1,6 +1,6 @@
 {
   "logout": "Logga ut",
-  "shutdown": "St‰ng ner",
+  "shutdown": "St√§ng ner",
   "restart": "Omstart",
-  "restart_daemons"_ "Omstart + Daemons"
+  "restart_daemons": "Omstart + Daemons"
 }
