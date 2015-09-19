@@ -7,10 +7,6 @@
   "logout": "Abmelden",
   "shutdown": "Herunterfahren",
   "restart": "Neustarten",
-<<<<<<< HEAD
-  "restart_daemons": "Neustarten + Daemons"
-}
-=======
   "restart_daemons": "Neustarten + Daemons",
   "dashboard": "Dashboard",
   "daemons": "Daemons",
