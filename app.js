@@ -22,6 +22,7 @@ log.info('\  |  |', true);
 log.info('\ /|/\\|\\', true);
 log.info('/_||||_\\', true);
 log.info('\  /||\\', true);
+log.info('Ready to take off...', true);
 
 try {
     fs.mkdirSync('./classes/plugins/');
