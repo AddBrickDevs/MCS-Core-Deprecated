@@ -55,6 +55,18 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'parts/settings.html',
             controller: 'settingsctrl'
         })
+        .when('/profile', {
+            templateUrl: 'parts/profile.html',
+            controller: 'profilectrl'
+        })
+        .when('/setup', {
+            templateUrl: 'parts/setup.html',
+            controller: 'setupctrl'
+        })
+        .when('/networkmap', {
+            templateUrl: 'parts/networkmap.html',
+            controller: 'networkmapctrl'
+        })
         .when('/', {
             templateUrl: 'parts/dashboard.html',
             controller: 'dashboardctrl'
@@ -81,7 +93,7 @@ app.config(function ($translateProvider) {
 });
 
 app.run(function($rootScope, $templateCache, $http) {
-    var templates = ['404', 'dashboard'];
+    var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'login', 'servertypes', 'statistics', 'worlds'];
     angular.forEach(templates, function(templateUrl) {
         templateUrl = 'parts/'+templateUrl+'.html';
         $http({method: 'GET', url: templateUrl}).success(function(data) {
@@ -99,42 +111,6 @@ app.run(function($rootScope, $templateCache, $http) {
         }, 500);
     });
 });
-
-app.controller('dashboardctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('navctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('daemonsctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('pluginsctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('worldsctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('servertypesctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('statisticsctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('settingsctrl', ['$scope', function($scope) {
-
-}]);
-
-app.controller('loginctrl', ['$scope', function($scope) {
-
-}]);
 
 /*
     Services for easy use of socket.io etc.

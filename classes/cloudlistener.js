@@ -1,5 +1,5 @@
 /**
- *  Webserver wrapper
+ *  TCP Server Wrapper
  *  @module classes/cloudlistener
  */
 
@@ -7,11 +7,25 @@
 var config = require('./config.js');
 var log = require('./log.js');
 var net = require('net');
+var msgpack = require('msgpack-js');
 //var crypto = require('crypto');
 
 var server = net.createServer({allowHalfOpen: false}, function(con){
-    //con.
     log.debug('client connected!');
+    con.on('data', function(msg){
+        try {
+            msg = msgpack.decode(msg);
+        } catch(e) {
+            log.debug('error decoding message: '+msg);
+        }
+        log.debug(msg);
+    });
+    con.on('end', function() {
+        log.debug('client disconnected');
+    });
+    con.on('error', function(err) {
+        log.warn(err);
+    });
 });
 
 /**

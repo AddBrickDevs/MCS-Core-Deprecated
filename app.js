@@ -1,7 +1,10 @@
+var fs = require('fs');
+
 var log = require('./classes/log.js');
 var version = require('./package.json').version;
 var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
+var MySQL = require('MySQL');
 
 var Injector = require('./classes/injector/inject.js');
 var Hook = require('./classes/injector/hook.js');
@@ -19,6 +22,12 @@ log.info('\  |  |', true);
 log.info('\ /|/\\|\\', true);
 log.info('/_||||_\\', true);
 log.info('\  /||\\', true);
+
+try {
+    fs.mkdirSync('./classes/plugins/');
+} catch(e) {
+    if(e.code !== 'EEXIST') throw e;
+}
 
 Webserver.getInstance({}).start();
 Hook.hook('onWebserverStart');
