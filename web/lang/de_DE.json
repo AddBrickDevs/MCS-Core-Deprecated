@@ -20,11 +20,6 @@
   "statistics": "Statistiken",
   "statistics_description": "Hier kannst du des Netzwerkes einsehen.",
   "settings": "Einstellungen",
-<<<<<<< HEAD
-  "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern."
-}
->>>>>>> MinecraftCloudSystem/master
-=======
   "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern.",
   "mcs_info_time": "Online seit",
   "add_plugin_title": "Plugin hinzufügen",
@@ -36,4 +31,3 @@
   "add_daemon_title": "Daemon hinzufügen",
   "add_daemon_name": "Daemonname"
 }
->>>>>>> MinecraftCloudSystem/master
