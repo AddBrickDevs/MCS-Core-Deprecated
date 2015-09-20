@@ -29,6 +29,7 @@
   "add_world_title": "Welt hinzufügen",
   "add_world_name": "Weltname",
   "add_daemon_title": "Daemon hinzufügen",
+<<<<<<< HEAD
   "add_daemon_name": "Daemonname",
   "add_daemon_ip": "Daemon IP",
   "add_daemon_port_min": "Min.-Port",
@@ -37,3 +38,7 @@
   "upload": "Hochladen",
   "add": "Hinzufügen"
 }
+=======
+  "add_daemon_name": "Daemonname"
+}
+>>>>>>> origin/master
