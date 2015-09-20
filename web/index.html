@@ -41,16 +41,13 @@
 					<h4 class="modal-title">{{'actions' | translate}}</h4>
 				</div>
 				<div class="modal-body">
-					<p>{{'actions_description' | translate}}<br/>
-						<div class="row">
-							<div class="col-md-4"><a href="#" class="btn btn-danger"><i class="fa fa-power-off"></i> {{'shutdown' | translate}}</a></div>
-							<div class="col-md-4"><a href="#" class="btn btn-warning"><i class="fa fa-power-off"></i> {{'restart' | translate}}</a></div>
-							<div class="col-md-4"><a href="#" class="btn btn-warning"><i class="fa fa-power-off"></i> {{'restart_daemons' | translate}}</a></div>
-						</div>
-					</p>
+					<p>{{'actions_description' | translate}}</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>
+					<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-power-off"></i> {{'restart_daemons' | translate}}</button>
+					<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-power-off"></i> {{'restart' | translate}}</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-power-off"></i> &nbsp; {{'shutdown' | translate}}</button>
 				</div>
 			</div>
 		</div>
@@ -65,12 +62,12 @@
 				<div class="modal-body">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon1">{{'add_plugin_name' | translate}}</span>
-							<input type="text" class="form-control" placeholder="Pluginname" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" placeholder="{{'add_plugin_name' | translate}}" aria-describedby="basic-addon1">
 						</div>
 					</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>
 				</div>
 			</div>
 		</div>
@@ -87,10 +84,27 @@
 							<span class="input-group-addon" id="basic-addon1">{{'add_daemon_name' | translate}}</span>
 							<input type="text" class="form-control" placeholder="{{'add_daemon_name' | translate}}" aria-describedby="basic-addon1">
 						</div>
+						<br/>
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">{{'add_daemon_ip' | translate}}</span>
+							<input type="text" class="form-control" placeholder="{{'add_daemon_ip' | translate}}" aria-describedby="basic-addon1">
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-md-6">
+								<span class="input-group-addon" id="basic-addon1">{{'add_daemon_port_min' | translate}}</span>
+								<input type="number" class="form-control" placeholder="{{'add_daemon_port_min' | translate}}" aria-describedby="basic-addon1">
+							</div>
+							<div class="col-md-6">
+								<span class="input-group-addon" id="basic-addon1">{{'add_daemon_port_max' | translate}}</span>
+								<input type="number" class="form-control" placeholder="{{'add_daemon_port_max' | translate}}" aria-describedby="basic-addon1">
+							</div>
+						</div>
 					</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'add' | translate}}</button>
 				</div>
 			</div>
 		</div>
