@@ -23,6 +23,10 @@ var app = angular.module('app', ['ngRoute', 'Services', 'ngCookies', 'pascalprec
  */
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
+        .when('/login', {
+            templateUrl: 'parts/login.html',
+            controller: 'loginctrl'
+        })
         .when('/dashboard', {
             templateUrl: 'parts/dashboard.html',
             controller: 'dashboardctrl'
@@ -125,6 +129,10 @@ app.controller('statisticsctrl', ['$scope', function($scope) {
 }]);
 
 app.controller('settingsctrl', ['$scope', function($scope) {
+
+}]);
+
+app.controller('loginctrl', ['$scope', function($scope) {
 
 }]);
 
