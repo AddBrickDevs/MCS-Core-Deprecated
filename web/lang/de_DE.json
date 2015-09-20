@@ -2,7 +2,7 @@
   "mcs": "Minecraft Cloud System",
   "mcs_version": "Version",
   "actions": "Aktionen",
-  "actions_description": "Welche Aktionen möchtest du durchführen?",
+  "actions_description": "Welche Aktion möchtest du durchführen?",
   "close": "Schließen",
   "logout": "Abmelden",
   "shutdown": "Herunterfahren",
@@ -20,6 +20,20 @@
   "statistics": "Statistiken",
   "statistics_description": "Hier kannst du des Netzwerkes einsehen.",
   "settings": "Einstellungen",
+<<<<<<< HEAD
   "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern."
+}
+>>>>>>> MinecraftCloudSystem/master
+=======
+  "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern.",
+  "mcs_info_time": "Online seit",
+  "add_plugin_title": "Plugin hinzufügen",
+  "add_plugin_name": "Pluginname",
+  "add_servertype_title": "Servertyp hinzufügen",
+  "add_servertype_name": "Servertypname",
+  "add_world_title": "Welt hinzufügen",
+  "add_world_name": "Weltname",
+  "add_daemon_title": "Daemon hinzufügen",
+  "add_daemon_name": "Daemonname"
 }
 >>>>>>> MinecraftCloudSystem/master

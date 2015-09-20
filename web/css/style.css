@@ -3,6 +3,7 @@ html, body {
 }
 
 .nav-sidebar {
+	position: fixed;
     top: 0;
     left: 0;
     width: 50px;
@@ -64,7 +65,7 @@ html, body {
 .view {
     position: absolute;
     top: 10px;
-	width: calc(100% - 75px);
+	width: calc(100% - 100px);
 	left: 50px;
     padding-left: 50px;
     padding-top: 50px;
