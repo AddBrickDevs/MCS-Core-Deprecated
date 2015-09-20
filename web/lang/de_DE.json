@@ -35,6 +35,5 @@
   "add_daemon_port_max": "Max.-Port",
   "choose_file": "Datei auswählen",
   "upload": "Hochladen",
-  "add": "Hinzufügen",
-  "add_daemon_name": "Daemonname"
+  "add": "Hinzufügen"
 }
