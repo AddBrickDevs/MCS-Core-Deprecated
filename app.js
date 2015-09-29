@@ -15,7 +15,7 @@ Injector.initialize('./classes/plugins');
 
 log.handleuncaughtExceptions();
 
-log.info('MCS v'+version+' starting...');
+log.info('MCS v' + version + ' starting...');
 log.info('\   /\\', true);
 log.info('\  |  |', true);
 log.info('\  |  |', true);
