@@ -95,4 +95,11 @@ Plugin.prototype.toJSON = function() {
     };
 };
 
+
+Plugin.prototype.save = function(){
+    mysqlclient.db.query("INSERT INTO `Plugins` (pluginname, version, size, hash) VALUES ('" + this.getName() + "', '" + this.getVersion() + "', '" + this.getSize() + "', '" + this.getHash() + "')", function(err){
+        if(err){log.error(err)}
+    });
+};
+
 module.exports = Plugin;

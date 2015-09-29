@@ -3,8 +3,9 @@
  *  @module classes/database/world
  */
 
-var World = function(name, size, hash) {
+var World = function(name, folder, size, hash) {
     this.name = name;
+    this.folder = folder;
     this.size = size;
     this.hash = hash;
 };
@@ -23,6 +24,22 @@ World.prototype.getName = function() {
  */
 World.prototype.setName = function(value) {
     this.name = value;
+};
+
+/**
+ * Gets the folder of the world
+ * @returns {*}
+ */
+World.prototype.getFolder = function() {
+    return this.folder
+};
+
+/**
+ * Sets the folder of the world
+ * @param value The name
+ */
+World.prototype.setFolder = function(value) {
+    this.folder = value;
 };
 
 /**
@@ -63,6 +80,12 @@ World.prototype.toJSON = function() {
         size: this.getSize(),
         hash: this.getHash()
     };
+};
+
+World.prototype.save = function(){
+    mysqlclient.db.query("INSERT INTO `Worlds` (worldname, foldername, size, hash) VALUES ('" + this.getName() + "', '" + this.getFolder() + "', '" + this.getSize() + "', '" + this.getHash() + "')", function(err){
+        if(err){log.error(err)}
+    });
 };
 
 module.exports = World;

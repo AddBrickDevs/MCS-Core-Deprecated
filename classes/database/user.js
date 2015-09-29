@@ -10,6 +10,7 @@ var User = function(username, password, rank, twofa) {
     if(twofa) {
         this.twofa = twofa;
     }
+    this.backupcode = backupcode;
 };
 
 User.prototype.getUsername = function() {
@@ -44,6 +45,14 @@ User.prototype.setTwoFA = function(value) {
     this.twofa = value;
 };
 
+User.prototype.getBackupCode = function() {
+    return this.backupcode;
+};
+
+User.prototype.setBackupCode = function(value) {
+    this.backupcode = value;
+};
+
 User.prototype.toJSON = function() {
     return {
         username: this.getUsername(),
@@ -51,6 +60,12 @@ User.prototype.toJSON = function() {
         rank: this.getRank(),
         twofa: this.getTwoFA()
     };
+};
+
+User.prototype.save = function(){
+    mysqlclient.db.query("INSERT INTO `Users` (username, password, rang, twofa, backupcode) VALUES ('" + this.getUsername() + "', '" + this.getPassword() + "', '" + this.getRank() + "', '" + this.getTwoFA() + "', '" + this.getBackupCode() + "')", function(err){
+        if(err){log.error(err)}
+    });
 };
 
 module.exports = User;

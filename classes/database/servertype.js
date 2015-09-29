@@ -70,4 +70,10 @@ Servertype.prototype.toJSON = function() {
     };
 };
 
+Servertype.prototype.save = function() {
+    mysqlclient.db.query("INSERT INTO `Servertypes` (name, plugins, worlds, minfree, csc) VALUES ('" + this.getName() + "', '" + this.getPlugins() + "', '" + this.getWorlds() + "', '" + this.getMinFree() + "', '" + this.getCustomServerCommand() + "')", function(err){
+        if(err){log.error(err)}
+    });
+};
+
 module.exports = Servertype;
