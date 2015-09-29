@@ -7,8 +7,8 @@ var mysqllib = require('mysql');
 var log = require('./log.js');
 var queries = [
     "CREATE TABLE IF NOT EXISTS `Users` (username PRIMARYKEY VARCHAR(22), password VARCHAR(128), twofa VARCHAR(16))", //Password = SHA 512
-    "CREATE TABLE IF NOT EXISTS `Daemons` (Daemonname PRIMARYKEY VARCHAR(22), APIKey VARCHAR(16))",
-    "CREATE TABLE IF NOT EXISTS `Plugins` (Pluginname PRIMARYKEY VARCHAR(32), Version INT)", //32 Chars should be enaught
+    "CREATE TABLE IF NOT EXISTS `Daemons` (Daemonname PRIMARYKEY VARCHAR(22), DaemonIP VARCHAR(16), MinPort INT, MaxPort INT, APIKey VARCHAR(16))",
+    "CREATE TABLE IF NOT EXISTS `Plugins` (Pluginname PRIMARYKEY VARCHAR(32), Version INT)", //32 Chars should be enough
     "CREATE TABLE IF NOT EXISTS `Servertypes` (Servertype PRIMARYKEY VARCHAR(22), Plugins TEXT, Worlds TEXT)",
     "CREATE TABLE IF NOT EXISTS `Worlds` (Worldname PRIMARYKEY VARCHAR(32), Foldername TEXT)"
 ];
