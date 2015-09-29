@@ -4,6 +4,7 @@
  */
 
 var crypto = require('crypto');
+var log = require('../log.js');
 
 /**
  * Constructs the daemon object
@@ -116,6 +117,12 @@ Daemon.prototype.toJSON = function() {
         maxport: this.getMaxPort(),
         apikey: this.getAPIKey()
     };
+};
+
+Daemon.prototype.save = function(){
+    mysqlclient.db.query("INSERT INTO `Daemons` (daemonname, daemonip, minport, maxport, apikey) VALUES ('" + this.getName() + "', '" + this.getIP() + "', '" + this.getMinPort() + "', '" + this.getMaxPort() + "', '" + this.getAPIKey() + "')", function(err){
+        if(err){log.error(err)}
+    });
 };
 
 module.exports = Daemon;
