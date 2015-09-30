@@ -6,7 +6,6 @@ var version = require('./package.json').version;
 var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
 var MySQL = require('MySQL');
-var io = require('socket.io');
 //var mysqlclient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
 
 var Injector = require('./classes/injector/inject.js');
@@ -35,6 +34,8 @@ try {
 
 Webserver.getInstance({}).start();
 Hook.hook('onWebserverStart');
+
+var io = require('socket.io')(Webserver.getInstance().getWebserver());
 
 Cloudserver.startServer(function(port){
     log.info('Cloudserver listening on port ' + port);
