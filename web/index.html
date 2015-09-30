@@ -14,6 +14,8 @@
     <link href="css/lumen.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <base href="/">
+
+	<script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 	<div class="modal fade" id="info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -243,5 +245,14 @@
     <script src="js/Daemons.js"></script>
     <script src="js/Plugins.js"></script>
     <script src="js/Profile.js"></script>
+	<script>
+		var socket = io();
+		io.on('connection', function(socket){
+			console.log('User connected');
+			socket.on('disconnect', function(){
+				console.log('user disconnected');
+			});
+		});
+	</script>
 </body>
 </html>
