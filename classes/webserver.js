@@ -59,9 +59,18 @@ Webserver.prototype.getWebserver = function() {
  * Gets the express app
  * @returns {*}
  */
+Webserver.prototype.getHttp = function() {
+    return this.http;
+};
+
+/**
+ * Gets the express app
+ * @returns {*}
+ */
 Webserver.prototype.getExpressApp = function() {
     return this.app;
 };
+
 
 /**
  * Get instance of the webserver

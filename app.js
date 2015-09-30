@@ -35,8 +35,6 @@ try {
 Webserver.getInstance({}).start();
 Hook.hook('onWebserverStart');
 
-var io = require('socket.io')(Webserver.getInstance().getWebserver());
-
 Cloudserver.startServer(function(port){
     log.info('Cloudserver listening on port ' + port);
 });
