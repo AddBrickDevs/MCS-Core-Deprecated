@@ -15,20 +15,25 @@ var events = {
     "auth": function(socket, data) {
         log.debug("Auth " + data.apikey);
 
-        var successful = false;
-        datamanager.getDaemons().forEach(function(d) {
+        var successful = data.apikey == "asdf"; // DEBUG
+        //var successful = false;
+        /*datamanager.getDaemons().forEach(function(d) {
             if(d.apikey === data.apikey) {
                 socket.write(msgpack.encode({
                     'event': 'welcome'
                 }));
                 successful = true;
             }
-        });
+        });*/
         if(!successful) {
             socket.write(msgpack.encode({
                 'event': 'failed'
             }));
             socket.close();
+        } else {                            // DEBUG
+            socket.write(msgpack.encode({
+                'event': 'welcome'
+            }));
         }
     }
 };
