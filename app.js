@@ -5,8 +5,8 @@ var Config = require('./classes/config.js');
 var version = require('./package.json').version;
 var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
-var MySQL = require('MySQL');
-//var mysqlclient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
+var MySQL = require('./classes/mysql.js');
+var mysqlclient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
 
 var Injector = require('./classes/injector/inject.js');
 var Hook = require('./classes/injector/hook.js');

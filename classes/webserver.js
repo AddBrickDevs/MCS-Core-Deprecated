@@ -71,7 +71,6 @@ Webserver.prototype.getExpressApp = function() {
     return this.app;
 };
 
-
 /**
  * Get instance of the webserver
  * @param options Webserver options.
