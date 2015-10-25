@@ -5,6 +5,10 @@ var Config = require('./classes/config.js');
 var version = require('./package.json').version;
 var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
+<<<<<<< HEAD
+=======
+var datamanager = require('./classes/database/datamanager.js');
+>>>>>>> e6d143eb6966ef54ead5c42d9b35528d7fdba28f
 var MySQL = require('./classes/mysql.js');
 var mysqlclient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
 

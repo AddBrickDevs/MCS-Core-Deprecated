@@ -6,9 +6,37 @@
 // Core modules
 var config = require('./config.js');
 var log = require('./log.js');
+var datamanager = require('./database/datamanager.js');
 var net = require('net');
 var msgpack = require('msgpack-js');
 //var crypto = require('crypto');
+
+var events = {
+    "auth": function(socket, data) {
+        log.debug("Auth " + data.apikey);
+
+        var successful = data.apikey == "asdf"; // DEBUG
+        //var successful = false;
+        /*datamanager.getDaemons().forEach(function(d) {
+            if(d.apikey === data.apikey) {
+                socket.write(msgpack.encode({
+                    'event': 'welcome'
+                }));
+                successful = true;
+            }
+        });*/
+        if(!successful) {
+            socket.write(msgpack.encode({
+                'event': 'failed'
+            }));
+            socket.close();
+        } else {                            // DEBUG
+            socket.write(msgpack.encode({
+                'event': 'welcome'
+            }));
+        }
+    }
+};
 
 var server = net.createServer({allowHalfOpen: false}, function(con){
     log.debug('client connected!');
@@ -18,7 +46,8 @@ var server = net.createServer({allowHalfOpen: false}, function(con){
         } catch(e) {
             log.debug('error decoding message: '+msg);
         }
-        log.debug(msg);
+        log.debug(JSON.stringify(msg));
+        events[msg.event](con, msg);
     });
     con.on('end', function() {
         log.debug('client disconnected');
