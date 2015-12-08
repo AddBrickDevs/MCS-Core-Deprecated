@@ -20,10 +20,14 @@ var serve = require('serve-static')('./web/');
 
 var instance;
 
+var startDate;
+
 var Webserver = function(options) {
     this.app = express();
     this.app.use(compression());
     this.app.use(serve);
+
+    this.startDate = new Date();
 
     this.app.use(function(req, res) {                                                       ////////////////
         res.status(404).send(fs.readFileSync('./web/index.html', {encoding: "UTF-8"}));     //experimental//
@@ -69,6 +73,14 @@ Webserver.prototype.getHttp = function() {
  */
 Webserver.prototype.getExpressApp = function() {
     return this.app;
+};
+
+/**
+ * Gets the express app
+ * @returns {*}
+ */
+Webserver.prototype.getStartDate = function() {
+    return this.startDate;
 };
 
 /**

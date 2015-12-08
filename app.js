@@ -27,7 +27,7 @@ log.info('/_||||_\\', true);
 log.info('\  /||\\', true);
 log.info('Ready to take off...', true);
 
-try {
+    try {
     fs.mkdirSync('./classes/plugins/');
 } catch(e) {
     if(e.code !== 'EEXIST') throw e;
@@ -36,18 +36,9 @@ try {
 Webserver.getInstance({}).start();
 Hook.hook('onWebserverStart');
 
-var io = require('socket.io')(Webserver.getInstance({}).getWebserver());
+var WebIO = require('./classes/web-io.js');
 
 Cloudserver.startServer(function(port){
     log.info('Cloudserver listening on port ' + port);
 });
 Hook.hook('onCloudserverStart');
-
-io.on('Connection', function(Socket) {
-    log.info('Socket connected!');
-    Socket.on('req-file', function(data) {
-        if(data.type === 'log') {
-            socket.emit('log-req', log.getLog());
-        }
-    });
-});

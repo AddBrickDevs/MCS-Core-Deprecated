@@ -25,7 +25,7 @@
 				</div>
 				<div class="modal-body">
 					<p><b>{{'mcs_version' | translate}}:</b> 0.1 DEV ALPHA<br/>
-					<b>{{'mcs_info_time' | translate}}:</b> {{ onlineTime }} Sekunden</p>
+					<b>{{'mcs_info_time' | translate}}:</b> {{ startTime }} Sekunden</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
@@ -80,27 +80,26 @@
 					<h4 class="modal-title">{{'add_daemon_title' | translate}}</h4>
 				</div>
 				<div class="modal-body">
-						<div class="input-group">
-							<span class="input-group-addon">{{'add_daemon_name' | translate}}</span>
-							<input type="text" class="form-control" placeholder="{{'add_daemon_name' | translate}}" aria-describedby="basic-addon1">
+					<div class="input-group">
+						<span class="input-group-addon">{{'add_daemon_name' | translate}}</span>
+						<input type="text" class="form-control" placeholder="{{'add_daemon_name' | translate}}" aria-describedby="basic-addon1">
+					</div>
+					<br/>
+					<div class="input-group">
+						<span class="input-group-addon">{{'add_daemon_ip' | translate}}</span>
+						<input type="text" class="form-control" placeholder="{{'add_daemon_ip' | translate}}" aria-describedby="basic-addon1">
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-md-6">
+							<span class="input-group-addon">{{'add_daemon_port_min' | translate}}</span>
+							<input type="number" class="form-control" placeholder="{{'add_daemon_port_min' | translate}}" aria-describedby="basic-addon1">
 						</div>
-						<br/>
-						<div class="input-group">
-							<span class="input-group-addon">{{'add_daemon_ip' | translate}}</span>
-							<input type="text" class="form-control" placeholder="{{'add_daemon_ip' | translate}}" aria-describedby="basic-addon1">
+						<div class="col-md-6">
+							<span class="input-group-addon">{{'add_daemon_port_max' | translate}}</span>
+							<input type="number" class="form-control" placeholder="{{'add_daemon_port_max' | translate}}" aria-describedby="basic-addon1">
 						</div>
-						<br/>
-						<div class="row">
-							<div class="col-md-6">
-								<span class="input-group-addon">{{'add_daemon_port_min' | translate}}</span>
-								<input type="number" class="form-control" placeholder="{{'add_daemon_port_min' | translate}}" aria-describedby="basic-addon1">
-							</div>
-							<div class="col-md-6">
-								<span class="input-group-addon">{{'add_daemon_port_max' | translate}}</span>
-								<input type="number" class="form-control" placeholder="{{'add_daemon_port_max' | translate}}" aria-describedby="basic-addon1">
-							</div>
-						</div>
-					</p>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>

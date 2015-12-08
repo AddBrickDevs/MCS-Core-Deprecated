@@ -19,7 +19,7 @@
   "servertypes": "Servertypen",
   "servertypes_description": "Hier kannst du Servertypen hinzufügen, bearbeiten oder löschen.",
   "statistics": "Statistiken",
-  "statistics_description": "Hier kannst du des Netzwerkes einsehen.",
+  "statistics_description": "Hier kannst du Statistiken des Netzwerkes einsehen.",
   "settings": "Einstellungen",
   "settings_description": "Hier kannst du Einstellungen des CloudSystems ändern.",
   "add_plugin_title": "Plugin hinzufügen",
