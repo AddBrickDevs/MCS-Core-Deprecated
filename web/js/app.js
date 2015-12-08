@@ -105,7 +105,7 @@ app.run(function($rootScope, $templateCache, $http) {
     $('.loaderText').css("display", "inline");
     var unlink = $rootScope.$on('$translateChangeEnd', function(){
         setTimeout(function() {
-            var loader = $('#loader');
+            var loader = $('.loader');
             loader.fadeOut(950);
             unlink();
         }, 500);

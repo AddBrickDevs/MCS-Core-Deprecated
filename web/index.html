@@ -14,8 +14,6 @@
     <link href="css/lumen.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <base href="/">
-
-	<script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 	<div class="modal fade" id="info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -27,7 +25,7 @@
 				</div>
 				<div class="modal-body">
 					<p><b>{{'mcs_version' | translate}}:</b> 0.1 DEV ALPHA<br/>
-					<b>{{'mcs_info_time' | translate}}:</b> 11 Minuten</p>
+					<b>{{'mcs_info_time' | translate}}:</b> {{ onlineTime }} Sekunden</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
@@ -214,13 +212,21 @@
 			<div class="col-md-1"></div>
 		</div>
 	</div>
-    
 
-    <div class="loader" id="loader">
+	<div class="loader">
+		<div class="box">
+			<div class="text">
+				MCS
+			</div>
+			<div class="spinner"></div>
+		</div>
+	</div>
+
+    <!--<div class="loader" id="loader">
         <div class="animated zoomIn">
             <i class="fa fa-spinner fa-spin"></i><span class="hidden-xs hidden-sm loaderText">&nbsp;{{loaderText}}</span>
         </div>
-    </div>
+    </div>-->
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -234,6 +240,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256-min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
     <script src="js/app.js"></script>
     <script src="js/Dashboard.js"></script>
     <script src="js/Login.js"></script>
@@ -245,14 +252,5 @@
     <script src="js/Daemons.js"></script>
     <script src="js/Plugins.js"></script>
     <script src="js/Profile.js"></script>
-	<script>
-		var socket = io();
-		io.on('connection', function(socket){
-			console.log('User connected');
-			socket.on('disconnect', function(){
-				console.log('user disconnected');
-			});
-		});
-	</script>
 </body>
 </html>
