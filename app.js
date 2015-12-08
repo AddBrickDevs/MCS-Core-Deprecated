@@ -45,4 +45,9 @@ Hook.hook('onCloudserverStart');
 
 io.on('Connection', function(Socket) {
     log.info('Socket connected!');
+    Socket.on('req-file', function(data) {
+        if(data.type === 'log') {
+            socket.emit('log-req', log.getLog());
+        }
+    });
 });
