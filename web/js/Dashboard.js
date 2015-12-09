@@ -12,29 +12,36 @@ app.controller('dashboardctrl', ['$scope', 'Socket', function($scope, Socket) {
     /*
     * EXPERIMENTAL!!
     *
-    * TO DO!!
+    * TO DO: version-control!!
     * */
 
     $scope.startDate = '0';
     $scope.version = '-';
 
     Socket.on('startDate-req', function(data) {
-        var req_date = data.req_value;
+        var req_date = new Date(data.date_val);
         var now_date = new Date();
 
         var diff = req_date.getTime() - now_date.getTime();
 
-        var seconds = Math.floor(diff / 1000);
+        var seconds = Math.floor(-diff / 1000);
         var minutes = Math.floor(seconds / 60);
         var hours = Math.floor(minutes / 60);
         var days = Math.floor(hours / 24);
 
-        $scope.startDate = diff;
+        if(seconds < 60) {
+            $scope.startDate = seconds + ((seconds == 1) ? ' Sekunde' :' Sekunden');
+        } else if(minutes < 60 && seconds >= 60) {
+            $scope.startDate = minutes + ((minutes == 1) ? ' Minute' :' Minuten');
+        } else if(hours < 24 && minutes >= 60) {
+            $scope.startDate = hours + ((hours == 1) ? ' Stunde' :' Stunden');
+        } else {
+            $scope.startDate = days + ((days == 1) ? ' Tag' :' Tagen');
+        }
 
-        //$scope.startDate = data.data.getSeconds() < 60 ? data.data.getSeconds() : $scope.startDate = data.data.getMinutes() < 60 ? data.data.getMinutes() : data.data.getHours() < 24 ? data.data.getHours() : data.data.getDay();
     });
     Socket.on('version-req', function(data) {
-        $scope.version = data.req_value;
+        $scope.version = '' + data.version_val + '';
     });
 
     Socket.emit('req-info', {type:'version'});

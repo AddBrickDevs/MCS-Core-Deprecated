@@ -1,15 +1,12 @@
-app.controller('navctrl', ['$scope', function($scope) {
+app.controller('navctrl', ['$scope', 'Socket', function($scope, Socket) {
 
-    $scope.startDate = 0;
-    $scope.version = '-';
+    $scope.status = 'Connected';
 
-    Socket.on('startDate-req', function(data) {
-        $scope.startDate = data.getSeconds() < 60 ? data.getSeconds() : $scope.startDate = data.getMinutes() < 60 ? data.getMinutes() : data.getHours() < 24 ? data.getHours() : data.getDay();
+    Socket.on('connection', function() {
+        $scope.status = 'Connected';
+        document.getElementById('status').style.background = '#039000';
+        Socket.on('disconnect' ,function() {
+            $scope.status = 'Disconnected';
+        });
     });
-    Socket.on('version-req', function(data) {
-        $scope.version = data.value;
-    });
-
-    Socket.emit('req-info', {type:'version'});
-    Socket.emit('req-info', {type:'startDate'});
 }]);
