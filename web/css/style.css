@@ -143,3 +143,10 @@ html, body {
 .loaderText {
     display: none;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 50px);
+}

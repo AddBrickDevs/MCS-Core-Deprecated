@@ -7,6 +7,7 @@ var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
 var datamanager = require('./classes/database/datamanager.js');
 var MySQL = require('./classes/mysql.js');
+var Mongo = require('./classes/mongo.js');
 var mysqlclient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
 
 var Injector = require('./classes/injector/inject.js');
@@ -27,7 +28,7 @@ log.info('/_||||_\\', true);
 log.info('\  /||\\', true);
 log.info('Ready to take off...', true);
 
-    try {
+try {
     fs.mkdirSync('./classes/plugins/');
 } catch(e) {
     if(e.code !== 'EEXIST') throw e;

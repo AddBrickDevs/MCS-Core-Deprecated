@@ -19,7 +19,6 @@ var compression = require('compression');
 var serve = require('serve-static')('./web/');
 
 var instance;
-
 var startDate;
 
 var Webserver = function(options) {

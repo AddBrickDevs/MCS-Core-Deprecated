@@ -15,6 +15,7 @@ app.controller('dashboardctrl', ['$scope', 'Socket', function($scope, Socket) {
     * TO DO: version-control!!
     * */
 
+    var startDate = 0;
     $scope.startDate = '0';
     $scope.version = '-';
 
@@ -40,12 +41,13 @@ app.controller('dashboardctrl', ['$scope', 'Socket', function($scope, Socket) {
         }
 
     });
+
     Socket.on('version-req', function(data) {
-        $scope.version = '' + data.version_val + '';
+        $scope.version = data.version_val;
     });
 
-    Socket.emit('req-info', {type:'version'});
     Socket.emit('req-info', {type:'startDate'});
+    Socket.emit('req-info', {type:'version'});
 
     /*
     * EXPERIMENTAL!!

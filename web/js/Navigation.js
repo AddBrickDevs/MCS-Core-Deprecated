@@ -1,12 +1,12 @@
 app.controller('navctrl', ['$scope', 'Socket', function($scope, Socket) {
 
-    $scope.status = 'Connected';
+    $scope.status = 'connected';
 
     Socket.on('connection', function() {
-        $scope.status = 'Connected';
-        document.getElementById('status').style.background = '#039000';
+        $scope.status = 'connected';
         Socket.on('disconnect' ,function() {
-            $scope.status = 'Disconnected';
+            $scope.status = 'disconnected';
         });
     });
+
 }]);
