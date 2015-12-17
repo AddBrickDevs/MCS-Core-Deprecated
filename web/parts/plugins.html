@@ -1,13 +1,21 @@
-<div class="row hidden-xs hidden-sm">
-	<div class="col-md-12" style="margin-top: 20px; margin-bottom: 10px;">
-		<span style="font-size: 36px;">{{'plugins' | translate}}</span>
-		<a href="#" class="pull-right btn btn-primary" data-toggle="modal" data-target="#add_plugin_modal">{{'add_plugin_title' | translate}}</a>
-	</div>
+<div class="modal" id="add_plugin_modal">
+    <div class="modal-content">
+        <h4>TITLE</h4>
+        <div class="input-field">
+            <input type="text" id="plugin_name" class="validate" placeholder="{{'add_plugin_name' | translate}}">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close btn-flat">Add</a>
+        <a href="#!" class="modal-action modal-close btn-flat">{{'close' | translate}}</a>
+    </div>
 </div>
-<div class="hidden-md hidden-lg">
-	<div style="margin-top: 20px; margin-bottom: 10px;">
-		<span style="font-size: 36px;">{{'plugins' | translate}}</span><br/>
-		<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add_plugin_modal">{{'add_plugin_title' | translate}}</a>
-	</div>
+<div style="margin-top: 20px; margin-bottom: 10px;">
+    <span style="font-size: 36px;">{{'plugins' | translate}}</span>
+    <button class="pull-right btn blue modal-trigger" data-target="add_plugin_modal">{{'add_plugin_title' |
+        translate}}</button>
+
+    <div class="card-panel blue-grey white-text">
+            {{'plugins_description' | translate}}
+    </div>
 </div>
-<div class="alert alert-info" role="alert">{{'plugins_description' | translate}}</div>

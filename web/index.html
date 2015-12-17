@@ -2,258 +2,278 @@
 <html ng-app="app">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-    <title>Minecraft Cloudsystem</title>
-	
-	<link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Minecraft Cloudsystem</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/lumen.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <base href="/">
 </head>
 <body>
-	<div class="modal fade" id="info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">{{'mcs' | translate}}</h4>
-				</div>
-				<div class="modal-body">
-					<p><b>{{'mcs_version' | translate}}:</b> 0.1 DEV ALPHA<br/>
-					<b>{{'mcs_info_time' | translate}}:</b> {{ startTime }} Sekunden</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="action_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">{{'actions' | translate}}</h4>
-				</div>
-				<div class="modal-body">
-					<p>{{'actions_description' | translate}}</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>
-					<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-power-off"></i> {{'restart_daemons' | translate}}</button>
-					<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-power-off"></i> {{'restart' | translate}}</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-power-off"></i> &nbsp; {{'shutdown' | translate}}</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="add_plugin_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">{{'add_plugin_title' | translate}}</h4>
-				</div>
-				<div class="modal-body">
-						<div class="input-group">
-							<span class="input-group-addon">{{'add_plugin_name' | translate}}</span>
-							<input type="text" class="form-control" placeholder="{{'add_plugin_name' | translate}}" aria-describedby="basic-addon1">
-						</div>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="add_daemon_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">{{'add_daemon_title' | translate}}</h4>
-				</div>
-				<div class="modal-body">
-					<div class="input-group">
-						<span class="input-group-addon">{{'add_daemon_name' | translate}}</span>
-						<input type="text" class="form-control" placeholder="{{'add_daemon_name' | translate}}" aria-describedby="basic-addon1">
-					</div>
-					<br/>
-					<div class="input-group">
-						<span class="input-group-addon">{{'add_daemon_ip' | translate}}</span>
-						<input type="text" class="form-control" placeholder="{{'add_daemon_ip' | translate}}" aria-describedby="basic-addon1">
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-md-6">
-							<span class="input-group-addon">{{'add_daemon_port_min' | translate}}</span>
-							<input type="number" class="form-control" placeholder="{{'add_daemon_port_min' | translate}}" aria-describedby="basic-addon1">
-						</div>
-						<div class="col-md-6">
-							<span class="input-group-addon">{{'add_daemon_port_max' | translate}}</span>
-							<input type="number" class="form-control" placeholder="{{'add_daemon_port_max' | translate}}" aria-describedby="basic-addon1">
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'add' | translate}}</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="add_servertype_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">{{'add_servertype_title' | translate}}</h4>
-				</div>
-				<div class="modal-body">
-						<div class="input-group">
-							<span class="input-group-addon">{{'add_servertype_name' | translate}}</span>
-							<input type="text" class="form-control" placeholder="{{'add_servertype_name' | translate}}" aria-describedby="basic-addon1">
-						</div>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="add_world_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">{{'add_world_title' | translate}}</h4>
-				</div>
-				<div class="modal-body">
-						<div class="input-group">
-							<span class="input-group-addon">{{'add_world_name' | translate}}</span>
-							<input type="text" class="form-control" placeholder="{{'add_world_name' | translate}}" aria-describedby="basic-addon1">
-						</div>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="modal" id="info_modal">
+    <div class="modal-content">
+        <h4>{{'mcs' | translate}}</h4>
+        <p>
+            <b>{{'mcs_version' | translate}}:</b> 0.1 DEV ALPHA<br/>
+            <b>{{'mcs_info_time' | translate}}:</b> {{ startTime }} Sekunden
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close btn-flat" >{{'close' | translate}}</a>
+    </div>
+</div>
+<div class="modal" id="action_modal">
+    <div class="modal-content">
+        <h4>{{'actions' | translate}}</h4>
+        <p>{{'actions_description' | translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close btn-flat waves-effect waves-blue" >{{'close' | translate}}</a>
+        <a href="#!" class="modal-action modal-close btn-flat waves-effect waves-blue" >{{'restart_daemons' | translate}}</a>
+        <a href="#!" class="modal-action modal-close btn-flat waves-effect waves-blue" >{{'restart' | translate}}</a>
+        <a href="#!" class="modal-action modal-close btn-flat waves-effect waves-blue" >{{'shutdown' | translate}}</a>
+    </div>
+</div>
+<div class="modal fade" id="add_daemon_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{'add_daemon_title' | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">{{'add_daemon_name' | translate}}</span>
+                    <input type="text" class="form-control" placeholder="{{'add_daemon_name' | translate}}"
+                           aria-describedby="basic-addon1">
+                </div>
+                <br/>
 
-    <ul class="nav nav-pills nav-stacked nav-sidebar">
-        <li class="fa-side">
-            <a href="#" data-toggle="modal" data-target="#info_modal"><i class="fa fa-cloud"></i></a></a>
-        </li>
-        <li class="side-divider"></li>
-		<li class="fa-side">
-            <a href="#" data-toggle="modal" data-target="#action_modal"><i class="fa fa-power-off"></i></a></a>
-        </li>
-        <li class="fa-side">
-            <a href="/" data-toggle="tooltip" data-placement="right" title="{{'dashboard' | translate}}"><i class="fa fa-tachometer"></i></a>
-        </li>
-        <li class="fa-side">
-            <a href="/daemons" data-toggle="tooltip" data-placement="right" title="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
-        </li>
-        <li class="fa-side">
-            <a href="/plugins" data-toggle="tooltip" data-placement="right" title="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
-        </li>
-        <li class="fa-side">
-            <a href="/worlds" data-toggle="tooltip" data-placement="right" title="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
-        </li>
-        <li class="fa-side">
-            <a href="/servertypes" data-toggle="tooltip" data-placement="right" title="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
-        </li>
-        <li class="fa-side">
-            <a href="/statistics" data-toggle="tooltip" data-placement="right" title="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
-        </li>
-        <li class="fa-side">
-            <a href="/settings" data-toggle="tooltip" data-placement="right" title="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
-        </li>
-		<!--<li class="fa-side side-down dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-power-off"></i>
-            </a>
-            <ul class="dropdown-menu rightMenu">
-                <li><a href="#"><i class="fa fa-power-off"></i> {{'shutdown' | translate}}</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#"><i class="fa fa-power-off"></i> {{'restart' | translate}}</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#"><i class="fa fa-power-off"></i> {{'restart_daemons' | translate}}</a></li>
-            </ul>
-        </li>-->
-        <li class="fa-side side-down dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user"></i>
-            </a>
-            <ul class="dropdown-menu rightMenu">
-                <li><a><i class="fa fa-user"></i> CreepPlays</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a>{{'logout' | translate}}</a></li>
-            </ul>
-        </li>
-    </ul>
+                <div class="input-group">
+                    <span class="input-group-addon">{{'add_daemon_ip' | translate}}</span>
+                    <input type="text" class="form-control" placeholder="{{'add_daemon_ip' | translate}}"
+                           aria-describedby="basic-addon1">
+                </div>
+                <br/>
 
-	<div class="view">
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<div ng-view></div>
-			</div>
-			<div class="col-md-1"></div>
-		</div>
-	</div>
-
-	<div class="footer" ng-controller="navctrl">
-		<div class="status" id="status">{{ status }}</div>
-	</div>
-
-	<div class="loader">
-		<div class="box">
-			<div class="text">
-				MCS
-			</div>
-			<div class="spinner"></div>
-		</div>
-	</div>
-
-    <!--<div class="loader" id="loader">
-        <div class="animated zoomIn">
-            <i class="fa fa-spinner fa-spin"></i><span class="hidden-xs hidden-sm loaderText">&nbsp;{{loaderText}}</span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="input-group-addon">{{'add_daemon_port_min' | translate}}</span>
+                        <input type="number" class="form-control" placeholder="{{'add_daemon_port_min' | translate}}"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-md-6">
+                        <span class="input-group-addon">{{'add_daemon_port_max' | translate}}</span>
+                        <input type="number" class="form-control" placeholder="{{'add_daemon_port_max' | translate}}"
+                               aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{'close' | translate}}</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">{{'add' | translate}}</button>
+            </div>
         </div>
-    </div>-->
+    </div>
+</div>
+<div class="modal fade" id="add_servertype_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{'add_servertype_title' | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">{{'add_servertype_name' | translate}}</span>
+                    <input type="text" class="form-control" placeholder="{{'add_servertype_name' | translate}}"
+                           aria-describedby="basic-addon1">
+                </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="add_world_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{'add_world_title' | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">{{'add_world_name' | translate}}</span>
+                    <input type="text" class="form-control" placeholder="{{'add_world_name' | translate}}"
+                           aria-describedby="basic-addon1">
+                </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-cookies.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bower-angular-translate/2.7.2/angular-translate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bower-angular-translate-loader-static-files/2.7.2/angular-translate-loader-static-files.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-cookie/2.7.2/angular-translate-storage-cookie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-local/2.7.2/angular-translate-storage-local.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256-min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/Dashboard.js"></script>
-    <script src="js/Login.js"></script>
-    <script src="js/Navigation.js"></script>
-    <script src="js/Servertypes.js"></script>
-    <script src="js/Settings.js"></script>
-    <script src="js/Stats.js"></script>
-    <script src="js/Worlds.js"></script>
-    <script src="js/Daemons.js"></script>
-    <script src="js/Plugins.js"></script>
-    <script src="js/Profile.js"></script>
+<nav class="blue darken-2">
+    <div class="nav-wrapper">
+        <a href="#info_modal" class="brand-logo modal-trigger"><i class="fa fa-cloud"></i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <a href="#action_modal" class="modal-trigger tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'shutdown' | translate}}">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </li>
+            <li>
+                <a href="/" class="tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'dashboard' | translate}}"><i class="fa fa-tachometer"></i></a>
+            </li>
+            <li>
+                <a href="/daemons" class="tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
+            </li>
+            <li>
+                <a href="/plugins" class="tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
+            </li>
+            <li>
+                <a href="/worlds" class="tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
+            </li>
+            <li>
+                <a href="/servertypes" class="tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
+            </li>
+            <li>
+                <a href="/statistics" class="tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
+            </li>
+            <li>
+                <a href="/settings" class="tooltipped" data-position="bottom" data-delay="25"
+                   data-tooltip="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--<ul class="nav nav-pills nav-stacked nav-sidebar">
+    <li class="fa-side">
+        <a href="#" data-toggle="modal" data-target="#info_modal"><i class="fa fa-cloud"></i></a></a>
+    </li>
+    <li class="side-divider"></li>
+    <li class="fa-side">
+        <a href="#" data-toggle="modal" data-target="#action_modal"><i class="fa fa-power-off"></i></a></a>
+    </li>
+    <li class="fa-side">
+        <a href="/" data-toggle="tooltip" data-placement="right" title="{{'dashboard' | translate}}"><i class="fa fa-tachometer"></i></a>
+    </li>
+    <li class="fa-side">
+        <a href="/daemons" data-toggle="tooltip" data-placement="right" title="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
+    </li>
+    <li class="fa-side">
+        <a href="/plugins" data-toggle="tooltip" data-placement="right" title="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
+    </li>
+    <li class="fa-side">
+        <a href="/worlds" data-toggle="tooltip" data-placement="right" title="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
+    </li>
+    <li class="fa-side">
+        <a href="/servertypes" data-toggle="tooltip" data-placement="right" title="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
+    </li>
+    <li class="fa-side">
+        <a href="/statistics" data-toggle="tooltip" data-placement="right" title="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
+    </li>
+    <li class="fa-side">
+        <a href="/settings" data-toggle="tooltip" data-placement="right" title="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
+    </li>
+    <!--<li class="fa-side side-down dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-power-off"></i>
+        </a>
+        <ul class="dropdown-menu rightMenu">
+            <li><a href="#"><i class="fa fa-power-off"></i> {{'shutdown' | translate}}</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#"><i class="fa fa-power-off"></i> {{'restart' | translate}}</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#"><i class="fa fa-power-off"></i> {{'restart_daemons' | translate}}</a></li>
+        </ul>
+    </li>
+    <li class="fa-side side-down dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+        </a>
+        <ul class="dropdown-menu rightMenu">
+            <li><a><i class="fa fa-user"></i> CreepPlays</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a>{{'logout' | translate}}</a></li>
+        </ul>
+    </li>
+</ul>-->
+
+<main class="container">
+    <div ng-view></div>
+</main>
+
+<footer class="page-footer blue darken-2">
+    <div class="container">
+        <div class="status" id="status">{{ status }}</div>
+    </div>
+    <div class="footer-copyright" ng-controller="navctrl">
+        <div class="container">
+            © 2015 Minecraft Cloudsystem
+        </div>
+    </div>
+</footer>
+
+<div class="loader">
+    <div class="box">
+        <div class="text">
+            MCS
+        </div>
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<!--<div class="loader" id="loader">
+    <div class="animated zoomIn">
+        <i class="fa fa-spinner fa-spin"></i><span class="hidden-xs hidden-sm loaderText">&nbsp;{{loaderText}}</span>
+    </div>
+</div>-->
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-cookies.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bower-angular-translate/2.7.2/angular-translate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bower-angular-translate-loader-static-files/2.7.2/angular-translate-loader-static-files.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-cookie/2.7.2/angular-translate-storage-cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-local/2.7.2/angular-translate-storage-local.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256-min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/app.js"></script>
+<script src="js/Dashboard.js"></script>
+<script src="js/Login.js"></script>
+<script src="js/Navigation.js"></script>
+<script src="js/Servertypes.js"></script>
+<script src="js/Settings.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/Worlds.js"></script>
+<script src="js/Daemons.js"></script>
+<script src="js/Plugins.js"></script>
+<script src="js/Profile.js"></script>
 </body>
 </html>

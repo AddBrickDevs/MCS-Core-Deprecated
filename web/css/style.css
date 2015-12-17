@@ -2,7 +2,7 @@ html, body {
 	width: 100%;
 }
 
-.nav-sidebar {
+/*.nav-sidebar {
     outline: none;
     z-index: 100;
 	position: fixed;
@@ -74,8 +74,8 @@ html, body {
 .view {
     position: absolute;
     top: 10px;
-	width: calc(100% - 100px);
-	left: 50px;
+    width: calc(100% - 100px);
+    left: 50px;
     padding-left: 50px;
     padding-top: 50px;
 }
@@ -84,7 +84,7 @@ html, body {
     position:relative;
     top: -51px;
     left: 51px;
-}
+}*/
 
 .loader {
     position: fixed;
@@ -149,4 +149,19 @@ html, body {
     bottom: 0;
     right: 0;
     width: calc(100% - 50px);
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    margin-top: 20px; margin-bottom: 10px;
+}
+
+.brand-logo {
+    margin-left: 10px;
 }

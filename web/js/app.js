@@ -1,7 +1,3 @@
-$(document).ready(function() {
-    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-});
-
 var loaderTexts = [
     "Pulling Bytes...",
     "Please wait...",
@@ -93,6 +89,7 @@ app.config(function ($translateProvider) {
 });
 
 app.run(function($rootScope, $templateCache, $http) {
+    $('.modal-trigger').leanModal();
     var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'login', 'servertypes', 'statistics', 'worlds'];
     angular.forEach(templates, function(templateUrl) {
         templateUrl = 'parts/'+templateUrl+'.html';
