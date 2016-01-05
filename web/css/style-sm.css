@@ -1,0 +1,113 @@
+body, html {
+    font-family: sans-serif;
+}
+
+body {
+    overflow: scroll;
+}
+
+.background {
+    background: #04294d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.body {
+    top: 0;
+    margin: 0.5% 0.5%;
+    width: 99%;
+    height: 100%;
+    color: #FFFFFF;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #04294d;
+    color: #eeeeee;
+    z-index: 1000;
+}
+
+.loader > .box {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    top: 32%;
+    height: 10%;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 26pt;
+}
+
+.loader > .box > .spinner {
+    color: #FFFFFF;
+    display: block;
+    position: absolute;
+    left: calc(50% - 40px);
+    height: 80px;
+    width: 80px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px white, 0 2px 0 2px white, inset 2px 0 0 2px white;
+    perspective: 800px;
+    perspective-origin: 50% 50%;
+    margin-top: 10px;
+    transform: translate3d(0%, 20%, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    animation: orbit 1.2s infinite linear;
+}
+
+@keyframes orbit {
+    0% {
+        transform: translate3d(0%, 20%, 0) rotateX(0deg) rotateY(0deg) rotateZ(720deg);
+    }
+    100% {
+        transform: translate3d(0%, 20%, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+}
+
+.header {
+    margin: 32px auto;
+    text-align: center;
+}
+
+.navigation {
+    width: 100%;
+}
+
+.header a {
+    border: 1px solid transparent;
+    color: #FFF;
+    padding: 18px 36px;
+    font-size: 36px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.header .active {
+    text-shadow: 0 0 14px #FFF;
+    border: 1px solid #FFF;
+    box-shadow: 0 0 5px #FFF, inset 0 0 4px #FFF;
+}
+
+.nav-divider {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.05));
+}
+
+.controller {
+    width: 94%;
+    margin: 1% 3%;
+}
+
+.title {
+    line-height: 1.7em;
+    font-size: 1.5em;
+}

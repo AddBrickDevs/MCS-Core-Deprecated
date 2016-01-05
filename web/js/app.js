@@ -1,13 +1,3 @@
-var loaderTexts = [
-    "Pulling Bytes...",
-    "Please wait...",
-    "Loading Libraries...",
-    "Cloudifying Servers...",
-    "Loading Plugins...",
-    "Soon™...",
-    "Doing random things..."
-];
-
 /*
     Angular magic
  */
@@ -98,8 +88,6 @@ app.run(function($rootScope, $templateCache, $http) {
         });
     });
 
-    $rootScope.loaderText = loaderTexts[Math.floor(Math.random() * loaderTexts.length)];
-    $('.loaderText').css("display", "inline");
     var unlink = $rootScope.$on('$translateChangeEnd', function(){
         setTimeout(function() {
             var loader = $('.loader');
@@ -112,32 +100,31 @@ app.run(function($rootScope, $templateCache, $http) {
 /*
     Services for easy use of socket.io etc.
  */
-angular.module('Services', []).
-    factory('Socket', function($rootScope) {
-        var socket = io.connect();
+angular.module('Services', []).factory('Socket', function($rootScope) {
+    var socket = io.connect();
 
-        return {
-            on: function(eventName, callback){
-                socket.on(eventName, function() {
-                    var args = arguments;
-                    $rootScope.$apply(function() {
-                        callback.apply(socket, args);
-                    });
+    return {
+        on: function(eventName, callback){
+            socket.on(eventName, function() {
+                var args = arguments;
+                $rootScope.$apply(function() {
+                    callback.apply(socket, args);
                 });
-            },
-            emit: function(eventName, data, callback){
-                if(typeof data === 'function') {
-                    callback = data;
-                    data = {};
-                }
-                socket.emit(eventName, data, function(){
-                    var args = arguments;
-                    $rootScope.$apply(function() {
-                        if(callback) {
-                            callback.apply(socket, args);
-                        }
-                    });
-                });
+            });
+        },
+        emit: function(eventName, data, callback){
+            if(typeof data === 'function') {
+                callback = data;
+                data = {};
             }
-        };
-    });
+            socket.emit(eventName, data, function(){
+                var args = arguments;
+                $rootScope.$apply(function() {
+                    if(callback) {
+                        callback.apply(socket, args);
+                    }
+                });
+            });
+        }
+    };
+});
