@@ -6,6 +6,22 @@
 var config = require('../config.json');
 
 /**
+ * Gets the database type
+ * @returns {string}
+ */
+exports.getDBType = function() {
+    return config.dbtype;
+};
+
+/**
+ * Sets the database type
+ * @param value
+ */
+exports.setDBType = function(value) {
+    config.dbtype = value;
+};
+
+/**
  * Gets the mysql host
  * @returns {string}
  */

@@ -28,7 +28,7 @@ Mongo.prototype.connect = function() {
     mongolib.connect(connectionURL);
 };
 
-var Users = mongolib.model('Users', new Schema({
+var Users = mongolib.model('Users', mongolib.Schema({
     username: String,
     password: String,               // Save in SHA512
     rang: String,
@@ -36,32 +36,48 @@ var Users = mongolib.model('Users', new Schema({
     backupcode: Number
 }));
 
-var Daemons = mongolib.model('Daemons', {
+var Daemons = mongolib.model('Daemons', mongolib.Schema({
     daemonname: String,
     daemonip: String,
     minport: Number,
     maxport: Number,
     apikey: String
-});
+}));
 
-var Plugins = mongolib.model('Plugins', {
+var Plugins = mongolib.model('Plugins', mongolib.Schema({
     pluginname: String,
     version: String,
     size: String,
     hash: String
-});
+}));
 
-var Worlds = mongolib.model('Worlds', {
+var Worlds = mongolib.model('Worlds', mongolib.Schema({
     worldname: String,
     foldername: String,
     size: String,
     hash: String
-});
+}));
 
 var Servertypes = mongolib.model('Servertypes', {
     typename: String,
-    plugins: [],
-    worlds: [],
+    plugins: [{ type: Schema.Types.ObjectId, ref: 'Worlds' }],
+    worlds: [Worlds],
     minfree: Number,
     csc: String
 });
+
+Mongo.prototype.getUserModel = function() {
+    return Users;
+};
+Mongo.prototype.getDaemonModel = function() {
+    return Daemons;
+};
+Mongo.prototype.getPluginModel = function() {
+    return Plugins;
+};
+Mongo.prototype.getWorldModel = function() {
+    return Worlds;
+};
+Mongo.prototype.getServertypeModel = function() {
+    return Servertypes;
+};

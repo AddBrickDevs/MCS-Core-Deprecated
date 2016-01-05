@@ -5,12 +5,13 @@ var Config = require('./classes/config.js');
 var version = require('./package.json').version;
 var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
-var datamanager = require('./classes/database/datamanager.js');
+var DataManager = require('./classes/database/datamanager.js');
 var MySQL = require('./classes/mysql.js');
 var Mongo = require('./classes/mongo.js');
-var mysqlclient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
+var MySQLClient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
 var MongoClient = new Mongo("localhost", "mcs");
 
+if(Config)
 MongoClient.connect();
 
 var Injector = require('./classes/injector/inject.js');

@@ -5,6 +5,8 @@
 
 var crypto = require('crypto');
 var log = require('../log.js');
+var config = require('../config.js');
+var mongo = require('../mongo.js');
 
 /**
  * Constructs the daemon object
@@ -120,9 +122,25 @@ Daemon.prototype.toJSON = function() {
 };
 
 Daemon.prototype.save = function(){
-    mysqlclient.db.query("INSERT INTO `Daemons` (daemonname, daemonip, minport, maxport, apikey) VALUES ('" + this.getName() + "', '" + this.getIP() + "', '" + this.getMinPort() + "', '" + this.getMaxPort() + "', '" + this.getAPIKey() + "')", function(err){
-        if(err){log.error(err)}
-    });
+    if(config.getDBType() === "mysql") {
+        mysqlclient.db.query("INSERT INTO `Daemons` (daemonname, daemonip, minport, maxport, apikey) VALUES ('" + this.getName() + "', '" + this.getIP() + "', '" + this.getMinPort() + "', '" + this.getMaxPort() + "', '" + this.getAPIKey() + "')", function (err) {
+            if (err) {
+                log.error(err)
+            }
+        });
+    } else {
+        var DaemonModel = mongo.getDaemonModel();
+        var newDaemon = new DaemonModel({
+            daemonname: this.getName(),
+            daemonip: this.getIP(),
+            minport: this.getMinPort(),
+            maxport: this.getMaxPort(),
+            apikey: this.getAPIKey()
+        });
+        newDaemon.save(function(err) {
+
+        });
+    }
 };
 
 module.exports = Daemon;
