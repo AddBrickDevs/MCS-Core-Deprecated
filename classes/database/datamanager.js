@@ -1,4 +1,4 @@
-var Daemon = require('./daemon.js');
+/*var Daemon = require('./daemon.js');
 var Plugin = require('./plugin.js');
 var Servertype = require('./servertype.js');
 var User = require('./user.js');
@@ -10,7 +10,13 @@ var servertypes = [];
 var users = [];
 var worlds = [];
 
+var updateDaemons = function() {
+    daemons = [];
+    daemons.push(Daemon.getDaemons22());
+};
+
 exports.getDaemons = function() {
+    updateDaemons();
     return daemons;
 };
 
@@ -28,4 +34,4 @@ exports.getUsers = function() {
 
 exports.getWorlds = function() {
     return worlds;
-};
+};*/

@@ -66,18 +66,18 @@ var Servertypes = mongolib.model('Servertypes', {
     csc: String
 });
 
-Mongo.prototype.getUserModel = function() {
+module.exports.getUserModel = function() {
     return Users;
 };
-Mongo.prototype.getDaemonModel = function() {
+module.exports.getDaemonModel = function() {
     return Daemons;
 };
-Mongo.prototype.getPluginModel = function() {
+module.exports.getPluginModel = function() {
     return Plugins;
 };
-Mongo.prototype.getWorldModel = function() {
+module.exports.getWorldModel = function() {
     return Worlds;
 };
-Mongo.prototype.getServertypeModel = function() {
+module.exports.getServertypeModel = function() {
     return Servertypes;
 };

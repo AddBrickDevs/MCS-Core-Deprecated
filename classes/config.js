@@ -10,7 +10,7 @@ var config = require('../config.json');
  * @returns {string}
  */
 exports.getDBType = function() {
-    return config.dbtype;
+    return config.db;
 };
 
 /**
@@ -18,7 +18,7 @@ exports.getDBType = function() {
  * @param value
  */
 exports.setDBType = function(value) {
-    config.dbtype = value;
+    config.db = value;
 };
 
 /**

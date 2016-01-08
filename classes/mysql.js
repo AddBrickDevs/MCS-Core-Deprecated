@@ -5,6 +5,7 @@
 
 var mysqllib = require('mysql');
 var log = require('./log.js');
+var db;
 var queries = [
     "CREATE TABLE IF NOT EXISTS `Users` (username PRIMARYKEY VARCHAR(22), password VARCHAR(128), rang ENUM(\'Viewer\', \'Dev\', \'Admin\'), twofa VARCHAR(16) NOT NULL, backupcode INT(20) NOT NULL)", //Password = SHA 512
     "CREATE TABLE IF NOT EXISTS `Daemons` (daemonname PRIMARYKEY VARCHAR(22), daemonip VARCHAR(16), minport INT(5), maxport INT(5), apikey VARCHAR(16))",
@@ -35,20 +36,20 @@ function MySQL(host, username, password, database, poolSize) {
  * Connects to the database
  */
 MySQL.prototype.connect = function() {
-    this.db = mysqllib.createPool({
+    db = mysqllib.createPool({
         connectionLimit: this.poolSize,
         host: this.host,
         user: this.user,
         password: this.password,
         database: this.database
     });
-    this.db.getConnection(function(error) {
+    db.getConnection(function(error) {
        if(error) {
            throw new SQLException(error);
        }
     });
     queries.forEach(function(query){
-        this.db.query(query, function(err){
+        db.query(query, function(err){
             if(err){log.error(err)}
         });
     })

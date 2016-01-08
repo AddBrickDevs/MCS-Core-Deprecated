@@ -1,7 +1,8 @@
 app.controller('navctrl', ['$scope', 'Socket', '$location', function($scope, Socket, $location) {
 
     $scope.isActive = function (viewLocation) {
-        return viewLocation === $location.path();
+        var current = $location.path().split("/");
+        return current[1] == viewLocation;
     };
 
 }]);

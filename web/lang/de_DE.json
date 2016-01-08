@@ -4,6 +4,9 @@
   "dashboard_description": "Übersicht über den aktuellen Status des Cloudsystems",
   "daemons": "Daemons",
   "daemons_description": "Hier kannst du Informationen über Daemons einsehen, Daemons bearbeiten, löschen oder hinzufügen",
+  "daemon_add": "Daemon hinzufügen",
+  "daemonname": "Daemonname",
+  "daemon_create": "Neuen Daemon erstellen",
   "plugins": "Plugins",
   "plugins_description": "Hier kannst du Plugins hinzufügen, bearbeiten oder löschen",
   "worlds": "Welten",
@@ -13,5 +16,9 @@
   "statistics": "Statistiken",
   "statistics_description": "Hier kannst du aktuelle Statistiken über dein Netzwerk einsehen",
   "settings": "Einstellungen",
-  "settings_description": "Hier kannst du dein Cloudsystem verwalten und es optimal an deine Wünsche anpassen"
+  "settings_description": "Hier kannst du dein Cloudsystem verwalten und es optimal an deine Wünsche anpassen",
+  "back": "Zurück",
+  "close": "Schließen",
+  "shutdown": "Herunterfahren",
+  "restart": "Neu starten"
 }

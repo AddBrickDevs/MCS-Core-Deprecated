@@ -21,6 +21,10 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'parts/daemons.html',
             controller: 'daemonsctrl'
         })
+        .when('/daemons/add', {
+            templateUrl: 'parts/daemons.add.html',
+            controller: 'daemonsctrl'
+        })
         .when('/plugins', {
             templateUrl: 'parts/plugins.html',
             controller: 'pluginsctrl'
@@ -80,7 +84,7 @@ app.config(function ($translateProvider) {
 
 app.run(function($rootScope, $templateCache, $http) {
     $('.modal-trigger').leanModal();
-    var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'login', 'servertypes', 'statistics', 'worlds'];
+    var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds'];
     angular.forEach(templates, function(templateUrl) {
         templateUrl = 'parts/'+templateUrl+'.html';
         $http({method: 'GET', url: templateUrl}).success(function(data) {

@@ -8,11 +8,11 @@
 
         <link rel="icon" type="image/png" href="favicon.png">
 
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/style-lg.css" rel="stylesheet" media="all and (min-width: 1100px)">
-        <link href="css/style-md.css" rel="stylesheet" media="all and (min-width: 900px) and (max-width: 1100px)">
-        <link href="css/style-sm.css" rel="stylesheet" media="all and (min-width: 500px) and (max-width: 900px)">
-        <link href="css/style-xs.css" rel="stylesheet" media="all and (max-width: 500px)">
+        <link href="/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/css/style-lg.css" rel="stylesheet" media="all and (min-width: 1100px)">
+        <link href="/css/style-md.css" rel="stylesheet" media="all and (min-width: 900px) and (max-width: 1100px)">
+        <link href="/css/style-sm.css" rel="stylesheet" media="all and (min-width: 500px) and (max-width: 900px)">
+        <link href="/css/style-xs.css" rel="stylesheet" media="all and (max-width: 500px)">
         <base href="/">
     </head>
     <body>
@@ -27,13 +27,13 @@
         <div class="body">
             <div class="header" ng-controller="navctrl">
                 <div class="navigation">
-                    <a href="/" ng-class="{ active: isActive('/') }"><i class="fa fa-dashboard"></i></a>
-                    <a href="/daemons" ng-class="{ active: isActive('/daemons') }"><i class="fa fa-server"></i></a>
-                    <a href="/plugins" ng-class="{ active: isActive('/plugins') }"><i class="fa fa-plug"></i></a>
-                    <a href="/worlds" ng-class="{ active: isActive('/worlds') }"><i class="fa fa-globe"></i></a>
-                    <a href="/servertypes" ng-class="{ active: isActive('/servertypes') }"><i class="fa fa-gamepad"></i></a>
-                    <a href="/statistics" ng-class="{ active: isActive('/statistics') }"><i class="fa fa-sitemap"></i></a>
-                    <a href="/settings" ng-class="{ active: isActive('/settings') }"><i class="fa fa-gears"></i></a>
+                    <a href="/" ng-class="{ active: isActive('') }" class="tooltip tooltip-bottom" data-tooltip="{{'dashboard' | translate}}"><i class="fa fa-dashboard"></i></a>
+                    <a href="/daemons" ng-class="{ active: isActive('daemons') }" class="tooltip tooltip-bottom" data-tooltip="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
+                    <a href="/plugins" ng-class="{ active: isActive('plugins') }" class="tooltip tooltip-bottom" data-tooltip="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
+                    <a href="/worlds" ng-class="{ active: isActive('worlds') }" class="tooltip tooltip-bottom" data-tooltip="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
+                    <a href="/servertypes" ng-class="{ active: isActive('servertypes') }" class="tooltip tooltip-bottom" data-tooltip="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
+                    <a href="/statistics" ng-class="{ active: isActive('statistics') }" class="tooltip tooltip-bottom" data-tooltip="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
+                    <a href="/settings" ng-class="{ active: isActive('settings') }" class="tooltip tooltip-bottom" data-tooltip="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
                 </div>
             </div>
 
@@ -75,15 +75,5 @@
         <script src="js/angular-controller/Daemons.js"></script>
         <script src="js/angular-controller/Plugins.js"></script>
         <script src="js/angular-controller/Profile.js"></script>
-
-        <script>
-            $("body > div").bind("scroll mousemove", function() {
-                $("#cover").css("opacity","0");
-                clearTimeout($.data(this, "scrollTimer"));
-                $.data(this, "scrollTimer", setTimeout(function() {
-                    $("#cover").css("opacity","1");
-                }, 500));
-            });
-        </script>
     </body>
 </html>

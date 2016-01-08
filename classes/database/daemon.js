@@ -6,7 +6,9 @@
 var crypto = require('crypto');
 var log = require('../log.js');
 var config = require('../config.js');
-var mongo = require('../mongo.js');
+var mongoClient = require('../mongo.js');
+
+var daemons = [];
 
 /**
  * Constructs the daemon object
@@ -128,8 +130,8 @@ Daemon.prototype.save = function(){
                 log.error(err)
             }
         });
-    } else {
-        var DaemonModel = mongo.getDaemonModel();
+    } else if(config.getDBType() === "mongodb") {
+        var DaemonModel = mongoClient.getDaemonModel();
         var newDaemon = new DaemonModel({
             daemonname: this.getName(),
             daemonip: this.getIP(),
@@ -140,6 +142,26 @@ Daemon.prototype.save = function(){
         newDaemon.save(function(err) {
 
         });
+    } else {
+        log.error("Unknown Database-Type")
+    }
+};
+
+exports.getDaemons = function() {
+    if(config.getDBType() === "mysql") {
+        mysqlclient.db.query("INSERT INTO `Daemons` (daemonname, daemonip, minport, maxport, apikey) VALUES ('" + this.getName() + "', '" + this.getIP() + "', '" + this.getMinPort() + "', '" + this.getMaxPort() + "', '" + this.getAPIKey() + "')", function (err) {
+            if (err) {
+                log.error(err)
+            }
+        });
+    } else if(config.getDBType() === "mongodb") {
+        var DaemonModel = mongoClient.getDaemonModel();
+        DaemonModel.find(function(err, daemon) {
+            daemons.push(daemon);
+        });
+        return daemons;
+    } else {
+        log.error("Unknown Database-Type")
     }
 };
 

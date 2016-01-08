@@ -6,6 +6,74 @@ body {
     overflow: scroll;
 }
 
+a, a:link, a:visited, a:focus, a:active {
+    color: #FFF;
+    text-decoration: none;
+}
+/*
+    Tooltip
+*/
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip:before, .tooltip:after {
+    position: absolute;
+    opacity: 0;
+    z-index: 1000000;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    pointer-events: none;
+}
+
+
+.tooltip:hover:before, .tooltip:hover:after {
+    opacity: 1;
+}
+
+.tooltip:before {
+    content: '';
+    position: absolute;
+    background: transparent;
+    border: 6px solid transparent;
+}
+
+.tooltip:after {
+    content: attr(data-tooltip);
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 8px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-bottom:before {
+    top: 100%;
+    left: 45%;
+    margin: -14px 0 0 0;
+    border-bottom-color: rgba(0, 0, 0, 0.8);
+}
+
+.tooltip-bottom:after {
+    top: 100%;
+    left: 23%;
+    margin: -2px 0 0 -10px;
+}
+
+.tooltip-bottom:hover:before {
+    margin-top: -6px;
+}
+
+.tooltip-bottom:hover:after {
+    margin-top: 6px;
+}
+
+/*
+    Scrollbar
+*/
+
 ::-webkit-scrollbar {
     width: 20px;
 }
@@ -23,6 +91,10 @@ body {
 ::-webkit-scrollbar-corner {
     background: #04294d;
 }
+
+/*
+    Design
+*/
 
 .background {
     background: #090d00;
@@ -136,4 +208,15 @@ body {
 .title {
     line-height: 1.7em;
     font-size: 1.5em;
+}
+
+.button {
+    width: calc(100% - 32px);
+    margin: 20px 0;
+    padding: 16px;
+    text-align: center;
+    text-shadow: 0 0 14px #FFF;
+    border: 1px solid #FFF;
+    box-shadow: 0 0 5px #FFF, inset 0 0 4px #FFF;
+    float: left;
 }
