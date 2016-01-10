@@ -12,7 +12,7 @@ io.on('connection', function(socket) {
         if(data.type === 'log') {
             socket.emit('log-req', log.getLog());
         } else if(data.type === "daemons") {
-            socket.emit('daemon-req', Daemon.getDaemons());
+            socket.emit('daemons-req', Daemon.prototype.getDaemons());
         }
     });
 
@@ -27,10 +27,10 @@ io.on('connection', function(socket) {
     socket.on('add', function(data) {
         if(data.type === "daemon") {
             if((data.name != undefined && data.name != "") && (data.ip != undefined && data.ip != "") && (data.minport != undefined || data.minport != "") && (data.maxport != undefined || data.maxport != "")) {
-                var apikey = crypto.randomBytes(8).toString("hex");
-
-                var newDaemon = new Daemon(data.name, data.ip, data.minport, data.maxport, apikey);
+                var newDaemon = new Daemon(data.name, data.ip, data.minport, data.maxport);
                 newDaemon.save();
+
+                Daemon.prototype.loadDaemons();
             }
         }
 

@@ -7,14 +7,18 @@ var mysqllib = require('mysql');
 var log = require('./log.js');
 var db;
 var queries = [
-    "CREATE TABLE IF NOT EXISTS `Users` (username PRIMARYKEY VARCHAR(22), password VARCHAR(128), rang ENUM(\'Viewer\', \'Dev\', \'Admin\'), twofa VARCHAR(16) NOT NULL, backupcode INT(20) NOT NULL)", //Password = SHA 512
-    "CREATE TABLE IF NOT EXISTS `Daemons` (daemonname PRIMARYKEY VARCHAR(22), daemonip VARCHAR(16), minport INT(5), maxport INT(5), apikey VARCHAR(16))",
-    "CREATE TABLE IF NOT EXISTS `Plugins` (pluginname PRIMARYKEY VARCHAR(32), version VARCHAR(100), size VARCHAR(8), hash VARCHAR(40))", //32 Chars should be enough
-    "CREATE TABLE IF NOT EXISTS `Servertypes` (name PRIMARYKEY VARCHAR(22), plugins TEXT, worlds TEXT, minfree INT(5), csc TEXT)",
-    "CREATE TABLE IF NOT EXISTS `Worlds` (worldname PRIMARYKEY VARCHAR(32), foldername TEXT, size VARCHAR(8), hash VARCHAR(40))"
+    "CREATE TABLE IF NOT EXISTS `users` (username VARCHAR(22), password VARCHAR(128), rang ENUM(\'Viewer\', \'Dev\', \'Admin\'), twofa VARCHAR(16) NOT NULL, backupcode INT(20) NOT NULL, PRIMARY KEY (username))", //Password = SHA 512
+    "CREATE TABLE IF NOT EXISTS `daemons` (daemonname VARCHAR(22), daemonip VARCHAR(16), minport INT(5), maxport INT(5), apikey VARCHAR(16), PRIMARY KEY (daemonname))",
+    "CREATE TABLE IF NOT EXISTS `plugins` (pluginname VARCHAR(32), version VARCHAR(100), size VARCHAR(8), hash VARCHAR(40), PRIMARY KEY (pluginname))", //32 Chars should be enough
+    "CREATE TABLE IF NOT EXISTS `servertypes` (name VARCHAR(22), plugins TEXT, worlds TEXT, minfree INT(5), csc TEXT, PRIMARY KEY (name))",
+    "CREATE TABLE IF NOT EXISTS `worlds` (worldname VARCHAR(32), foldername TEXT, size VARCHAR(8), hash VARCHAR(40), PRIMARY KEY (worldname))"
 ];
 
 module.exports = MySQL;
+
+MySQL.prototype.getDB = function() {
+    return db;
+};
 
 /**
  * Creates a mysql instance
@@ -39,7 +43,7 @@ MySQL.prototype.connect = function() {
     db = mysqllib.createPool({
         connectionLimit: this.poolSize,
         host: this.host,
-        user: this.user,
+        user: this.username,
         password: this.password,
         database: this.database
     });

@@ -8,11 +8,6 @@ var Cloudserver = require('./classes/cloudlistener.js');
 var DataManager = require('./classes/database/datamanager.js');
 var MySQL = require('./classes/mysql.js');
 var Mongo = require('./classes/mongo.js');
-log.debug(Config.getMySQLHost());
-log.debug(Config.getMySQLUser());
-log.debug(Config.getMySQLPassword());
-log.debug(Config.getMySQLDatabase());
-log.debug(Config.getMySQLPoolSize());
 var MySQLClient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
 var MongoClient = new Mongo("localhost", "mcs");
 
@@ -26,6 +21,9 @@ if(Config.getDBType() == "mongodb") {
     log.warn("Unknown Database-Type. Shutting down...");
     process.exit(1);
 }
+
+var Daemon = require('./classes/database/daemon.js');
+Daemon.prototype.loadDaemons();
 
 var Injector = require('./classes/injector/inject.js');
 var Hook = require('./classes/injector/hook.js');
