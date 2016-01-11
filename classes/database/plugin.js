@@ -3,6 +3,12 @@
  *  @module classes/database/plugin
  */
 
+var log = require('../log.js');
+var config = require('../config.js');
+var mongoClient = require('../mongo.js');
+
+var plugins = [];
+
 /**
  * Constructs the plugin object
  * @param name The name of the plugin
@@ -97,7 +103,31 @@ Plugin.prototype.toJSON = function() {
 
 
 Plugin.prototype.save = function(){
+    var PluginModel = mongoClient.getPluginModel();
+    var newPlugin = new PluginModel({
+        pluginname: this.getName(),
+        version: this.getVersion(),
+        size: this.getSize(),
+        hash: this.getHash()
+    });
+    newPlugin.save(function(err) {
 
+    });
+};
+
+Plugin.prototype.getPlugins = function() {
+    return plugins;
+};
+
+Plugin.prototype.loadPlugins = function() {
+    plugins = [];
+    var PluginModel = mongoClient.getPluginModel();
+    PluginModel.find({}, function(err, plugin) {
+        if(err) {
+
+        }
+        plugins.push(plugin);
+    });
 };
 
 module.exports = Plugin;

@@ -6,66 +6,34 @@
 var config = require('../config.json');
 
 /**
- * Gets the mysql host
+ * Gets the mongo host
  * @returns {string}
  */
-exports.getMySQLHost = function() {
+exports.getMongoHost = function() {
     return config.database.host;
 };
 
 /**
- * Sets the mysql host
+ * Sets the mongo host
  * @param value The host
  */
-exports.setMySQLHost = function(value) {
+exports.setMongoHost = function(value) {
     config.database.host = value;
 };
 
 /**
- * Gets the mysql username
+ * Gets the mongo database name
  * @returns {string}
  */
-exports.getMySQLUser = function() {
-    return config.database.user;
-};
-
-/**
- * Sets the mysql user
- * @param value The user
- */
-exports.setMySQLUser = function(value) {
-    config.database.user = value;
-};
-
-/**
- * Gets the mysql password
- * @returns {string}
- */
-exports.getMySQLPassword = function() {
-    return config.database.password;
-};
-
-/**
- * Sets the mysql password
- * @param value The password
- */
-exports.setMySQLPassword = function(value) {
-    config.database.password = value;
-};
-
-/**
- * Gets the mysql database name
- * @returns {string}
- */
-exports.getMySQLDatabase = function() {
+exports.getMongoDatabase = function() {
     return config.database.database;
 };
 
 /**
- * Gets the mysql database name
+ * Gets the mongo database name
  * @param value The mysql database name
  */
-exports.setMySQLDatabase = function(value) {
+exports.setMongoDatabase = function(value) {
     config.database.database = value;
 };
 
