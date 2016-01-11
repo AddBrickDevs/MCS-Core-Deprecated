@@ -7,7 +7,6 @@ var crypto = require('crypto');
 var log = require('../log.js');
 var config = require('../config.js');
 var mongoClient = require('../mongo.js');
-var mysqlClient = require('../mysql.js');
 
 var daemons = [];
 
@@ -127,58 +126,32 @@ Daemon.prototype.toJSON = function() {
 };
 
 Daemon.prototype.save = function(){
-    if(config.getDBType() === "mysql") {
-        mysqlClient.prototype.getDB().query("INSERT INTO `daemons` (daemonname, daemonip, minport, maxport, apikey) VALUES ('" + this.getName() + "', '" + this.getIP() + "', '" + this.getMinPort() + "', '" + this.getMaxPort() + "', '" + this.getAPIKey() + "')", function (err) {
-            if (err) {
-                log.error(err)
-            }
-        });
-    } else if(config.getDBType() === "mongodb") {
-        var DaemonModel = mongoClient.getDaemonModel();
-        var newDaemon = new DaemonModel({
-            daemonname: this.getName(),
-            daemonip: this.getIP(),
-            minport: this.getMinPort(),
-            maxport: this.getMaxPort(),
-            apikey: this.getAPIKey()
-        });
-        newDaemon.save(function(err) {
+    var DaemonModel = mongoClient.getDaemonModel();
+    var newDaemon = new DaemonModel({
+        daemonname: this.getName(),
+        daemonip: this.getIP(),
+        minport: this.getMinPort(),
+        maxport: this.getMaxPort(),
+        apikey: this.getAPIKey()
+    });
+    newDaemon.save(function(err) {
 
-        });
-    } else {
-        log.error("Unknown Database-Type")
-    }
+    });
 };
 
 Daemon.prototype.getDaemons = function() {
-    if(config.getDBType() === "mysql") {
-        mysqlClient.prototype.getDB().query('SELECT * FROM `daemons`', function(err, rows) {
-            if (err) log.error(err);
-            return daemons = rows;
-        });
-    } else if(config.getDBType() === "mongodb") {
-            return daemons;
-    } else {
-        log.error("Unknown Database-Type")
-    }
+    return daemons;
 };
 
 Daemon.prototype.loadDaemons = function() {
     daemons = [];
-    if(config.getDBType() === "mysql") {
-        mysqlClient.prototype.getDB().query('SELECT * FROM `daemons`', function(err, rows) {
-            if (err) log.error(err);
-            log.debug(rows);
-            //daemons.push({name: rows.getName(), ip: rows.getIP(), minport: rows.getMinPort(), maxport: rows.getMaxPort(), apikey: rows.getAPIKey()});
-        });
-    } else if(config.getDBType() === "mongodb") {
-        var DaemonModel = mongoClient.getDaemonModel();
-        DaemonModel.find({}, function(err, daemon) {
-            daemons.push(daemon);
-        });
-    } else {
-        log.error("Unknown Database-Type")
-    }
+    var DaemonModel = mongoClient.getDaemonModel();
+    DaemonModel.find({}, function(err, daemon) {
+        if(err) {
+
+        }
+        daemons.push(daemon);
+    });
 };
 
 module.exports = Daemon;

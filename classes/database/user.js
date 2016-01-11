@@ -63,9 +63,7 @@ User.prototype.toJSON = function() {
 };
 
 User.prototype.save = function(){
-    mysqlclient.db.query("INSERT INTO `Users` (username, password, rang, twofa, backupcode) VALUES ('" + this.getUsername() + "', '" + this.getPassword() + "', '" + this.getRank() + "', '" + this.getTwoFA() + "', '" + this.getBackupCode() + "')", function(err){
-        if(err){log.error(err)}
-    });
+
 };
 
 module.exports = User;

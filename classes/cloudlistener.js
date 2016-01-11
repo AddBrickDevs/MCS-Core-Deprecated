@@ -6,7 +6,6 @@
 // Core modules
 var config = require('./config.js');
 var log = require('./log.js');
-var datamanager = require('./database/datamanager.js');
 var net = require('net');
 var msgpack = require('msgpack-js');
 //var crypto = require('crypto');

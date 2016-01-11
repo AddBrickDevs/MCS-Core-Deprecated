@@ -83,9 +83,7 @@ World.prototype.toJSON = function() {
 };
 
 World.prototype.save = function(){
-    mysqlclient.db.query("INSERT INTO `Worlds` (worldname, foldername, size, hash) VALUES ('" + this.getName() + "', '" + this.getFolder() + "', '" + this.getSize() + "', '" + this.getHash() + "')", function(err){
-        if(err){log.error(err)}
-    });
+
 };
 
 module.exports = World;

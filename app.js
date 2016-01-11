@@ -5,22 +5,10 @@ var Config = require('./classes/config.js');
 var version = require('./package.json').version;
 var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
-var DataManager = require('./classes/database/datamanager.js');
-var MySQL = require('./classes/mysql.js');
 var Mongo = require('./classes/mongo.js');
-var MySQLClient = new MySQL(Config.getMySQLHost(), Config.getMySQLUser(), Config.getMySQLPassword(), Config.getMySQLDatabase(), Config.getMySQLPoolSize());
 var MongoClient = new Mongo("localhost", "mcs");
 
-if(Config.getDBType() == "mongodb") {
-    log.info("Connecting to MongoDB...");
-    MongoClient.connect();
-} else if(Config.getDBType() == "mysql") {
-    log.info("Connecting to MySQL...");
-    MySQLClient.connect();
-} else {
-    log.warn("Unknown Database-Type. Shutting down...");
-    process.exit(1);
-}
+MongoClient.connect();
 
 var Daemon = require('./classes/database/daemon.js');
 Daemon.prototype.loadDaemons();

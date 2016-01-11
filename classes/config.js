@@ -6,27 +6,11 @@
 var config = require('../config.json');
 
 /**
- * Gets the database type
- * @returns {string}
- */
-exports.getDBType = function() {
-    return config.db;
-};
-
-/**
- * Sets the database type
- * @param value
- */
-exports.setDBType = function(value) {
-    config.db = value;
-};
-
-/**
  * Gets the mysql host
  * @returns {string}
  */
 exports.getMySQLHost = function() {
-    return config.mysql.host;
+    return config.database.host;
 };
 
 /**
@@ -34,7 +18,7 @@ exports.getMySQLHost = function() {
  * @param value The host
  */
 exports.setMySQLHost = function(value) {
-    config.mysql.host = value;
+    config.database.host = value;
 };
 
 /**
@@ -42,7 +26,7 @@ exports.setMySQLHost = function(value) {
  * @returns {string}
  */
 exports.getMySQLUser = function() {
-    return config.mysql.user;
+    return config.database.user;
 };
 
 /**
@@ -50,7 +34,7 @@ exports.getMySQLUser = function() {
  * @param value The user
  */
 exports.setMySQLUser = function(value) {
-    config.mysql.user = value;
+    config.database.user = value;
 };
 
 /**
@@ -58,7 +42,7 @@ exports.setMySQLUser = function(value) {
  * @returns {string}
  */
 exports.getMySQLPassword = function() {
-    return config.mysql.password;
+    return config.database.password;
 };
 
 /**
@@ -66,7 +50,7 @@ exports.getMySQLPassword = function() {
  * @param value The password
  */
 exports.setMySQLPassword = function(value) {
-    config.mysql.password = value;
+    config.database.password = value;
 };
 
 /**
@@ -74,7 +58,7 @@ exports.setMySQLPassword = function(value) {
  * @returns {string}
  */
 exports.getMySQLDatabase = function() {
-    return config.mysql.database;
+    return config.database.database;
 };
 
 /**
@@ -82,23 +66,7 @@ exports.getMySQLDatabase = function() {
  * @param value The mysql database name
  */
 exports.setMySQLDatabase = function(value) {
-    config.mysql.database = value;
-};
-
-/**
- * Gets the mysql pool size
- * @returns {int}
- */
-exports.getMySQLPoolSize = function() {
-    return config.mysql.poolsize;
-};
-
-/**
- * Sets the mysql pool size
- * @param value The pool size
- */
-exports.setMySQLPoolSize = function(value) {
-    config.mysql.poolSize = value;
+    config.database.database = value;
 };
 
 /**
