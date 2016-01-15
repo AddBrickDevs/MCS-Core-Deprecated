@@ -148,7 +148,7 @@ Daemon.prototype.loadDaemons = function() {
     var DaemonModel = mongoClient.getDaemonModel();
     DaemonModel.find({}, function(err, daemon) {
         if(err) {
-
+            log.error("An error occurred: " + err);
         }
         daemons.push(daemon);
     });
