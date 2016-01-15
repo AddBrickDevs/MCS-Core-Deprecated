@@ -1,18 +1,14 @@
 {
-  "db": "mysql",
-  "mysql": {
-    "host": "127.0.0.1",
-    "user": "root",
-    "password": "",
-    "database": "mcs",
-    "poolsize": 5
+  "database": {
+    "host": "localhost",
+    "database": "mcs"
   },
   "wi_port": 8080,
   "https": {
     "enabled": false,
-    "spdy": true
+    "spdy": false
   },
   "cloudsystem_port": 1337,
   "listenip": "0.0.0.0",
-  "debug": true
+  "debug": false
 }
