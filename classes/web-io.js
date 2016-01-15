@@ -45,7 +45,10 @@ io.on('connection', function(socket) {
 
             Plugin.prototype.loadPlugins();
         } else if(data.type === "world") {
+            /*var newWorld = new World(...);
+             newWorld.save();
 
+            World.prototype.loadWorlds();*/
         } else if(data.type === "servertype") {
 
         } else {
