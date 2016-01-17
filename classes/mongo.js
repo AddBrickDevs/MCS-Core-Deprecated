@@ -10,8 +10,8 @@ var connectionURL;
 
 module.exports = Mongo;
 
-function Mongo(host, database) {
-    connectionURL = 'mongodb://' + host + "/" + database;
+function Mongo(host, database, port, username, password) {
+    connectionURL = 'mongodb://' + username + ":" + password + "@" + host + ":" + port + "/" + database;
 }
 
 Mongo.prototype.connect = function() {

@@ -1,14 +1,17 @@
 {
   "database": {
     "host": "localhost",
-    "database": "mcs"
+    "database": "mcs",
+    "port": "27017",
+    "user": "user",
+    "password": "pass"
   },
   "wi_port": 8080,
   "https": {
     "enabled": false,
-    "spdy": false
+    "spdy": true
   },
   "cloudsystem_port": 1337,
   "listenip": "0.0.0.0",
-  "debug": false
+  "debug": true
 }

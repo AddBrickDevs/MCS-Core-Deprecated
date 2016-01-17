@@ -38,6 +38,54 @@ exports.setMongoDatabase = function(value) {
 };
 
 /**
+ * Gets the mongo port
+ * @returns {string}
+ */
+exports.getMongoPort = function() {
+    return config.database.port;
+};
+
+/**
+ * Sets the mongo post
+ * @param value The port
+ */
+exports.setMongoPort = function(value) {
+    config.database.port = value;
+};
+
+/**
+ * Gets the mongo user
+ * @returns {string}
+ */
+exports.getMongoUser = function() {
+    return config.database.user;
+};
+
+/**
+ * Sets the mongo user
+ * @param value The user
+ */
+exports.setMongoUser = function(value) {
+    config.database.user = value;
+};
+
+/**
+ * Gets the mongo password
+ * @returns {string}
+ */
+exports.getMongoPassword = function() {
+    return config.database.password;
+};
+
+/**
+ * Sets the mongo password
+ * @param value The password
+ */
+exports.setMongoPassword = function(value) {
+    config.database.password = value;
+};
+
+/**
  * Gets the webinterface port
  * @returns {int}
  */
