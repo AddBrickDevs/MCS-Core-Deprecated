@@ -11,7 +11,11 @@ var connectionURL;
 module.exports = Mongo;
 
 function Mongo(host, database, port, username, password) {
-    connectionURL = 'mongodb://' + username + ":" + password + "@" + host + ":" + port + "/" + database;
+    if(username == undefined || password == undefined) {
+        connectionURL = 'mongodb://' + host + ":" + port + "/" + database;
+    } else {
+        connectionURL = 'mongodb://' + username + ":" + password + "@" + host + ":" + port + "/" + database;
+    }
 }
 
 Mongo.prototype.connect = function() {

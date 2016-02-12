@@ -6,7 +6,7 @@ var version = require('./package.json').version;
 var Webserver = require('./classes/webserver.js');
 var Cloudserver = require('./classes/cloudlistener.js');
 var Mongo = require('./classes/mongo.js');
-var MongoClient = new Mongo(Config.getMongoHost(), Config.getMongoDatabase(), Config.getMongoPort(), Config.getMongoUser(), Config.getMongoPassword());
+var MongoClient = new Mongo(Config.getMongoHost(), Config.getMongoDatabase(), Config.getMongoPort(), (Config.getMongoUser() == "" ? undefined : Config.getMongoUser()), (Config.getMongoPassword() == "" ? undefined : Config.getMongoPassword()));
 
 MongoClient.connect();
 
