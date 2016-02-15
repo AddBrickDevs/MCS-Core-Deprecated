@@ -122,6 +122,36 @@ a, a:link, a:visited, a:focus, a:active {
     color: #FFFFFF;
 }
 
+.login-container {
+    margin: 0 auto;
+    padding: 25px;
+    width: 35%;
+    background: rgba(0, 0, 0, 0.54);
+    min-height: 200px;
+}
+
+.login-container > h2 > sup {
+    color: #3498db;
+}
+
+.mcs-login > input {
+    width: calc(100% - 50px);
+    color: #FFF;
+    outline: 0;
+    border: 0;
+    background: none;
+    font-size: 15px;
+    padding: 10px;
+    margin: 5px;
+    border-bottom: 1px solid #FFF;
+}
+
+.mcs-login > .mcs-confirm {
+    cursor: pointer;
+    border: 1px solid #FFF;
+    width: calc(100% - 30px);
+}
+
 .loader {
     position: fixed;
     top: 0;

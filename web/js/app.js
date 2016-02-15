@@ -82,7 +82,9 @@ app.config(function ($translateProvider) {
     $translateProvider.fallbackLanguage('en_US');
 });
 
-app.run(function($rootScope, $templateCache, $http) {
+app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location) {
+    $rootScope.loggedIn = false;
+
     $('.modal-trigger').leanModal();
     var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds'];
     angular.forEach(templates, function(templateUrl) {
@@ -91,6 +93,21 @@ app.run(function($rootScope, $templateCache, $http) {
             $templateCache.put(templateUrl, data);
         });
     });
+
+    if(!$rootScope.loggedIn) {
+        if($cookies.get("session") !== undefined && $cookies.get("username") !== undefined) {
+            Socket.emit("clogin", {username: $cookies.get("username"), session: $cookies.get("session")});
+            Socket.on("clogin-result", function(data) {
+                if(data.reason == "success") {
+                    $location.path('/dashboard');
+                } else {
+                    $location.path('/login');
+                }
+            });
+        } else {
+            $location.path('/login');
+        }
+    }
 
     var unlink = $rootScope.$on('$translateChangeEnd', function(){
         setTimeout(function() {

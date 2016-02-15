@@ -25,19 +25,21 @@
             </div>
         </div>
         <div class="body">
-            <div class="header" ng-controller="navctrl">
-                <div class="navigation">
-                    <a href="/" ng-class="{ active: isActive('') }" class="tooltip tooltip-bottom" data-tooltip="{{'dashboard' | translate}}"><i class="fa fa-dashboard"></i></a>
-                    <a href="/daemons" ng-class="{ active: isActive('daemons') }" class="tooltip tooltip-bottom" data-tooltip="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
-                    <a href="/plugins" ng-class="{ active: isActive('plugins') }" class="tooltip tooltip-bottom" data-tooltip="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
-                    <a href="/worlds" ng-class="{ active: isActive('worlds') }" class="tooltip tooltip-bottom" data-tooltip="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
-                    <a href="/servertypes" ng-class="{ active: isActive('servertypes') }" class="tooltip tooltip-bottom" data-tooltip="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
-                    <a href="/statistics" ng-class="{ active: isActive('statistics') }" class="tooltip tooltip-bottom" data-tooltip="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
-                    <a href="/settings" ng-class="{ active: isActive('settings') }" class="tooltip tooltip-bottom" data-tooltip="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
+            <div ng-show="loggedIn">
+                <div class="header" ng-controller="navctrl">
+                    <div class="navigation">
+                        <a href="/" ng-class="{ active: isActive('') }" class="tooltip tooltip-bottom" data-tooltip="{{'dashboard' | translate}}"><i class="fa fa-dashboard"></i></a>
+                        <a href="/daemons" ng-class="{ active: isActive('daemons') }" class="tooltip tooltip-bottom" data-tooltip="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
+                        <a href="/plugins" ng-class="{ active: isActive('plugins') }" class="tooltip tooltip-bottom" data-tooltip="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
+                        <a href="/worlds" ng-class="{ active: isActive('worlds') }" class="tooltip tooltip-bottom" data-tooltip="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
+                        <a href="/servertypes" ng-class="{ active: isActive('servertypes') }" class="tooltip tooltip-bottom" data-tooltip="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
+                        <a href="/statistics" ng-class="{ active: isActive('statistics') }" class="tooltip tooltip-bottom" data-tooltip="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
+                        <a href="/settings" ng-class="{ active: isActive('settings') }" class="tooltip tooltip-bottom" data-tooltip="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
+                    </div>
                 </div>
-            </div>
 
-            <hr class="nav-divider"/>
+                <hr class="nav-divider"/>
+            </div>
 
             <div class="controller">
                 <div ng-view></div>

@@ -1,16 +1,17 @@
-<div class="ctrl-header">
-    <div class="title">
-        {{'daemons' | translate}}
+<div ng-show="loggedIn">
+    <div class="ctrl-header">
+        <div class="title">
+            {{'daemons' | translate}}
+        </div>
+        <div class="description">
+            {{'daemons_description' | translate}}
+        </div>
     </div>
-    <div class="description">
-        {{'daemons_description' | translate}}
-    </div>
-</div>
-<a href="/daemons/add" class="button">{{'daemon_add' | translate}}</a>
-<br/>
-<div class="daemon_list">
-    <table width="100%">
-        <thead>
+    <a href="/daemons/add" class="button">{{'daemon_add' | translate}}</a>
+    <br/>
+    <div class="daemon_list">
+        <table width="100%">
+            <thead>
             <tr style="text-align: left;">
                 <th>{{'name' | translate}}</th>
                 <th>{{'ip' | translate}}</th>
@@ -18,8 +19,8 @@
                 <th>{{'status' | translate}}</th>
                 <th>{{'actions' | translate}}</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr ng-repeat="daemon in daemons">
                 <td>{{daemon.daemonname}}</td>
                 <td>{{daemon.daemonip}}</td>
@@ -29,6 +30,7 @@
 
                 </td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>

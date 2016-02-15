@@ -7,10 +7,15 @@ var Daemon = require('./database/daemon.js');
 var Plugin = require('./database/plugin.js');
 var World = require('./database/world.js');
 var Servertype = require('./database/servertype.js');
+var User = require("./database/user.js");
+
+var mongoClient = require("./mongo.js");
 
 var io = require('socket.io')(Webserver.getInstance({}).getWebserver());
 
 io.on('connection', function(socket) {
+    var sessionid = socket.id;
+    log.debug(sessionid);
     socket.on('req-file', function(data) {
         if(data.type === 'log') {
             socket.emit('log-req', log.getLog());
@@ -19,9 +24,9 @@ io.on('connection', function(socket) {
         } else if(data.type === "plugins") {
             socket.emit('plugins-req', Plugin.prototype.getPlugins());
         } else if(data.type === "worlds") {
-            socket.emit('worlds-req', World.prototype.getWorlds());
+            //socket.emit('worlds-req', World.prototype.getWorlds());
         } else if(data.type === "servertypes") {
-            socket.emit('servertypes-req', Servertype.prototype.getServertypes());
+            //socket.emit('servertypes-req', Servertype.prototype.getServertypes());
         }
     });
 
@@ -54,5 +59,19 @@ io.on('connection', function(socket) {
         } else {
             log.warn("Unknown type to add!");
         }
+    });
+
+    socket.on("clogin", function(data) {
+        mongoClient.getUserModel().find({ username: data.username }, function(err, username) {
+            if(!err) {
+                if(username == data.username) {
+                    socket.emit("clogin-result", { reason: "success" });
+                } else {
+                    socket.emit("clogin-result", { reason: "failure" });
+                }
+            } else {
+                socket.emit("clogin-result", { reason: "failure" });
+            }
+        });
     });
 });

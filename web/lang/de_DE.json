@@ -21,6 +21,11 @@
   "ports": "Ports",
   "status": "Status",
 
+  "login": "Anmeldung",
+  "login-name": "Nutzername",
+  "login-password": "Passwort",
+  "login-confirm": "Anmelden",
+
   "actions": "Aktionen",
   "back": "Zurück",
   "close": "Schließen",
