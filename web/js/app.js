@@ -95,8 +95,6 @@ app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location)
     });
 
     if(!$rootScope.loggedIn) {
-        $cookies.put("username", "ilouHD");
-        $cookies.put("session", "ilousSession");
         if($cookies.get("session") !== undefined && $cookies.get("username") !== undefined) {
             Socket.emit("clogin", {username: $cookies.get("username"), session: $cookies.get("session")});
             Socket.on("clogin-result", function(data) {

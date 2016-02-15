@@ -16,7 +16,7 @@ var io = require('socket.io')(Webserver.getInstance({}).getWebserver());
 io.on('connection', function(socket) {
 
     socket.on("clogin", function(data) {
-        mongoClient.getUserModel().find({ username: data.username }, function(err, username) {
+        mongoClient.getUserModel().find({ username: data.username, session: data.session }, function(err, username) {
             if(!err) {
                 if(username == data.username) {
                     loadListener();
@@ -30,8 +30,26 @@ io.on('connection', function(socket) {
         });
     });
 
+    socket.on("login", function(data) {
+        var hash = crypto.createHash('sha256');
+        hash.setEncoding('hex');
+        hash.write(data.password);
+        hash.end();
+        mongoClient.getUserModel().find({ username: data.username, password: hash.read() }, function(err, username, password) {
+            if(!err) {
+                if(username == data.username && password == hash.read()) {
+                    var cookie = crypto.randomBytes(8).toString('hex');
+                    socket.emit("login-result", { reason: "success", session: cookie });
+                } else {
+                    socket.emit("login-result", { reason: "failure" });
+                }
+            } else {
+                socket.emit("login-result", { reason: "failure" });
+            }
+        });
+    });
+
     var loadListener = function() {
-        log.debug("Loading Listener...");
         socket.on('req-file', function(data) {
             if(data.type === 'log') {
                 socket.emit('log-req', log.getLog());
