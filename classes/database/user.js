@@ -2,10 +2,12 @@
  *  User object
  *  @module classes/database/user
  */
+var mongoClient = require('../mongo.js');
 
-var User = function(username, password, rank, twofa) {
+var User = function(username, password, lastSID, rank, twofa, backupcode) {
     this.username = username;
     this.password = password;
+    this.lastSID = lastSID;
     this.rank = rank;
     if(twofa) {
         this.twofa = twofa;
@@ -27,6 +29,14 @@ User.prototype.getPassword = function() {
 
 User.prototype.setPassword = function(value) {
     this.password = value;
+};
+
+User.prototype.getLastSID = function() {
+    return this.lastSID;
+};
+
+User.prototype.setLastSID = function(value) {
+    this.lastSID = value;
 };
 
 User.prototype.getRank = function() {
@@ -63,7 +73,18 @@ User.prototype.toJSON = function() {
 };
 
 User.prototype.save = function(){
+    var UserModel = mongoClient.getUserModel();
+    var newUser = new UserModel({
+        username: this.getUsername(),
+        password: this.getPassword(),               // Save in SHA512
+        lastSID: this.getLastSID(),
+        rank: this.getRank(),
+        twofa: this.getTwoFA(),
+        backupcode: this.getBackupCode()
+    });
+    newUser.save(function(err) {
 
+    });
 };
 
 module.exports = User;

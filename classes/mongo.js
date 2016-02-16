@@ -25,6 +25,7 @@ Mongo.prototype.connect = function() {
 var Users = mongolib.model('Users', mongolib.Schema({
     username: String,
     password: String,               // Save in SHA512
+    lastSID: String,
     rang: String,
     twofa: String,
     backupcode: Number

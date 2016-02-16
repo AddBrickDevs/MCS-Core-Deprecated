@@ -100,7 +100,7 @@ app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location)
             Socket.on("clogin-result", function(data) {
                 if(data.reason == "success") {
                     $rootScope.loggedIn = true;
-                    $location.path('/dashboard');
+                    $location.path('/');
                 } else {
                     $location.path('/login');
                 }

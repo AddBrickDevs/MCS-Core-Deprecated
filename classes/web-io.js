@@ -16,9 +16,9 @@ var io = require('socket.io')(Webserver.getInstance({}).getWebserver());
 io.on('connection', function(socket) {
 
     socket.on("clogin", function(data) {
-        mongoClient.getUserModel().find({ username: data.username, session: data.session }, function(err, username) {
+        mongoClient.getUserModel().count({ username: data.username, lastSID: data.session }, function(err, count) {
             if(!err) {
-                if(username == data.username) {
+                if(count > 0) {
                     loadListener();
                     socket.emit("clogin-result", { reason: "success" });
                 } else {
@@ -31,20 +31,24 @@ io.on('connection', function(socket) {
     });
 
     socket.on("login", function(data) {
-        var hash = crypto.createHash('sha256');
+        var hash = crypto.createHash('sha512');
         hash.setEncoding('hex');
         hash.write(data.password);
         hash.end();
-        mongoClient.getUserModel().find({ username: data.username, password: hash.read() }, function(err, username, password) {
+
+        mongoClient.getUserModel().count({ username: data.username, password: hash.read() }, function(err, count) {
             if(!err) {
-                if(username == data.username && password == hash.read()) {
+                if(count > 0) {
+                    loadListener();
                     var cookie = crypto.randomBytes(8).toString('hex');
+
+                    mongoClient.getUserModel().update({ username: data.username }, { $set: { lastSID: cookie } }).exec();
                     socket.emit("login-result", { reason: "success", session: cookie });
                 } else {
-                    socket.emit("login-result", { reason: "failure" });
+                    socket.emit("login-result", { reason: "failed" });
                 }
             } else {
-                socket.emit("login-result", { reason: "failure" });
+                socket.emit("login-result", { reason: "failed" });
             }
         });
     });
