@@ -13,18 +13,6 @@ MongoClient.connect();
 var Daemon = require('./classes/database/daemon.js');
 Daemon.prototype.loadDaemons();
 
-Mongo.getUserModel().count({ username: "default" }, function(err, count) {
-    if(!err) {
-        if(count <= 0) {
-            var User = require('./classes/database/user.js');
-            var defaultUser = new User("default", "ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f", "", "admin", false, 0);
-            defaultUser.save();
-
-            log.info("Added user 'default' with password 'abc'. Login to your Webinterface!");
-        }
-    }
-});
-
 var Injector = require('./classes/injector/inject.js');
 var Hook = require('./classes/injector/hook.js');
 

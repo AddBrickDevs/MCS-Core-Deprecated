@@ -4,6 +4,8 @@
         <form novalidate class="mcs-login">
             <input type="text" ng-model="username" id="name" placeholder="{{ 'login-name' | translate }}" /><br/>
             <input type="password" ng-model="password" id="password" placeholder="{{ 'login-password' | translate }}" /><br/><br/>
+            <label for="stay"><input type="checkbox" ng-model="stay" id="stay" /> {{ 'stay-logged-in'| translate }}</label>
+            <br/><br/>
             <input type="submit" class="mcs-confirm" ng-click="login()" value="{{ 'login-confirm' | translate }}" />
         </form>
     </div>
