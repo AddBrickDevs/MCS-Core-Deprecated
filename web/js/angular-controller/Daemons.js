@@ -2,11 +2,11 @@ app.controller('daemonsctrl', ['$scope', "Socket", function($scope, Socket) {
 
     $scope.daemons = [];
 
-    Socket.on('daemons-req', function(data) {
+    Socket.on('daemons-res', function(data) {
         $scope.daemons = data[0];
     });
 
-    Socket.emit('req-file', {type: "daemons"});
+    Socket.emit('file-req', {type: "daemons"});
 
     $scope.add_daemon = function() {
         Socket.emit('add', {

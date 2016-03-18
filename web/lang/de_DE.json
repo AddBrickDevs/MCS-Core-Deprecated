@@ -20,13 +20,15 @@
   "ip": "IP",
   "ports": "Ports",
   "status": "Status",
-
   "login": "Anmeldung",
   "login-name": "Nutzername",
   "login-password": "Passwort",
   "login-confirm": "Anmelden",
   "stay-logged-in": "Angemeldet bleiben?",
-
+  "setup": "Setup",
+  "setup-admin-name": "Benutzername",
+  "setup-admin-password": "Passwort",
+  "setup-confirm": "Setup beenden!",
   "actions": "Aktionen",
   "back": "Zurück",
   "close": "Schließen",

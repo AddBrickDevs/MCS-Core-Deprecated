@@ -122,7 +122,7 @@ a, a:link, a:visited, a:focus, a:active {
     color: #FFFFFF;
 }
 
-.login-container {
+.login-container, .setup-container {
     margin: 0 auto;
     padding: 25px;
     width: 35%;
@@ -130,11 +130,11 @@ a, a:link, a:visited, a:focus, a:active {
     min-height: 200px;
 }
 
-.login-container > h2 > sup {
+.login-container > h2 > sup, .setup-container > h2 > sup {
     color: #3498db;
 }
 
-.mcs-login > input {
+.mcs-login > input, .mcs-setup > input {
     width: calc(100% - 50px);
     color: #FFF;
     outline: 0;
@@ -146,7 +146,7 @@ a, a:link, a:visited, a:focus, a:active {
     border-bottom: 1px solid #FFF;
 }
 
-.mcs-login > .mcs-confirm {
+.mcs-login > .mcs-confirm, .mcs-setup > .mcs-confirm {
     cursor: pointer;
     border: 1px solid #FFF;
     width: calc(100% - 30px);

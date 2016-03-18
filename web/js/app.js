@@ -84,9 +84,10 @@ app.config(function ($translateProvider) {
 
 app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location) {
     $rootScope.loggedIn = false;
+    $rootScope.setup = false;
 
     $('.modal-trigger').leanModal();
-    var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds'];
+    var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds', 'setup'];
     angular.forEach(templates, function(templateUrl) {
         templateUrl = 'parts/'+templateUrl+'.html';
         $http({method: 'GET', url: templateUrl}).success(function(data) {
@@ -95,9 +96,16 @@ app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location)
     });
 
     if(!$rootScope.loggedIn) {
-        if($cookies.get("session") !== undefined && $cookies.get("username") !== undefined) {
-            Socket.emit("clogin", {username: $cookies.get("username"), session: $cookies.get("session")});
-            Socket.on("clogin-result", function(data) {
+        Socket.emit("setup-req-req", {});
+        Socket.on("setup-req-res", function(data) {
+            if(data.required == true) {
+                $location.path('/setup');
+            }
+            $rootScope.setup = data.required;
+        });
+        if($cookies.get("session") !== undefined && $cookies.get("username") !== undefined && !($rootScope.setup)) {
+            Socket.emit("clogin-req", {username: $cookies.get("username"), session: $cookies.get("session")});
+            Socket.on("clogin-res", function(data) {
                 if(data.reason == "success") {
                     $rootScope.loggedIn = true;
                     $location.path('/');

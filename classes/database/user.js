@@ -72,7 +72,7 @@ User.prototype.toJSON = function() {
     };
 };
 
-User.prototype.save = function(){
+User.prototype.save = function(callback){
     var UserModel = mongoClient.getUserModel();
     var newUser = new UserModel({
         username: this.getUsername(),
@@ -83,7 +83,7 @@ User.prototype.save = function(){
         backupcode: this.getBackupCode()
     });
     newUser.save(function(err) {
-
+        callback(err);
     });
 };
 

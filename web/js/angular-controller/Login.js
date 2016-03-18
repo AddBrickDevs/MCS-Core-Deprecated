@@ -5,8 +5,8 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
         var password = $scope.password;
 
         if(!$rootScope.loggedIn) {
-            Socket.emit("login", {username: username, password: password});
-            Socket.on("login-result", function(data) {
+            Socket.emit("login-req", {username: username, password: password});
+            Socket.on("login-res", function(data) {
                 if(data.reason == "success") {
                     $cookies.put("username", username);
                     $cookies.put("session", data.session);

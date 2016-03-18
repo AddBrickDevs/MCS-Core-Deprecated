@@ -196,3 +196,15 @@ exports.isDebugMode = function() {
 exports.setDebugMode = function(value) {
     config.debug = value;
 };
+
+exports.isSetupRequired = function() {
+    return config.setup;
+};
+
+exports.setSetupFinished = function() {
+    config.setup = false;
+};
+
+exports.save = function() {
+
+};
