@@ -46,3 +46,8 @@ Cloudserver.startServer(function(port){
     log.info('Cloudserver listening on port ' + port);
 });
 Hook.hook('onCloudserverStart');
+
+process.on("SIGINT", function() {
+    Config.save();
+    process.exit(0);
+});

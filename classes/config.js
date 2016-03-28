@@ -4,6 +4,7 @@
  */
 
 var config = require('../config.json');
+var fs = require('fs');
 
 /**
  * Gets the mongo host
@@ -206,5 +207,5 @@ exports.setSetupFinished = function() {
 };
 
 exports.save = function() {
-
+    fs.writeFileSync();
 };
