@@ -1,8 +1,35 @@
 <div ng-show="loggedIn">
-    <div class="title">
-        {{'plugins' | translate}}
-    </div>
-    <div class="description">
-        {{'plugins_description' | translate}}
-    </div>
+    <section class="content-header">
+        <h1>
+            {{'plugins' | translate}}
+            <small>{{'plugins_description' | translate}}</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <a href="/plugins/add" class="btn btn-primary">{{'plugin_add' | translate}}</a>
+        <br><br>
+        <div class="box box-info">
+        <table class="table table-bordered table-hover dataTable">
+            <thead>
+            <tr>
+                <th class="sorting">{{'pluginname' | translate}}</th>
+                <th>{{'version' | translate}}</th>
+                <th class="sorting">{{'size' | translate}}</th>
+                <th>{{'actions' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="plugin in plugins">
+                <td>{{plugin.pluginname}}</td>
+                <td>{{plugin.version}}</td>
+                <td>{{plugin.size}} kB</td>
+                <td>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </section>
 </div>

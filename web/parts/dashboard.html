@@ -1,8 +1,162 @@
 <div ng-show="loggedIn">
-    <div class="title">
-        {{'dashboard' | translate}}
-    </div>
-    <div class="description">
-        {{'dashboard_description' | translate}}
+    <div ng-show="loggedIn">
+        <section class="content-header">
+            <h1>
+                {{'dashboard' | translate}}
+                <small>{{'dashboard_description' | translate}}</small>
+            </h1>
+        </section>
+
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua"><i class="fa fa-gears"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">CPU</span>
+                            <span class="info-box-number">90<small>%</small></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-red"><i class="fa fa-hdd-o"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">RAM</span>
+                            <span class="info-box-number">80<small>%</small></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+
+                <!-- fix for small devices only -->
+                <div class="clearfix visible-sm-block"></div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Server</span>
+                            <span class="info-box-number">760</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow"><i class="fa fa-cloud"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Status</span>
+                            <span class="info-box-number">OK</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <!-- USERS LIST -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Latest Members</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <span class="label label-danger">2 New Members</span>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                                class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <ul class="users-list clearfix">
+                                        <li>
+                                            <img src="https://minotar.net/avatar/CreepPlays" alt="User Image">
+                                            <a class="users-list-name" href="#">CreepPlays</a>
+                                            <span class="users-list-date">Today</span>
+                                        </li>
+                                        <li>
+                                            <img src="https://minotar.net/avatar/l_uuca" alt="User Image">
+                                            <a class="users-list-name" href="#">l_uuca</a>
+                                            <span class="users-list-date">Yesterday</span>
+                                        </li>
+                                    </ul>
+                                    <!-- /.users-list -->
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer text-center">
+                                    <a href="#" class="uppercase">View All Users</a>
+                                </div>
+                                <!-- /.box-footer -->
+                            </div>
+                            <!--/.box -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <!-- Info Boxes Style 2 -->
+                            <div class="info-box bg-yellow">
+                                <span class="info-box-icon"><i class="fa fa-users"></i></span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Players</span>
+                                    <span class="info-box-number">5,200</span>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                            <div class="info-box bg-green">
+                                <span class="info-box-icon"><i class="fa fa-gears"></i></span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">CPU</span>
+                                    <span class="info-box-number">90%</span>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                            <div class="info-box bg-red">
+                                <span class="info-box-icon"><i class="fa fa-hdd-o"></i></span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">RAM</span>
+                                    <span class="info-box-number">800 GB / 1 TB</span>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+
+                        </div>
+                    </div>
+        </section>
     </div>
 </div>

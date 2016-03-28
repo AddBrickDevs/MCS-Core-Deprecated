@@ -1,19 +1,43 @@
-<div ng-hide="loggedIn" style="vertical-align: middle;">
-    <div class="login-container">
-        <h2>MCS <sup>&alpha;</sup> - {{ 'login' | translate }}</h2>
-        <form novalidate class="mcs-login">
-            <input type="text" ng-model="username" id="name" placeholder="{{ 'login-name' | translate }}" /><br/>
-            <input type="password" ng-model="password" id="password" placeholder="{{ 'login-password' | translate }}" /><br/><br/>
-            <label for="stay"><input type="checkbox" ng-model="stay" id="stay" /> {{ 'stay-logged-in'| translate }}</label>
-            <br/><br/>
-            <input type="submit" class="mcs-confirm" ng-click="login()" value="{{ 'login-confirm' | translate }}" />
+<style>body { background: #e3e3e3; } .login-box { padding: 5px; } .login-box-msg { margin-top: -20px; }</style>
+<div class="login-box box box-primary">
+    <br>
+    <div class="login-logo">
+        <a href="#"><b>Minecraft</b>CloudSystem</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">{{'login' | translate}}</p>
+
+        <form>
+            <div class="input-group has-feedback">
+                <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                <input type="text" ng-model="username" id="name" class="form-control"
+                       placeholder="{{ 'login-name' | translate }}"/>
+            </div>
+            <br>
+            <div class="input-group has-feedback">
+                <span class="input-group-addon"><i class="fa fa-fw fa-key"></i></span>
+                <input type="password" class="form-control" ng-model="password"
+                       placeholder="{{ 'login-password' | translate }}" vk_1b24d="subscribed">
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="stay" id="stay"/> {{ 'stay-logged-in'| translate }}
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary" ng-click="login()">{{ 'login-confirm' | translate
+                        }}
+                    </button>
+                </div>
+                <!-- /.col -->
+            </div>
         </form>
     </div>
-</div>
-
-<div ng-show="loggedIn">
-    <div class="login-container">
-        <h2>MCS <sup>&alpha;</sup> - {{ 'login' | translate }}</h2>
-        Du bist bereits angemeldet!
-    </div>
+    <!-- /.login-box-body -->
 </div>

@@ -17,9 +17,12 @@ var express = require('express');
 // Additionals e.g. compression
 var compression = require('compression');
 var serve = require('serve-static')('./web/');
+var multipartyMiddleware = require('connect-multiparty')();
 
 var instance;
 var startDate;
+
+var uploadhandler = require('./uploadhandler.js');
 
 var Webserver = function(options) {
     this.app = express();
@@ -27,6 +30,17 @@ var Webserver = function(options) {
     this.app.use(serve);
 
     this.startDate = new Date();
+
+    this.app.post('/plugins/upload', multipartyMiddleware, function(req,res) {
+        uploadhandler.pluginFromReq(req, res, function(plugin) {
+           plugin.save();
+        });
+    });
+    this.app.post('/worlds/upload', multipartyMiddleware, function(req,res) {
+        uploadhandler.worldFromReq(req, res, function(world) {
+            world.save();
+        });
+    });
 
     this.app.use(function(req, res) {                                                       ////////////////
         res.status(404).send(fs.readFileSync('./web/index.html', {encoding: "UTF-8"}));     //experimental//

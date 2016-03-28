@@ -2,7 +2,7 @@
     Angular magic
  */
 
-var app = angular.module('app', ['ngRoute', 'Services', 'ngCookies', 'pascalprecht.translate']);
+var app = angular.module('app', ['ngRoute', 'Services', 'ngCookies', 'pascalprecht.translate', 'ngFileUpload']);
 
 /*
     Routes for part of page
@@ -29,12 +29,24 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'parts/plugins.html',
             controller: 'pluginsctrl'
         })
+        .when('/plugins/add', {
+            templateUrl: 'parts/plugins.add.html',
+            controller: 'pluginsctrl'
+        })
         .when('/worlds', {
             templateUrl: 'parts/worlds.html',
             controller: 'worldsctrl'
         })
+        .when('/worlds/add', {
+            templateUrl: 'parts/worlds.add.html',
+            controller: 'worldsctrl'
+        })
         .when('/servertypes', {
             templateUrl: 'parts/servertypes.html',
+            controller: 'servertypesctrl'
+        })
+        .when('/servertypes/add', {
+            templateUrl: 'parts/servertypes.add.html',
             controller: 'servertypesctrl'
         })
         .when('/statistics', {
@@ -85,7 +97,6 @@ app.config(function ($translateProvider) {
 app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location) {
     $rootScope.loggedIn = false;
 
-    $('.modal-trigger').leanModal();
     var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds'];
     angular.forEach(templates, function(templateUrl) {
         templateUrl = 'parts/'+templateUrl+'.html';
@@ -100,7 +111,8 @@ app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location)
             Socket.on("clogin-result", function(data) {
                 if(data.reason == "success") {
                     $rootScope.loggedIn = true;
-                    $location.path('/');
+                    $rootScope.username = $cookies.get("username");
+                    //$location.path('/');
                 } else {
                     $location.path('/login');
                 }
@@ -150,3 +162,13 @@ angular.module('Services', []).factory('Socket', function($rootScope) {
         }
     };
 });
+
+angular.module('app').directive("fileread", [function(){
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var onChangeHandler = scope.$eval(attrs.fileread);
+            element.bind('change', onChangeHandler);
+        }
+    };
+}]);

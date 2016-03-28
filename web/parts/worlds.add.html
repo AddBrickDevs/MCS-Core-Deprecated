@@ -1,0 +1,35 @@
+<div ng-show="loggedIn">
+    <section class="content-header">
+        <h1>
+            {{'world_add' | translate}}
+        </h1>
+    </section>
+
+    <section class="content">
+        <a href="/worlds" class="btn btn-primary"><i class="fa fa-arrow-left"></i>&nbsp;{{'back' | translate}}</a>
+        <br><br>
+        <div class="box box-primary">
+            <div class="box-body">
+                <form novalidate>
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="filename">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                {{'browse' | translate}}
+                                <input type="file" fileread="worldfile" ngf-accept="'application/zip-archive'">
+                            </span>
+                        </span>
+                    </div>
+                    <br>
+                    <div class="progress" ng-show="progress > 0">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
+                            {{progress}}%
+                        </div>
+                    </div>
+                    <button type="submit" ng-click="addworld()" class="btn btn-primary">{{'world_add' | translate}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

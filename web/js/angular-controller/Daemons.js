@@ -1,12 +1,16 @@
-app.controller('daemonsctrl', ['$scope', "Socket", function($scope, Socket) {
+app.controller('daemonsctrl', ['$scope', "$location", "Socket", function($scope, $location, Socket) {
 
     $scope.daemons = [];
 
     Socket.on('daemons-req', function(data) {
-        $scope.daemons = data[0];
+        $scope.daemons = data;
     });
 
     Socket.emit('req-file', {type: "daemons"});
+
+    Socket.on('return', function() {
+       $location.path('/daemons')
+    });
 
     $scope.add_daemon = function() {
         Socket.emit('add', {

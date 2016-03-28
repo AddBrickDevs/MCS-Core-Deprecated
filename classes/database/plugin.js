@@ -115,18 +115,13 @@ Plugin.prototype.save = function(){
     });
 };
 
-Plugin.prototype.getPlugins = function() {
-    return plugins;
-};
-
-Plugin.prototype.loadPlugins = function() {
-    plugins = [];
+Plugin.prototype.getPlugins = function(cb) {
     var PluginModel = mongoClient.getPluginModel();
     PluginModel.find({}, function(err, plugin) {
         if(err) {
-
+            console.log(err);
         }
-        plugins.push(plugin);
+        cb(plugin);
     });
 };
 

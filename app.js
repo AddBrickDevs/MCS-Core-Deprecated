@@ -10,9 +10,6 @@ var MongoClient = new Mongo(Config.getMongoHost(), Config.getMongoDatabase(), Co
 
 MongoClient.connect();
 
-var Daemon = require('./classes/database/daemon.js');
-Daemon.prototype.loadDaemons();
-
 var Injector = require('./classes/injector/inject.js');
 var Hook = require('./classes/injector/hook.js');
 

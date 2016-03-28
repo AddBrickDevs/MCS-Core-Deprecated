@@ -1,22 +1,22 @@
 <div ng-show="loggedIn">
-    <div class="ctrl-header">
-        <div class="title">
+    <section class="content-header">
+        <h1>
             {{'daemons' | translate}}
-        </div>
-        <div class="description">
-            {{'daemons_description' | translate}}
-        </div>
-    </div>
-    <a href="/daemons/add" class="button">{{'daemon_add' | translate}}</a>
-    <br/>
-    <div class="daemon_list">
-        <table width="100%">
+            <small>{{'daemons_description' | translate}}</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <a href="/daemons/add" class="btn btn-primary">{{'daemon_add' | translate}}</a>
+        <br><br>
+        <div class="box box-info">
+        <table class="table table-bordered table-hover dataTable">
             <thead>
-            <tr style="text-align: left;">
-                <th>{{'name' | translate}}</th>
-                <th>{{'ip' | translate}}</th>
+            <tr>
+                <th class="sorting">{{'name' | translate}}</th>
+                <th class="sorting">{{'ip' | translate}}</th>
                 <th>{{'ports' | translate}}</th>
-                <th>{{'status' | translate}}</th>
+                <th class="sorting">{{'status' | translate}}</th>
                 <th>{{'actions' | translate}}</th>
             </tr>
             </thead>
@@ -32,5 +32,6 @@
             </tr>
             </tbody>
         </table>
-    </div>
+        </div>
+    </section>
 </div>

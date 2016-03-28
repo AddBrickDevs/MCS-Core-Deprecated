@@ -1,8 +1,35 @@
 <div ng-show="loggedIn">
-    <div class="title">
-        {{'worlds' | translate}}
-    </div>
-    <div class="description">
-        {{'worlds_description' | translate}}
-    </div>
+    <section class="content-header">
+        <h1>
+            {{'worlds' | translate}}
+            <small>{{'worlds_description' | translate}}</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <a href="/worlds/add" class="btn btn-primary">{{'world_add' | translate}}</a>
+        <br><br>
+        <div class="box box-info">
+            <table class="table table-bordered table-hover dataTable">
+                <thead>
+                <tr>
+                    <th class="sorting">{{'name' | translate}}</th>
+                    <th>{{'folder' | translate}}</th>
+                    <th class="sorting">{{'size' | translate}}</th>
+                    <th>{{'actions' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="plugin in plugins">
+                    <td>{{plugin.name}}</td>
+                    <td>{{plugin.folder}}</td>
+                    <td>{{plugin.size}} kB</td>
+                    <td>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </div>

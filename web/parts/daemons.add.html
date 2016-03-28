@@ -1,18 +1,28 @@
 <div ng-show="loggedIn">
-    <div class="ctrl-header">
-        <div class="title">
+    <section class="content-header">
+        <h1>
             {{'daemon_add' | translate}}
+        </h1>
+    </section>
+
+    <section class="content">
+        <a href="/daemons" class="btn btn-primary"><i class="fa fa-arrow-left"></i>&nbsp;{{'back' | translate}}</a>
+        <br><br>
+        <div class="box box-primary">
+            <div class="box-body">
+                <form novalidate>
+                    <input type="text" ng-model="name" id="name" class="form-control"
+                           placeholder="{{'name' | translate}}"/><br/>
+                    <input type="text" ng-model="ip" id="ip" class="form-control" placeholder="IP"/><br/>
+                    <div class="input-group">
+                        <input type="number" ng-model="min_port" class="form-control" id="min_port" placeholder="Min-Port"/>
+                        <span class="input-group-addon">-</span>
+                        <input type="number" ng-model="max_port" class="form-control" id="max_port" placeholder="Max-Port"/>
+                    </div>
+                    <br>
+                    <button type="submit" ng-click="add_daemon()" class="btn btn-primary">{{'daemon_create' | translate}}</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <a href="/daemons" class="button">{{'back' | translate}}</a>
-    <br/>
-
-    <form novalidate>
-        <input type="text" ng-model="name" id="name" class="text" placeholder="{{'name' | translate}}" /><br/>
-        <input type="text" ng-model="ip" id="ip" class="text" placeholder="IP" /><br/>
-        <input type="number" ng-model="min_port" class="port" id="min_port" placeholder="Min-Port" />
-        <input type="number" ng-model="max_port" class="port" id="max_port" placeholder="Max-Port" /><br/>
-        <input type="submit" ng-click="add_daemon()" class="submit" value="{{'daemon_create' | translate}}">
-    </form>
-
+    </section>
 </div>

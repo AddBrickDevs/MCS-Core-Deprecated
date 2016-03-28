@@ -36,9 +36,13 @@ io.on('connection', function(socket) {
         hash.write(data.password);
         hash.end();
 
-        mongoClient.getUserModel().count({ username: data.username, password: hash.read() }, function(err, count) {
+        var pw = hash.read();
+
+        console.log(data.username + ", " + pw);
+
+        mongoClient.getUserModel().findOne({username: data.username}, function(err, doc) {
             if(!err) {
-                if(count > 0) {
+                if(doc.password == pw) {
                     loadListener();
                     var cookie = crypto.randomBytes(8).toString('hex');
 
@@ -58,9 +62,13 @@ io.on('connection', function(socket) {
             if(data.type === 'log') {
                 socket.emit('log-req', log.getLog());
             } else if(data.type === "daemons") {
-                socket.emit('daemons-req', Daemon.prototype.getDaemons());
+                Daemon.prototype.getDaemons(function(plugins) {
+                    socket.emit('daemons-req', plugins);
+                });
             } else if(data.type === "plugins") {
-                socket.emit('plugins-req', Plugin.prototype.getPlugins());
+                Plugin.prototype.getPlugins(function(plugins) {
+                    socket.emit('plugins-req', plugins);
+                });
             } else if(data.type === "worlds") {
                 //socket.emit('worlds-req', World.prototype.getWorlds());
             } else if(data.type === "servertypes") {
@@ -97,6 +105,8 @@ io.on('connection', function(socket) {
             } else {
                 log.warn("Unknown type to add!");
             }
+
+            socket.emit("return");
         });
     };
 });

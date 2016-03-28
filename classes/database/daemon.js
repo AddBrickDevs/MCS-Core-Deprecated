@@ -139,18 +139,13 @@ Daemon.prototype.save = function(){
     });
 };
 
-Daemon.prototype.getDaemons = function() {
-    return daemons;
-};
-
-Daemon.prototype.loadDaemons = function() {
-    daemons = [];
+Daemon.prototype.getDaemons = function(cb) {
     var DaemonModel = mongoClient.getDaemonModel();
     DaemonModel.find({}, function(err, daemon) {
         if(err) {
 
         }
-        daemons.push(daemon);
+        cb(daemon);
     });
 };
 
