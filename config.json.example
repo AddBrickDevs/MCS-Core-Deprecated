@@ -13,5 +13,6 @@
   },
   "cloudsystem_port": 1337,
   "listenip": "0.0.0.0",
+  "setup": true,
   "debug": true
 }
