@@ -90,6 +90,7 @@ io.on('connection', function(socket) {
                 newDaemon.save();
 
                 Daemon.prototype.loadDaemons();
+                socket.emit('return');
             } else if(data.type === "plugin") {
                 var newPlugin = new Plugin(data.name, data.version, data.size, data.hash);
                 newPlugin.save();

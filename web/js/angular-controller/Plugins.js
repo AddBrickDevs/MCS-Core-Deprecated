@@ -30,6 +30,10 @@ app.controller('pluginsctrl', ['$scope', '$location', 'Socket', 'Upload', functi
                 console.log("Error!");
             }, function (evt) {
                 $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+                if($scope.progress == 100.0) {
+                    $scope.reset();
+                    $location.path('/plugins');
+                }
             });
         }
     };
