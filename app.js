@@ -10,9 +10,6 @@ var MongoClient = new Mongo(Config.getMongoHost(), Config.getMongoDatabase(), Co
 
 MongoClient.connect();
 
-var Daemon = require('./classes/database/daemon.js');
-Daemon.prototype.loadDaemons();
-
 var Injector = require('./classes/injector/inject.js');
 var Hook = require('./classes/injector/hook.js');
 
@@ -48,6 +45,8 @@ Cloudserver.startServer(function(port){
 Hook.hook('onCloudserverStart');
 
 process.on("SIGINT", function() {
-    Config.save();
-    process.exit(0);
+    log.info("System shutting down...");
+    Config.save(function() {
+        process.exit(0);
+    });
 });

@@ -32,6 +32,7 @@ io.on('connection', function(socket) {
                 if(err == undefined) {
                     socket.emit("setup-res", { reason: "success", done: false });
                     Config.setSetupFinished();
+                    io.sockets.emit("forward", { url: "/login" });
                 } else {
                     socket.emit("setup-res", { reason: "failure", done: false });
                 }
@@ -84,7 +85,9 @@ io.on('connection', function(socket) {
             if(data.type === 'log') {
                 socket.emit('log-res', log.getLog());
             } else if(data.type === "daemons") {
-                socket.emit('daemons-res', Daemon.prototype.getDaemons());
+                Daemon.prototype.getDaemons(function(daemons) {
+                    socket.emit('daemons-res', daemons);
+                });
             } else if(data.type === "plugins") {
                 socket.emit('plugins-res', Plugin.prototype.getPlugins());
             } else if(data.type === "worlds") {
@@ -104,10 +107,9 @@ io.on('connection', function(socket) {
 
         socket.on('add', function(data) {
             if(data.type === "daemon") {
-                var newDaemon = new Daemon(data.name, data.ip, data.minport, data.maxport);
-                newDaemon.save();
-
-                Daemon.prototype.loadDaemons();
+                var newDaemon = new Daemon(data.name, data.ip, data.minport, data.maxport).save(function(success) {
+                    socket.emit('add-res', { success: success});
+                });
             } else if(data.type === "plugin") {
                 var newPlugin = new Plugin(data.name, data.version, data.size, data.hash);
                 newPlugin.save();

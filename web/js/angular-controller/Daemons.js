@@ -3,7 +3,7 @@ app.controller('daemonsctrl', ['$scope', "Socket", function($scope, Socket) {
     $scope.daemons = [];
 
     Socket.on('daemons-res', function(data) {
-        $scope.daemons = data[0];
+        $scope.daemons = data;
     });
 
     Socket.emit('file-req', {type: "daemons"});

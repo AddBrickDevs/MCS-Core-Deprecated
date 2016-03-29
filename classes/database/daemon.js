@@ -8,8 +8,6 @@ var log = require('../log.js');
 var config = require('../config.js');
 var mongoClient = require('../mongo.js');
 
-var daemons = [];
-
 /**
  * Constructs the daemon object
  * @param name The name
@@ -125,7 +123,7 @@ Daemon.prototype.toJSON = function() {
     };
 };
 
-Daemon.prototype.save = function(){
+Daemon.prototype.save = function(callback) {
     var DaemonModel = mongoClient.getDaemonModel();
     var newDaemon = new DaemonModel({
         daemonname: this.getName(),
@@ -135,22 +133,24 @@ Daemon.prototype.save = function(){
         apikey: this.getAPIKey()
     });
     newDaemon.save(function(err) {
-
+        if(err) {
+            log.error("An error occurred while saving Daemon!");
+            callback(false);
+        } else {
+            callback(true);
+        }
     });
 };
 
-Daemon.prototype.getDaemons = function() {
-    return daemons;
-};
-
-Daemon.prototype.loadDaemons = function() {
-    daemons = [];
+Daemon.prototype.getDaemons = function(callback) {
     var DaemonModel = mongoClient.getDaemonModel();
     DaemonModel.find({}, function(err, daemon) {
         if(err) {
-
+            log.error("An error occurred while getting Daemons!");
         }
-        daemons.push(daemon);
+        if(daemon) {
+            callback(daemon);
+        }
     });
 };
 

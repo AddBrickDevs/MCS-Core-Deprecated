@@ -5,6 +5,7 @@
 
 var config = require('../config.json');
 var fs = require('fs');
+var log = require('./log.js');
 
 /**
  * Gets the mongo host
@@ -198,14 +199,32 @@ exports.setDebugMode = function(value) {
     config.debug = value;
 };
 
+/**
+ * Checks if the setup is required
+ * @returns {boolean}
+ */
 exports.isSetupRequired = function() {
     return config.setup;
 };
 
+/**
+ * Sets the setup finished
+ */
 exports.setSetupFinished = function() {
     config.setup = false;
 };
 
-exports.save = function() {
-    fs.writeFileSync();
+/**
+ * Saves the current configuration
+ * */
+exports.save = function(callback) {
+    log.info("Saving config...");
+    fs.writeFile("./config.json", JSON.stringify(config), {}, function(err) {
+        if(err) {
+            log.error("An error occurred while saving config!");
+        } else {
+            log.info("Saved config successfully!");
+        }
+        callback();
+    });
 };
