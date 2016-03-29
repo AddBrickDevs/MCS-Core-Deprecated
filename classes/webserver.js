@@ -47,6 +47,13 @@ var Webserver = function(options) {
     });                                                                                     ////////////////
 
     if(Config.isHTTPSEnabled()) {
+        var options = {
+            key: fs.readFileSync('../keys/key.pem'),
+            cert: fs.readFileSync('../keys/cert.pem'),
+            ca: fs.readFileSync('../keys/ca.pem'),
+            windowSize: 1024 * 1024,
+            autoSpdy31: false
+        };
         if (Config.isSPDYEnabled()) {
             this.webserver = spdy.createServer(options, this.app);
         } else {
