@@ -12,7 +12,7 @@ var User = require("./database/user.js");
 
 var mongoClient = require("./mongo.js");
 
-var io = require('socket.io')(Webserver.getInstance({}).getWebserver());
+var io = require('socket.io')(Webserver.getInstance().getWebserver());
 
 io.on('connection', function(socket) {
 
@@ -21,17 +21,13 @@ io.on('connection', function(socket) {
     });
 
     socket.on("setup-req", function(data) {
-        log.debug("got a request (setup)");
         if(Config.isSetupRequired()) {
-            log.debug("setup is required");
             var hash = crypto.createHash('sha512');
             hash.setEncoding('hex');
             hash.write(data.password);
             hash.end();
 
-            var user = new User(data.username, hash.read(), "", "admin", "nein", 0);
-            user.save(function(err) {
-                log.debug("Saved user");
+            new User(data.username, hash.read(), "", "admin", "nein", 0).save(function(err) {
                 if(!err) {
                     socket.emit("setup-res", { reason: "success", done: false });
                     Config.setSetupFinished();

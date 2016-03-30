@@ -219,7 +219,7 @@ exports.setSetupFinished = function() {
  * */
 exports.save = function(callback) {
     log.info("Saving config...");
-    fs.writeFile("./config.json", JSON.stringify(config), {}, function(err) {
+    fs.writeFile("./config.json", JSON.stringify(config, null, 2), {}, function(err) {
         if(err) {
             log.error("An error occurred while saving config!");
         } else {
