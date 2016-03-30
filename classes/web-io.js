@@ -21,15 +21,18 @@ io.on('connection', function(socket) {
     });
 
     socket.on("setup-req", function(data) {
+        log.debug("got a request (setup)");
         if(Config.isSetupRequired()) {
+            log.debug("setup is required");
             var hash = crypto.createHash('sha512');
             hash.setEncoding('hex');
             hash.write(data.password);
             hash.end();
 
             var user = new User(data.username, hash.read(), "", "admin", "nein", 0);
-            user.save((err) => {
-                if(err == undefined) {
+            user.save(function(err) {
+                log.debug("Saved user");
+                if(!err) {
                     socket.emit("setup-res", { reason: "success", done: false });
                     Config.setSetupFinished();
                     io.sockets.emit("forward", { url: "/login" });
@@ -38,6 +41,7 @@ io.on('connection', function(socket) {
                 }
             });
         } else {
+            log.debug("setup isn't required");
             socket.emit("setup-res", { reason: "failure", done: true });
         }
     });
