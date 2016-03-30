@@ -25,7 +25,6 @@ a:hover {
   UI DESIGN
 */
 .background {
-  background: #090d00;
   position: fixed;
   top: 0;
   left: 0;
@@ -33,12 +32,22 @@ a:hover {
   height: 100%;
   z-index: -1;
 }
-.background canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+@media all and (min-width: 850px) {
+  .background {
+    background: #090d00;
+  }
+  .background canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 850px) {
+  .background {
+    background: #04294D;
+  }
 }
 /*
   LOADER
@@ -49,8 +58,8 @@ a:hover {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #04294d;
-  color: #eeeeee;
+  background-color: #04294D;
+  color: #FFFFFF;
   z-index: 1000;
 }
 .loader > .box {
@@ -72,7 +81,7 @@ a:hover {
   width: 80px;
   background: transparent;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px white, 0 2px 0 2px white, inset 2px 0 0 2px white;
+  box-shadow: 0 0 0 1px #FFFFFF, 0 2px 0 2px #FFFFFF, inset 2px 0 0 2px #FFFFFF;
   perspective: 800px;
   perspective-origin: 50% 50%;
   margin-top: 10px;
@@ -92,33 +101,61 @@ a:hover {
 */
 .body {
   top: 0;
-  margin: 0.5% 10%;
-  width: 80%;
   height: 100%;
   color: #FFFFFF;
 }
-.container-fluid {
-  margin: 50px auto;
-  padding: 25px;
-  background: rgba(0, 0, 0, 0.54);
-}
-@media all and (min-width: 1100px) {
-  .container-fluid .tiny {
-    width: 40%;
-  }
-}
-@media all and (min-width: 850px) and (max-width: 1100px) {
-  .container-fluid .tiny {
-    width: 60%;
+@media all and (min-width: 0px) and (max-width: 550px) {
+  .body {
+    margin: 0 0;
+    width: 100%;
   }
 }
 @media all and (min-width: 550px) and (max-width: 850px) {
-  .container-fluid .tiny {
+  .body {
+    margin: 0 5%;
+    width: 90%;
+  }
+}
+@media all and (min-width: 850px) and (max-width: 1100px) {
+  .body {
+    margin: 0.5% 7.5%;
+    width: 85%;
+  }
+}
+@media all and (min-width: 1100px) {
+  .body {
+    margin: 1% 10%;
     width: 80%;
   }
 }
+.container-fluid {
+  background: rgba(0, 0, 0, 0.54);
+}
+@media all and (min-width: 1100px) {
+  .container-fluid.tiny {
+    margin: 50px auto;
+    padding: 25px;
+    width: calc(50%-50px);
+  }
+}
+@media all and (min-width: 850px) and (max-width: 1100px) {
+  .container-fluid.tiny {
+    margin: 40px auto;
+    padding: 20px;
+    width: calc(70%-40px);
+  }
+}
+@media all and (min-width: 550px) and (max-width: 850px) {
+  .container-fluid.tiny {
+    margin: 25px auto;
+    padding: 10px;
+    width: calc(90%-20px);
+  }
+}
 @media all and (min-width: 0px) and (max-width: 550px) {
-  .container-fluid .tiny {
-    width: 100%;
+  .container-fluid.tiny {
+    margin: 5px auto;
+    padding: 5px;
+    width: calc(100%-10px);
   }
 }

@@ -43,9 +43,9 @@ io.on('connection', function(socket) {
     });
 
     socket.on("clogin-req", function(data) {
-        mongoClient.getUserModel().count({ username: data.username, lastSID: data.session }, function(err, count) {
+        mongoClient.getUserModel().findOne({ username: data.username }, function(err, user) {
             if(!err) {
-                if(count > 0) {
+                if(user.lastSID === data.session) {
                     loadListener();
                     socket.emit("clogin-res", { reason: "success" });
                 } else {
@@ -65,7 +65,7 @@ io.on('connection', function(socket) {
 
         mongoClient.getUserModel().findOne({ username: data.username }, function(err, user) {
             if(!err) {
-                if(user.username == data.username && user.password == hash.read()) {
+                if(user.username === data.username && user.password === hash.read()) {
                     loadListener();
                     var cookie = crypto.randomBytes(8).toString('hex');
 

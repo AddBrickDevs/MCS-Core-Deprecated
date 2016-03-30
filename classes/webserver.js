@@ -21,7 +21,7 @@ var serve = require('serve-static')('./web/');
 var instance;
 var startDate;
 
-var Webserver = function(options) {
+var Webserver = function() {
     this.app = express();
     this.app.use(compression());
     this.app.use(serve);
@@ -33,6 +33,11 @@ var Webserver = function(options) {
     });                                                                                     ////////////////
 
     if(Config.isHTTPSEnabled()) {
+        var options = {
+            key: fs.readFileSync('../ssl/key.pem'),
+            cert: fs.readFileSync('../ssl/cert.pem'),
+            ca: fs.readFileSync('../ssl/ca.pem')
+        };
         if (Config.isSPDYEnabled()) {
             this.webserver = spdy.createServer(options, this.app);
         } else {
