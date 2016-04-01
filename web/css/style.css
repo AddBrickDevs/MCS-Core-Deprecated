@@ -211,7 +211,7 @@ hr {
 }
 @media all and (min-width: 850px) {
   .navigation {
-    display: block;
+    display: block !important;
   }
 }
 .navigation a {
