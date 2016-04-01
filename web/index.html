@@ -24,18 +24,19 @@
         <div class="body">
             <div ng-show="loggedIn">
                 <div class="header" ng-controller="navctrl">
+                    <a class="nav-toggle" onclick="toggleNav();"><i class="fa fa-bars"></i> Navigation</a>
                     <div class="navigation">
-                        <a href="/" ng-class="{ active: isActive('') }" data-name="{{'dashboard' | translate}}"><i class="fa fa-dashboard"></i></a>
-                        <a href="/daemons" ng-class="{ active: isActive('daemons') }" data-name="{{'daemons' | translate}}"><i class="fa fa-server"></i></a>
-                        <a href="/plugins" ng-class="{ active: isActive('plugins') }" data-name="{{'plugins' | translate}}"><i class="fa fa-plug"></i></a>
-                        <a href="/worlds" ng-class="{ active: isActive('worlds') }" data-name="{{'worlds' | translate}}"><i class="fa fa-globe"></i></a>
-                        <a href="/servertypes" ng-class="{ active: isActive('servertypes') }" data-name="{{'servertypes' | translate}}"><i class="fa fa-gamepad"></i></a>
-                        <a href="/statistics" ng-class="{ active: isActive('statistics') }" data-name="{{'statistics' | translate}}"><i class="fa fa-sitemap"></i></a>
-                        <a href="/settings" ng-class="{ active: isActive('settings') }" data-name="{{'settings' | translate}}"><i class="fa fa-gears"></i></a>
+                        <a href="/" ng-class="{ active: isActive('') }"><i class="fa fa-dashboard"></i><span>{{'dashboard' | translate}}</span></a>
+                        <a href="/daemons" ng-class="{ active: isActive('daemons') }"><i class="fa fa-server"></i><span>{{'daemons' | translate}}</span></a>
+                        <a href="/plugins" ng-class="{ active: isActive('plugins') }"><i class="fa fa-plug"></i><span>{{'plugins' | translate}}</span></a>
+                        <a href="/worlds" ng-class="{ active: isActive('worlds') }"><i class="fa fa-globe"></i><span>{{'worlds' | translate}}</span></a>
+                        <a href="/servertypes" ng-class="{ active: isActive('servertypes') }"><i class="fa fa-gamepad"></i><span>{{'servertypes' | translate}}</span></a>
+                        <a href="/statistics" ng-class="{ active: isActive('statistics') }"><i class="fa fa-sitemap"></i><span>{{'statistics' | translate}}</span></a>
+                        <a href="/settings" ng-class="{ active: isActive('settings') }"><i class="fa fa-gears"></i><span>{{'settings' | translate}}</span></a>
                     </div>
                 </div>
 
-                <hr class="nav-divider"/>
+                <hr/>
             </div>
 
             <div class="controller">
@@ -74,5 +75,10 @@
         <script src="js/angular-controller/Plugins.js"></script>
         <script src="js/angular-controller/Profile.js"></script>
         <script src="js/angular-controller/Setup.js"></script>
+        <script>
+            var toggleNav = function() {
+                $(".navigation").toggle();
+            }
+        </script>
     </body>
 </html>

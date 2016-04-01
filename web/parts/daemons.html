@@ -12,24 +12,24 @@
     <div class="daemon_list">
         <table width="100%">
             <thead>
-            <tr style="text-align: left;">
-                <th>{{'name' | translate}}</th>
-                <th>{{'ip' | translate}}</th>
-                <th>{{'ports' | translate}}</th>
-                <th>{{'status' | translate}}</th>
-                <th>{{'actions' | translate}}</th>
-            </tr>
+                <tr style="text-align: left;">
+                    <th>{{'name' | translate}}</th>
+                    <th>{{'ip' | translate}}</th>
+                    <th>{{'ports' | translate}}</th>
+                    <th>{{'status' | translate}}</th>
+                    <th>{{'actions' | translate}}</th>
+                </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="daemon in daemons">
-                <td>{{daemon.daemonname}}</td>
-                <td>{{daemon.daemonip}}</td>
-                <td>{{daemon.minport}}-{{daemon.maxport}}</td>
-                <td>Online</td>
-                <td>
+                <tr ng-repeat="daemon in daemons">
+                    <td>{{daemon.daemonname}}</td>
+                    <td>{{daemon.daemonip}}</td>
+                    <td>{{daemon.minport}}-{{daemon.maxport}}</td>
+                    <td>Online</td>
+                    <td>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
