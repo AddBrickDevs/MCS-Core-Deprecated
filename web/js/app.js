@@ -29,8 +29,16 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'parts/plugins.html',
             controller: 'pluginsctrl'
         })
+        .when('/plugins/add', {
+            templateUrl: 'parts/plugins.add.html',
+            controller: 'pluginsctrl'
+        })
         .when('/worlds', {
             templateUrl: 'parts/worlds.html',
+            controller: 'worldsctrl'
+        })
+        .when('/worlds/add', {
+            templateUrl: 'parts/worlds.add.html',
             controller: 'worldsctrl'
         })
         .when('/servertypes', {
