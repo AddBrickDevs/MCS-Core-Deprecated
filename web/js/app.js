@@ -2,7 +2,7 @@
     Angular magic
  */
 
-var app = angular.module('app', ['ngRoute', 'Services', 'ngCookies', 'pascalprecht.translate']);
+var app = angular.module('app', ['ngRoute', 'Services', 'ngCookies', 'pascalprecht.translate', 'ngFileUpload']);
 
 /*
     Routes for part of page
