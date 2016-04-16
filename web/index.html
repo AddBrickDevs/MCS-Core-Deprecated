@@ -12,7 +12,7 @@
         <link href="/css/style.css" rel="stylesheet">
         <base href="/">
     </head>
-    <body>
+    <body ng-controller="navctrl">
         <div class="loader">
             <div class="box">
                 <div class="text">
@@ -22,8 +22,8 @@
             </div>
         </div>
         <div class="body">
-            <div ng-show="loggedIn">
-                <div class="header" ng-controller="navctrl">
+            <div ng-if="loggedIn">
+                <div class="header">
                     <a class="nav-toggle" onclick="toggleNav();"><i class="fa fa-bars"></i> Navigation</a>
                     <div class="navigation">
                         <a href="/" ng-class="{ active: isActive('') }"><i class="fa fa-dashboard"></i><span>{{'dashboard' | translate}}</span></a>
@@ -44,8 +44,10 @@
             </div>
 
             <div ng-show="loggedIn">
-                <div class="footer" ng-controller="navctrl">
-
+                <div class="footer">
+                    <!-- MCS MANAGEMENT -->
+                    <!-- MCS STATUS -->
+                    <!-- ACCOUNT MANAGEMENT -->
                 </div>
             </div>
         </div>

@@ -5,29 +5,48 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
         var password = $scope.password;
         var stay = $scope.stay;
 
+        $rootScope.removeErrorMessage();
+
         if(!username || !password) {
             if(!username) {
-                $("#name").css("border-color", "#D40000");
+                $rootScope.sendErrorMessage("no-user");
+                return;
             }
             if(!password) {
-                $("#password").css("border-color", "#D40000");
+                $rootScope.sendErrorMessage("no-password");
+                return;
             }
-        } else {
-            if(!$rootScope.loggedIn) {
-                Socket.emit("login-req", {username: username, password: password});
-                Socket.on("login-res", function(data) {
-                    if(data.reason == "success") {
-                        if(stay) {
-                            $cookies.put("username", username);
-                            $cookies.put("session", data.session);
-                        }
-                        $rootScope.loggedIn = true;
-                        $location.path("/");
-                    } else {
-                        console.log(data.reason);
+            if(!username && !password) {
+                $rootScope.sendErrorMessage("no-user-no-password");
+                return;
+            }
+        }
+
+        if(!$rootScope.loggedIn) {
+            Socket.emit("login-req", {username: username, password: password});
+            Socket.on("login-res", function(data) {
+                if(data.reason == "success") {
+                    if(stay) {
+                        $cookies.put("username", username);
+                        $cookies.put("session", data.session);
                     }
-                });
-            }
+                    $rootScope.loggedIn = true;
+                    $location.path("/");
+                } else {
+                    switch(data.error) {
+                        case "no-such-user":
+
+                            break;
+                        case "database-error":
+
+                            break;
+                        default:
+
+                            break;
+                    }
+
+                }
+            });
         }
     };
 

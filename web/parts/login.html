@@ -1,6 +1,9 @@
-<div ng-hide="loggedIn" style="vertical-align: middle;">
+<div ng-if="loggedIn === false" style="vertical-align: middle;" ng-controller="loginctrl">
     <div class="container-fluid tiny">
         <h2>MCS <sup class="version-control">&alpha;</sup> - {{ 'login' | translate }}</h2>
+        <div class="error-message-box hidden-default">
+            <i class="fa fa-warning"></i><span id="error-message"></span>
+        </div>
         <form novalidate class="form-fluid">
             <input type="text" ng-model="username" id="name" placeholder="{{ 'login-name' | translate }}" /><br/>
             <input type="password" ng-model="password" id="password" placeholder="{{ 'login-password' | translate }}" /><br/><br/>
@@ -11,7 +14,7 @@
     </div>
 </div>
 
-<div ng-show="loggedIn">
+<div ng-if="loggedIn === true">
     <div class="container-fluid tiny">
         <h2>MCS <sup class="version-control">&alpha;</sup> - {{ 'login' | translate }}</h2>
         Du bist bereits angemeldet!

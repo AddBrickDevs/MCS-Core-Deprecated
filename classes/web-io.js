@@ -72,10 +72,10 @@ io.on('connection', function(socket) {
                     mongoClient.getUserModel().update({ username: data.username }, { $set: { lastSID: cookie } }).exec();
                     socket.emit("login-res", { reason: "success", session: cookie });
                 } else {
-                    socket.emit("login-res", { reason: "failed" });
+                    socket.emit("login-res", { reason: "failed", error: "no-such-user" });
                 }
             } else {
-                socket.emit("login-res", { reason: "failed" });
+                socket.emit("login-res", { reason: "failed", error: "database-error" });
             }
         });
     });
