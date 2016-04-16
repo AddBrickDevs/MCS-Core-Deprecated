@@ -311,3 +311,25 @@ th {
   box-shadow: 0 0 5px #FFFFFF, inset 0 0 4px #FFFFFF;
   float: left;
 }
+
+
+.hidden-default {
+  display: none;
+}
+
+.error-message-box {
+  margin-bottom: 20px;
+  width: calc(100% - 40px);
+  padding: 20px;
+  background: #D40000;
+  line-height: 20px;
+}
+
+.error-message-box > i {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.error-message-box > span {
+  line-height: 20px;
+}

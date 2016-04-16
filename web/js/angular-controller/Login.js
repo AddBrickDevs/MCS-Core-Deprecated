@@ -8,6 +8,10 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
         $rootScope.removeErrorMessage();
 
         if(!username || !password) {
+            if(!username && !password) {
+                $rootScope.sendErrorMessage("no-user-no-password");
+                return;
+            }
             if(!username) {
                 $rootScope.sendErrorMessage("no-user");
                 return;
@@ -16,10 +20,7 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
                 $rootScope.sendErrorMessage("no-password");
                 return;
             }
-            if(!username && !password) {
-                $rootScope.sendErrorMessage("no-user-no-password");
-                return;
-            }
+            $rootScope.sendErrorMessage("undefined-error");
         }
 
         if(!$rootScope.loggedIn) {
@@ -33,18 +34,7 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
                     $rootScope.loggedIn = true;
                     $location.path("/");
                 } else {
-                    switch(data.error) {
-                        case "no-such-user":
-
-                            break;
-                        case "database-error":
-
-                            break;
-                        default:
-
-                            break;
-                    }
-
+                    $rootScope.sendErrorMessage(data.error);
                 }
             });
         }

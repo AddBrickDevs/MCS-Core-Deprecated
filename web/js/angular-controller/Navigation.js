@@ -15,10 +15,14 @@ app.controller('navctrl', ['$scope', '$rootScope', 'Socket', '$location', '$tran
 
     $rootScope.sendErrorMessage = function(error) {
         if(errors.includes(error)) {
+            console.log("A");
             $translate(error).then(function (errorMessage) {
-                $("#error-message-box").show();
+                console.log("B");
                 $("#error-message").text(errorMessage);
+                $("#error-message-box").show();
             });
+        } else {
+            console.log("[ERROR] Unknown Error. Cannot resolve error!");
         }
     };
 

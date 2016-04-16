@@ -33,5 +33,11 @@
   "back": "Zurück",
   "close": "Schließen",
   "shutdown": "Herunterfahren",
-  "restart": "Neu starten"
+  "restart": "Neu starten",
+
+  "no-user": "Du musst einen Nutzernamen angegeben!",
+  "no-password": "Du musst ein Passwort angegeben!",
+  "no-user-no-password": "Du musst einen Nutzernamen und ein Passwort angegeben!",
+  "no-such-user": "Du hast fehlerhafte Daten angegeben!",
+  "undefined-error": "Es ist ein unerwarteter Fehler aufgetreten! Versuche es zu einem späteren Zeitpunkt noch einmal!"
 }
