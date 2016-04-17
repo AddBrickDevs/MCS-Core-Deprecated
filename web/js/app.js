@@ -94,8 +94,7 @@ app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location)
     $rootScope.loggedIn = false;
     $rootScope.setup = false;
 
-    $('.modal-trigger').leanModal();
-    var templates = ['404', 'dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds', 'setup'];
+    var templates = ['dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds', 'setup'];
     angular.forEach(templates, function(templateUrl) {
         templateUrl = 'parts/'+templateUrl+'.html';
         $http({method: 'GET', url: templateUrl}).success(function(data) {

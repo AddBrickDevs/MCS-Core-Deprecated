@@ -5,9 +5,18 @@
     <div class="description">
         {{'settings_description' | translate}}
     </div>
+    <div class="error-message-box" id="error-message-box" ng-show="errorMessage != null">
+        <i class="fa fa-times-circle"></i> &nbsp; {{errorMessage}}
+    </div>
+    <div class="warn-message-box" id="warning-message-box" ng-show="warnMessage != null">
+        <i class="fa fa-warning"></i> &nbsp; {{warnMessage}}
+    </div>
+    <div class="information-message-box" id="information-message-box" ng-show="informationMessage != null">
+        <i class="fa fa-info-circle"></i> &nbsp; {{informationMessage}}
+    </div>
     <div class="container-fluid">
         <h2>{{ 'user-management' | translate }}</h2>
-        <hr/>
+        <hr/><br/>
         <div class="users">
             <div ng-repeat="user in users">
                 <span>{{user.username}}</span>
@@ -15,17 +24,21 @@
         </div>
     </div>
     <div class="container-fluid">
-        <h2>{{ 'ssl-management' | translate }}</h2>
-        <hr/>
-        <div class="ssl">
-            <b>{{ 'use-ssl' | translate }}</b> <input type="checkbox" value="None" id="sslUse" ng-model="ssl" />
-            <label for="sslUse"></label>
-            <br/>
-            <div ng-show="ssl">
-                <b>{{ 'key-file' | translate }}</b><br/>
-                <b>{{ 'cert-file' | translate }}</b><br/>
-                <b>{{ 'chain-file' | translate }}</b><br/>
-            </div>
+        <h2>{{ 'spigot-settings' | translate }}</h2>
+        <hr/><br/>
+        <b>{{ 'spigot-version' | translate }}:</b>
+    </div>
+    <div class="container-fluid">
+        <h2>{{ 'mcs-settings' | translate }}</h2>
+        <hr/><br/>
+        <b>{{ 'current-version' | translate }}</b>: {{ version }}<br/>
+        <b>{{ 'debug-mode' | translate }}</b>
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchDebugMode" ng-click="toggleDebugMode()" ng-checked="debugMode" ng-model="debugMode">
+            <label class="onoffswitch-label" for="switchDebugMode">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
         </div>
     </div>
 </div>

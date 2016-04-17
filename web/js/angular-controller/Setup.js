@@ -1,7 +1,5 @@
 app.controller('setupctrl', ['$scope', '$rootScope', "Socket", '$location', function($scope, $rootScope, Socket, $location) {
 
-    $scope.message_setup_success = "";
-
     $scope.setup = function() {
         var username = $scope.username;
         var password = $scope.password;

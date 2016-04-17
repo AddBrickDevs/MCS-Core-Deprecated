@@ -1,4 +1,4 @@
-app.controller('settingsctrl', ['$scope', 'Socket', function($scope, Socket) {
+app.controller('settingsctrl', ['$scope', 'Socket', '$rootScope', function($scope, Socket, $rootScope) {
 
     $scope.users = [];
 
@@ -16,12 +16,20 @@ app.controller('settingsctrl', ['$scope', 'Socket', function($scope, Socket) {
         });
     };
 
-    $scope.ssl = false;
+    $scope.version = "v0.0.1 PRE ALPHA";
 
-    Socket.on('ssl-res', function(data) {
-        $scope.ssl = data;
+    $scope.debugMode = false;
+    $scope.maintenanceMode = false;
+
+    Socket.on('mode-res', function(data) {
+        if(data.mode == "debug") {
+            $scope.debugMode = data;
+        }
+        if(data.mode == "maintenance") {
+            $scope.maintenanceMode = data;
+        }
     });
-    Socket.emit('file-req', {type: "ssl"});
+    Socket.emit('mode-req', {type: "ssl"});
     $scope.toggleSSL = function() {
         Socket.emit('edit', {
             type: "ssl",
@@ -31,5 +39,9 @@ app.controller('settingsctrl', ['$scope', 'Socket', function($scope, Socket) {
             chain: $scope.chain
         });
     };
+
+    $rootScope.sendErrorMessage("undefined-error");
+    $rootScope.sendWarningMessage("using-no-ssl");
+    $rootScope.sendInformationMessage("settings-edited");
 
 }]);
