@@ -1,8 +1,31 @@
-<div ng-show="loggedIn">
+<div ng-if="loggedIn">
     <div class="title">
         {{'settings' | translate}}
     </div>
     <div class="description">
         {{'settings_description' | translate}}
+    </div>
+    <div class="container-fluid">
+        <h2>{{ 'user-management' | translate }}</h2>
+        <hr/>
+        <div class="users">
+            <div ng-repeat="user in users">
+                <span>{{user.username}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h2>{{ 'ssl-management' | translate }}</h2>
+        <hr/>
+        <div class="ssl">
+            <b>{{ 'use-ssl' | translate }}</b> <input type="checkbox" value="None" id="sslUse" ng-model="ssl" />
+            <label for="sslUse"></label>
+            <br/>
+            <div ng-show="ssl">
+                <b>{{ 'key-file' | translate }}</b><br/>
+                <b>{{ 'cert-file' | translate }}</b><br/>
+                <b>{{ 'chain-file' | translate }}</b><br/>
+            </div>
+        </div>
     </div>
 </div>

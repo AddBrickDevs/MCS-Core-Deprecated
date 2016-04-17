@@ -5,7 +5,7 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
         var password = $scope.password;
         var stay = $scope.stay;
 
-        $rootScope.removeErrorMessage();
+        $rootScope.removeErrorMessages();
 
         if(!username || !password) {
             if(!username && !password) {

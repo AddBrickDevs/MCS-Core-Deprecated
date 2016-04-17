@@ -70,8 +70,8 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'dashboardctrl'
         })
         .otherwise({
-            templateUrl: 'parts/404.html',
-            controller: 'navctrl'
+            templateUrl: 'parts/dashboard.html',
+            controller: 'dashboardctrl'
         });
     $locationProvider.html5Mode(true);
 });

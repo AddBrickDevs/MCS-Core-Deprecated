@@ -34,6 +34,12 @@
   "close": "Schließen",
   "shutdown": "Herunterfahren",
   "restart": "Neu starten",
+  "user-management": "Nutzerverwaltung",
+  "ssl-management": "SSL-Verwaltung",
+  "use-ssl": "SSL verwenden",
+  "key-file": "SSL-Key Datei",
+  "cert-file": "SSL-Cert Datei",
+  "chain-file": "SSL-Chain Datei",
 
   "no-user": "Du musst einen Nutzernamen angegeben!",
   "no-password": "Du musst ein Passwort angegeben!",

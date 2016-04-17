@@ -1,22 +1,15 @@
-<div ng-if="loggedIn === false" style="vertical-align: middle;" ng-controller="loginctrl">
+<div ng-if="loggedIn === false" ng-controller="loginctrl">
     <div class="container-fluid tiny">
         <h2>MCS <sup class="version-control">&alpha;</sup> - {{ 'login' | translate }}</h2>
-        <div class="error-message-box hidden-default" id="error-message-box">
-            <i class="fa fa-warning"></i> &nbsp; <span id="error-message"></span>
+        <div class="error-message-box" id="error-message-box" ng-show="errorMessage != null">
+            <i class="fa fa-warning"></i> &nbsp; {{errorMessage}}
         </div>
-        <form novalidate class="form-fluid">
+        <form novalidate class="form-fluid" ng-submit="login()">
             <input type="text" ng-model="username" id="name" placeholder="{{ 'login-name' | translate }}" /><br/>
             <input type="password" ng-model="password" id="password" placeholder="{{ 'login-password' | translate }}" /><br/><br/>
             <label for="stay"><input type="checkbox" ng-model="stay" id="stay" /> {{ 'stay-logged-in'| translate }}</label>
             <br/><br/>
-            <input type="submit" ng-click="login()" value="{{ 'login-confirm' | translate }}" />
+            <input type="submit" value="{{ 'login-confirm' | translate }}" />
         </form>
-    </div>
-</div>
-
-<div ng-if="loggedIn === true">
-    <div class="container-fluid tiny">
-        <h2>MCS <sup class="version-control">&alpha;</sup> - {{ 'login' | translate }}</h2>
-        Du bist bereits angemeldet!
     </div>
 </div>

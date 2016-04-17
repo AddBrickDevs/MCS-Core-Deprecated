@@ -1,5 +1,7 @@
 app.controller('navctrl', ['$scope', '$rootScope', 'Socket', '$location', '$translate', function($scope, $rootScope, Socket, $location, $translate) {
 
+    $rootScope.errorMessage = null;
+
     var errors = [
         "no-user",
         "no-password",
@@ -14,20 +16,17 @@ app.controller('navctrl', ['$scope', '$rootScope', 'Socket', '$location', '$tran
     };
 
     $rootScope.sendErrorMessage = function(error) {
-        if(errors.includes(error)) {
-            console.log("A");
+        if(errors.indexOf(error)) {
             $translate(error).then(function (errorMessage) {
-                console.log("B");
-                $("#error-message").text(errorMessage);
-                $("#error-message-box").show();
+                $rootScope.errorMessage = errorMessage;
             });
         } else {
             console.log("[ERROR] Unknown Error. Cannot resolve error!");
         }
     };
 
-    $rootScope.removeErrorMessage = function() {
-        $("#error-message-box").hide();
+    $rootScope.removeErrorMessages = function() {
+        $rootScope.errorMessage = null;
     }
 
 }]);
