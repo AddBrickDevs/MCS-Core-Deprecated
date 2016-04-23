@@ -2,7 +2,7 @@
   "database": {
     "host": "localhost",
     "database": "mcs",
-    "port": "27017",
+    "port": 27017,
     "user": "user",
     "password": "pass"
   },
@@ -14,5 +14,6 @@
   "cloudsystem_port": 1337,
   "listenip": "0.0.0.0",
   "setup": true,
-  "debug": true
+  "debug": false,
+  "maintenance": false
 }

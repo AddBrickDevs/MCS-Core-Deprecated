@@ -200,6 +200,22 @@ exports.setDebugMode = function(value) {
 };
 
 /**
+ * Checks if the cloudsystem is in maintenance mode
+ * @returns {boolean}
+ */
+exports.isMaintenanceMode = function() {
+    return config.maintenance;
+};
+
+/**
+ * Sets the value whether the cloudsystem is in maintenance mode or not
+ * @param value The value
+ */
+exports.setMaintenanceMode = function(value) {
+    config.maintenance = value;
+};
+
+/**
  * Checks if the setup is required
  * @returns {boolean}
  */

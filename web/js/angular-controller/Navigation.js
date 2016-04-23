@@ -1,35 +1,8 @@
 app.controller('navctrl', ['$scope', '$rootScope', 'Socket', '$location', '$translate', function($scope, $rootScope, Socket, $location, $translate) {
 
-    $rootScope.errorMessage = null;
-    $rootScope.warnMessage = null;
-    $rootScope.informationMessage = null;
-
-    var errors = [
-        "no-user",
-        "no-password",
-        "no-user-no-password",
-        "no-such-user",
-        "undefined-error"
-    ];
-
-    var warnings = [
-        "using-debug-mode",
-        "using-maintenance-mode",
-        "using-no-ssl"
-    ];
-
-    var informations = [
-        "daemon-added",
-        "daemon-removed",
-        "daemon-edited",
-        "plugin-added",
-        "plugin-removed",
-        "plugin-edited",
-        "world-added",
-        "world-removed",
-        "world-edited",
-        "settings-edited"
-    ];
+    $rootScope.errorMessages = null;
+    $rootScope.warnMessages = null;
+    $rootScope.informationMessages = null;
 
     $scope.isActive = function (viewLocation) {
         var current = $location.path().split("/");
@@ -40,45 +13,78 @@ app.controller('navctrl', ['$scope', '$rootScope', 'Socket', '$location', '$tran
     * Errors
     * */
     $rootScope.sendErrorMessage = function(error) {
-        if(errors.indexOf(error)) {
-            $translate(error).then(function (errorMessage) {
-                $rootScope.errorMessage = errorMessage;
-            });
-        }
+        $translate(error).then(function (errorMessage) {
+            if ($rootScope.errorMessages == null) {
+                $rootScope.errorMessages = {};
+            }
+
+            $rootScope.errorMessages[error] = errorMessage;
+        });
     };
 
-    $rootScope.removeErrorMessages = function() {
-        $rootScope.errorMessage = null;
+    $rootScope.removeErrorMessage = function(error) {
+        if($rootScope.errorMessages[error] !== -1) {
+            delete $rootScope.errorMessages[error];
+
+            if($rootScope.errorMessages.length == 0) {
+                $rootScope.errorMessages = null;
+            }
+        }
     };
 
     /*
     * Warnings
     * */
-    $rootScope.sendWarningMessage = function(warning) {
-        if(warnings.indexOf(warning)) {
-            $translate(warning).then(function (warnMessage) {
-                $rootScope.warnMessage = warnMessage;
-            });
-        }
+    $rootScope.sendWarnMessage = function(warning) {
+        $translate(warning).then(function (warnMessage) {
+            if ($rootScope.warnMessages == null) {
+                $rootScope.warnMessages = {};
+            }
+
+            $rootScope.warnMessages[warning] = warnMessage;
+        });
     };
 
-    $rootScope.removeWarningMessages = function() {
-        $rootScope.warnMessage = null;
+    $rootScope.removeWarnMessage = function(warning) {
+        if($rootScope.warnMessages[warning] !== -1) {
+            delete $rootScope.warnMessages[warning];
+
+            if($rootScope.warnMessages.length == 0) {
+                $rootScope.warnMessages = null;
+            }
+        }
     };
 
     /*
     * Informations
     * */
     $rootScope.sendInformationMessage = function(information) {
-        if(informations.indexOf(information)) {
-            $translate(information).then(function (informationMessage) {
-                $rootScope.informationMessage = informationMessage;
-            });
+        $translate(information).then(function (informationMessage) {
+            if ($rootScope.informationMessages == null) {
+                $rootScope.informationMessages = {};
+            }
+
+            $rootScope.informationMessages[information] = informationMessage;
+        });
+    };
+
+    $rootScope.removeInformationMessage = function(information) {
+        if($rootScope.informationMessages[information] !== -1) {
+            delete $rootScope.informationMessages[information];
+
+            if($rootScope.informationMessages.length == 0) {
+                $rootScope.informationMessages = null;
+            }
         }
     };
 
-    $rootScope.removeInformationMessages = function() {
-        $rootScope.informationMessage = null;
+    /*
+    * Remove All
+    * */
+    $rootScope.removeAllMessages = function() {
+        $rootScope.informationMessages = null;
+        $rootScope.warnMessages = null;
+        $rootScope.errorMessages = null;
     }
 
 }]);

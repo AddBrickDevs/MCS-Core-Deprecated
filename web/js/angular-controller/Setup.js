@@ -4,7 +4,7 @@ app.controller('setupctrl', ['$scope', '$rootScope', "Socket", '$location', func
         var username = $scope.username;
         var password = $scope.password;
 
-        $rootScope.removeErrorMessages();
+        $rootScope.removeAllMessages();
 
         if(!username || !password) {
             if(!username && !password) {

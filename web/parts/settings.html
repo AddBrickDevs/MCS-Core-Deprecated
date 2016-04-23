@@ -5,15 +5,18 @@
     <div class="description">
         {{'settings_description' | translate}}
     </div>
-    <div class="error-message-box" id="error-message-box" ng-show="errorMessage != null">
-        <i class="fa fa-times-circle"></i> &nbsp; {{errorMessage}}
+    <!-- ERROR HANDLING START -->
+    <br ng-show="errorMessages != null || warnMessages != null || informationMessages != null"/>
+    <div class="error-message-box" ng-show="errorMessages != null">
+        <i class="fa fa-times-circle"></i> &nbsp; <span class="message" ng-repeat="error in errorMessages">{{ error }}<br/></span>
     </div>
-    <div class="warn-message-box" id="warning-message-box" ng-show="warnMessage != null">
-        <i class="fa fa-warning"></i> &nbsp; {{warnMessage}}
+    <div class="warn-message-box" ng-show="warnMessages != null">
+        <i class="fa fa-warning"></i> &nbsp; <span class="message" ng-repeat="warning in warnMessages">{{ warning }}<br/></span>
     </div>
-    <div class="information-message-box" id="information-message-box" ng-show="informationMessage != null">
-        <i class="fa fa-info-circle"></i> &nbsp; {{informationMessage}}
+    <div class="information-message-box" ng-show="informationMessages != null">
+        <i class="fa fa-info-circle"></i> &nbsp; <span class="message" ng-repeat="information in informationMessages">{{ information }}<br/></span>
     </div>
+    <!-- ERROR HANDLING END -->
     <div class="container-fluid">
         <h2>{{ 'user-management' | translate }}</h2>
         <hr/><br/>
@@ -32,10 +35,29 @@
         <h2>{{ 'mcs-settings' | translate }}</h2>
         <hr/><br/>
         <b>{{ 'current-version' | translate }}</b>: {{ version }}<br/>
+        <br/>
         <b>{{ 'debug-mode' | translate }}</b>
         <div class="onoffswitch">
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchDebugMode" ng-click="toggleDebugMode()" ng-checked="debugMode" ng-model="debugMode">
             <label class="onoffswitch-label" for="switchDebugMode">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <br/>
+        <b>{{ 'maintenance-mode' | translate }}</b>
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchMaintenanceMode" ng-click="toggleMaintenanceMode()" ng-checked="maintenanceMode" ng-model="maintenanceMode">
+            <label class="onoffswitch-label" for="switchMaintenanceMode">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <br/>
+        <b>{{ 'ssl' | translate }}</b>
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchSSL" ng-click="toggleSSL()" ng-checked="sslEnabled" ng-model="sslEnabled">
+            <label class="onoffswitch-label" for="switchSSL">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>
             </label>

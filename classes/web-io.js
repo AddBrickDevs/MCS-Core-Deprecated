@@ -65,6 +65,10 @@ io.on('connection', function(socket) {
 
         mongoClient.getUserModel().findOne({ username: data.username }, function(err, user) {
             if(!err) {
+                if(user == undefined) {
+                    socket.emit("login-res", { reason: "failed", error: "no-such-user" });
+                    return;
+                }
                 if(user.username === data.username && user.password === hash.read()) {
                     loadListener();
                     var cookie = crypto.randomBytes(8).toString('hex');
@@ -105,7 +109,7 @@ io.on('connection', function(socket) {
             }
         });
 
-        socket.on('add', function(data) {
+        socket.on('add-req', function(data) {
             if(data.type === "daemon") {
                 var newDaemon = new Daemon(data.name, data.ip, data.minport, data.maxport).save(function(success) {
                     socket.emit('add-res', { success: success});
@@ -124,6 +128,20 @@ io.on('connection', function(socket) {
 
             } else {
                 log.warn("Unknown type to add!");
+            }
+        });
+
+        socket.on("settings-req", function(data) {
+            switch(data.type) {
+                case "debugmode":
+                    socket.emit("settings-res", { type: "debugmode", value: Config.isDebugMode() });
+                    break;
+                case "maintenancemode":
+                    socket.emit("settings-res", { type: "maintenancemode", value: Config.isMaintenanceMode() });
+                    break;
+                case "ssl":
+                    socket.emit("settings-res", { type: "ssl", value: Config.isHTTPSEnabled() });
+                    break;
             }
         });
     };
