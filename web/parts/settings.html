@@ -5,18 +5,6 @@
     <div class="description">
         {{'settings_description' | translate}}
     </div>
-    <!-- ERROR HANDLING START -->
-    <br ng-show="errorMessages != null || warnMessages != null || informationMessages != null"/>
-    <div class="error-message-box" ng-show="errorMessages != null">
-        <i class="fa fa-times-circle"></i> &nbsp; <span class="message" ng-repeat="error in errorMessages">{{ error }}<br/></span>
-    </div>
-    <div class="warn-message-box" ng-show="warnMessages != null">
-        <i class="fa fa-warning"></i> &nbsp; <span class="message" ng-repeat="warning in warnMessages">{{ warning }}<br/></span>
-    </div>
-    <div class="information-message-box" ng-show="informationMessages != null">
-        <i class="fa fa-info-circle"></i> &nbsp; <span class="message" ng-repeat="information in informationMessages">{{ information }}<br/></span>
-    </div>
-    <!-- ERROR HANDLING END -->
     <div class="container-fluid">
         <h2>{{ 'user-management' | translate }}</h2>
         <hr/><br/>
@@ -38,7 +26,7 @@
         <br/>
         <b>{{ 'debug-mode' | translate }}</b>
         <div class="onoffswitch">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchDebugMode" ng-click="toggleDebugMode()" ng-checked="debugMode" ng-model="debugMode">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchDebugMode" ng-checked="debugMode" ng-model="debugMode" ng-change="toggleDebugMode()" >
             <label class="onoffswitch-label" for="switchDebugMode">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>
@@ -47,7 +35,7 @@
         <br/>
         <b>{{ 'maintenance-mode' | translate }}</b>
         <div class="onoffswitch">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchMaintenanceMode" ng-click="toggleMaintenanceMode()" ng-checked="maintenanceMode" ng-model="maintenanceMode">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchMaintenanceMode" ng-checked="maintenanceMode" ng-model="maintenanceMode" ng-change="toggleMaintenanceMode()" >
             <label class="onoffswitch-label" for="switchMaintenanceMode">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>
@@ -56,7 +44,7 @@
         <br/>
         <b>{{ 'ssl' | translate }}</b>
         <div class="onoffswitch">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchSSL" ng-click="toggleSSL()" ng-checked="sslEnabled" ng-model="sslEnabled">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchSSL" ng-checked="sslEnabled" ng-model="sslEnabled" ng-change="toggleSSL()" >
             <label class="onoffswitch-label" for="switchSSL">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>

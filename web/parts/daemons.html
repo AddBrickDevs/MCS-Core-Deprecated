@@ -7,15 +7,6 @@
             {{'daemons_description' | translate}}
         </div>
     </div>
-    <div class="error-message-box" ng-show="errorMessages != null">
-        <i class="fa fa-times-circle"></i> &nbsp; <span class="message" ng-repeat="error in errorMessages">{{ error }}</span>
-    </div>
-    <div class="warn-message-box" ng-show="errorMessages != null">
-        <i class="fa fa-warning"></i> &nbsp; <span class="message" ng-repeat="error in errorMessages">{{ error }}</span>
-    </div>
-    <div class="information-message-box" ng-show="errorMessages != null">
-        <i class="fa fa-info-circle"></i> &nbsp; <span class="message" ng-repeat="error in errorMessages">{{ error }}</span>
-    </div>
     <a href="/daemons/add" class="button">{{'daemon_add' | translate}}</a>
     <br/>
     <div class="daemon_list">

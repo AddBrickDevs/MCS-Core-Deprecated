@@ -5,22 +5,16 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
         var password = $scope.password;
         var stay = $scope.stay;
 
-        $rootScope.removeAllMessages();
-
         if(!username || !password) {
             if(!username && !password) {
-                $rootScope.sendErrorMessage("no-user-no-password");
                 return;
             }
             if(!username) {
-                $rootScope.sendErrorMessage("no-user");
                 return;
             }
             if(!password) {
-                $rootScope.sendErrorMessage("no-password");
                 return;
             }
-            $rootScope.sendErrorMessage("undefined-error");
         }
 
         if(!$rootScope.loggedIn) {
@@ -33,8 +27,6 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
                     }
                     $rootScope.loggedIn = true;
                     $location.path("/");
-                } else {
-                    $rootScope.sendErrorMessage(data.error);
                 }
             });
         }

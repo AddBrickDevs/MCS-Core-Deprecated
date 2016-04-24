@@ -40,16 +40,5 @@
   "spigot-settings": "Einstellungen (Spigot)",
   "spigot-version": "Installierte Version (Spigot)",
   "mcs-settings": "Einstellungen (MCS)",
-  "current-version": "Installierte Version (MCS)",
-  "debug-mode": "Debugmodus",
-  "debug-mode-enabled": "Debugmodus ist aktiviert!",
-  "maintenance-mode": "Wartungsmodus",
-  "maintenance-mode-enabled": "Wartungsmodus aktiviert!",
-  "ssl-disabled": "Es wird keine SSL-Verschlüsselung genutzt! (empfohlen)",
-  "ssl": "SSL aktiviert",
-  "no-user": "Du musst einen Nutzernamen angegeben!",
-  "no-password": "Du musst ein Passwort angegeben!",
-  "no-user-no-password": "Du musst einen Nutzernamen und ein Passwort angegeben!",
-  "no-such-user": "Du hast fehlerhafte Daten angegeben!",
-  "undefined-error": "Es ist ein unerwarteter Fehler aufgetreten! Versuche es zu einem späteren Zeitpunkt noch einmal!"
+  "current-version": "Installierte Version (MCS)"
 }

@@ -144,5 +144,22 @@ io.on('connection', function(socket) {
                     break;
             }
         });
+
+        socket.on("change-settings-req", function(data) {
+            switch(data.type) {
+                case "debugmode":
+                    Config.setDebugMode(data.value);
+                    socket.emit("change-settings-res", { type: "debugmode", value: Config.isDebugMode() });
+                    break;
+                case "maintenancemode":
+                    Config.setMaintenanceMode(data.value);
+                    socket.emit("change-settings-res", { type: "maintenancemode", value: Config.isMaintenanceMode() });
+                    break;
+                case "ssl":
+                    Config.setHTTPSEnabled(data.value);
+                    socket.emit("change-settings-res", { type: "ssl", value: Config.isHTTPSEnabled() });
+                    break;
+            }
+        });
     };
 });

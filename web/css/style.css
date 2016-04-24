@@ -314,6 +314,7 @@ th {
 .onoffswitch {
   position: relative;
   width: 91px;
+  margin: 6px 0;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

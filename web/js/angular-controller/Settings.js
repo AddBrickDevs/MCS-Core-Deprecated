@@ -31,22 +31,41 @@ app.controller('settingsctrl', ['$scope', 'Socket', '$rootScope', function($scop
         switch(data.type) {
             case "debugmode":
                 $scope.debugMode = data.value;
-                if(data.value == true) {
-                    $rootScope.sendWarnMessage("debug-mode-enabled");
-                }
                 break;
             case "maintenancemode":
                 $scope.maintenanceMode = data.value;
-                if(data.value == true) {
-                    $rootScope.sendWarnMessage("maintenance-mode-enabled");
-                }
                 break;
             case "ssl":
                 $scope.sslEnabled = data.value;
-                if(data.value == false) {
-                    $rootScope.sendWarnMessage("ssl-disabled");
-                }
                 break;
         }
     });
+
+    $scope.toggleDebugMode = function() {
+        Socket.emit("change-settings-req", { type: "debugmode", value: !$scope.debugMode });
+    };
+
+    $scope.toggleMaintenanceMode = function() {
+        Socket.emit("change-settings-req", { type: "maintenancemode", value: !$scope.debugMode });
+    };
+
+    $scope.toggleSSL = function() {
+        Socket.emit("change-settings-req", { type: "ssl", value: !$scope.debugMode });
+    };
+
+    Socket.on("change-settings-res", function(data) {
+        switch(data.type) {
+            case "debugmode":
+                $scope.debugMode = data.value;
+                break;
+            case "maintenancemode":
+                $scope.maintenanceMode = data.value;
+                break;
+            case "ssl":
+                $scope.sslEnabled = data.value;
+                break;
+        }
+
+    });
+
 }]);
