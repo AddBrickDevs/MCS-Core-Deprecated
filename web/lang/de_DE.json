@@ -40,5 +40,8 @@
   "spigot-settings": "Einstellungen (Spigot)",
   "spigot-version": "Installierte Version (Spigot)",
   "mcs-settings": "Einstellungen (MCS)",
-  "current-version": "Installierte Version (MCS)"
+  "current-version": "Installierte Version (MCS)",
+  "debug-mode": "Debugmodus",
+  "maintenance-mode": "Wartungsmodus",
+  "ssl": "SSL"
 }

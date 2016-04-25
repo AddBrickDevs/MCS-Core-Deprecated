@@ -23,6 +23,11 @@ app.controller('settingsctrl', ['$scope', 'Socket', '$rootScope', function($scop
     $scope.maintenanceMode = false;
     $scope.sslEnabled = false;
 
+    $rootScope.addMessageToQueue("debug-mode");
+    $rootScope.addMessageToQueue("maintenance-mode");
+    $rootScope.addMessageToQueue("ssl");
+    $rootScope.addMessageToQueue("current-version");
+
     Socket.emit("settings-req", { type: "debugmode" });
     Socket.emit("settings-req", { type: "maintenancemode" });
     Socket.emit("settings-req", { type: "ssl" });
@@ -46,11 +51,11 @@ app.controller('settingsctrl', ['$scope', 'Socket', '$rootScope', function($scop
     };
 
     $scope.toggleMaintenanceMode = function() {
-        Socket.emit("change-settings-req", { type: "maintenancemode", value: !$scope.debugMode });
+        Socket.emit("change-settings-req", { type: "maintenancemode", value: !$scope.maintenanceMode });
     };
 
     $scope.toggleSSL = function() {
-        Socket.emit("change-settings-req", { type: "ssl", value: !$scope.debugMode });
+        Socket.emit("change-settings-req", { type: "ssl", value: !$scope.sslEnabled });
     };
 
     Socket.on("change-settings-res", function(data) {
@@ -65,7 +70,6 @@ app.controller('settingsctrl', ['$scope', 'Socket', '$rootScope', function($scop
                 $scope.sslEnabled = data.value;
                 break;
         }
-
     });
 
 }]);
