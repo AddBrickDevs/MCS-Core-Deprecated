@@ -10,7 +10,8 @@ app.controller('navctrl', ['$scope', '$rootScope', 'Socket', '$location', '$tran
 
     $rootScope.addMessageToQueue = function(message) {
         $translate(message).then(function(translatedMessage) {
-            messageQueue.push(translatedMessage);
+            if(messageQueue.indexOf(translatedMessage) === -1)
+                messageQueue.push(translatedMessage);
         });
         if(!executingQueue) {
             executeQueue();
