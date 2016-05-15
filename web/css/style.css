@@ -423,3 +423,13 @@ th {
 .information-message-box > span {
   line-height: 20px;
 }
+.button-default {
+  padding: 9px 18px;
+  border: 1px solid #cccccc;
+  margin: 5px;
+}
+.button-danger {
+  background: #D40000;
+  padding: 9px 18px;
+  border: 1px solid #D40000;
+}

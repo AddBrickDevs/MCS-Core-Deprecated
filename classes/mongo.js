@@ -19,7 +19,17 @@ function Mongo(host, database, port, username, password) {
 }
 
 Mongo.prototype.connect = function() {
-    mongolib.connect(connectionURL);
+    mongolib.connect(connectionURL, {server:{poolSize:4}});
+
+    var db = mongolib.connection;
+    db.on('error', function(err) {
+        log.error("A Database-Error occurred! Errordetails:\n      " + err);
+        log.info("Shutting down. Check your Connection-Settings!");
+        process.exit(0);
+    });
+    db.once('open', function() {
+        log.info("Connected to Database!");
+    });
 };
 
 var Users = mongolib.model('Users', mongolib.Schema({
@@ -36,6 +46,7 @@ var Daemons = mongolib.model('Daemons', mongolib.Schema({
     daemonip: String,
     minport: Number,
     maxport: Number,
+    online: Boolean,
     apikey: String
 }));
 

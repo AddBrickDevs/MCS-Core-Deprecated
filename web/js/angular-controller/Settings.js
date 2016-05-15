@@ -23,11 +23,6 @@ app.controller('settingsctrl', ['$scope', 'Socket', '$rootScope', function($scop
     $scope.maintenanceMode = false;
     $scope.sslEnabled = false;
 
-    $rootScope.addMessageToQueue("debug-mode");
-    $rootScope.addMessageToQueue("maintenance-mode");
-    $rootScope.addMessageToQueue("ssl");
-    $rootScope.addMessageToQueue("current-version");
-
     Socket.emit("settings-req", { type: "debugmode" });
     Socket.emit("settings-req", { type: "maintenancemode" });
     Socket.emit("settings-req", { type: "ssl" });

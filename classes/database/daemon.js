@@ -14,14 +14,16 @@ var mongoClient = require('../mongo.js');
  * @param ip The ip of the daemon
  * @param minport Minimum port for servers
  * @param maxport Maximum port for servers
+ * @param online Describes Daemons online status
  * @param apikey API key for auth
  * @constructor Daemon
  */
-var Daemon = function(name, ip, minport, maxport, apikey) {
+var Daemon = function(name, ip, minport, maxport, online, apikey) {
     this.name = name;
     this.ip = ip;
     this.minport = minport;
     this.maxport = maxport;
+    this.online = online;
     if(apikey) {
         this.apikey = apikey;
     }
@@ -92,6 +94,22 @@ Daemon.prototype.setMaxPort = function(value) {
 };
 
 /**
+ * Gets the onlinestatus of Daemons
+ * @returns {*}
+ */
+Daemon.prototype.isOnline = function() {
+    return this.online;
+};
+
+/**
+ * Sets the onlinestatus of Daemons
+ * @param value The port
+ */
+Daemon.prototype.setOnline = function(value) {
+    this.online = value;
+};
+
+/**
  * Gets the API key for auth
  * @returns {*}
  */
@@ -119,6 +137,7 @@ Daemon.prototype.toJSON = function() {
         ip: this.getIP(),
         minport: this.getMinPort(),
         maxport: this.getMaxPort(),
+        online: this.isOnline(),
         apikey: this.getAPIKey()
     };
 };
@@ -130,6 +149,7 @@ Daemon.prototype.save = function(callback) {
         daemonip: this.getIP(),
         minport: this.getMinPort(),
         maxport: this.getMaxPort(),
+        online: this.isOnline(),
         apikey: this.getAPIKey()
     });
     newDaemon.save(function(err) {

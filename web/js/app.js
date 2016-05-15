@@ -18,31 +18,47 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'dashboardctrl'
         })
         .when('/daemons', {
-            templateUrl: 'parts/daemons.html',
+            templateUrl: 'parts/daemons/daemons.html',
             controller: 'daemonsctrl'
         })
         .when('/daemons/add', {
-            templateUrl: 'parts/daemons.add.html',
-            controller: 'daemonsctrl'
+            templateUrl: 'parts/daemons/add.html',
+            controller: 'daemonaddctrl'
+        })
+        .when('/daemons/:id/edit', {
+            templateUrl: 'parts/daemons/edit.html',
+            controller: 'daemoneditctrl'
+        })
+        .when('/daemons/:id/information', {
+            templateUrl: 'parts/daemons/info.html',
+            controller: 'daemoninfoctrl'
+        })
+        .when('/daemons/:id/delete', {
+            templateUrl: 'parts/daemons/delete.html',
+            controller: 'daemonremovectrl'
+        })
+        .when('/daemons/:id/shutdown', {
+            templateUrl: 'parts/daemons/shutdown.html',
+            controller: 'daemonshutdownctrl'
         })
         .when('/plugins', {
-            templateUrl: 'parts/plugins.html',
+            templateUrl: 'parts/plugins/plugins.html',
             controller: 'pluginsctrl'
         })
         .when('/plugins/add', {
-            templateUrl: 'parts/plugins.add.html',
+            templateUrl: 'parts/plugins/plugins.add.html',
             controller: 'pluginsctrl'
         })
         .when('/worlds', {
-            templateUrl: 'parts/worlds.html',
+            templateUrl: 'parts/worlds/worlds.html',
             controller: 'worldsctrl'
         })
         .when('/worlds/add', {
-            templateUrl: 'parts/worlds.add.html',
+            templateUrl: 'parts/worlds/worlds.add.html',
             controller: 'worldsctrl'
         })
         .when('/servertypes', {
-            templateUrl: 'parts/servertypes.html',
+            templateUrl: 'parts/servertypes/servertypes.html',
             controller: 'servertypesctrl'
         })
         .when('/statistics', {
@@ -94,7 +110,7 @@ app.run(function($rootScope, $templateCache, $cookies, $http, Socket, $location)
     $rootScope.loggedIn = false;
     $rootScope.setup = false;
 
-    var templates = ['dashboard', 'networkmap', 'plugins', 'profile', 'daemons', 'daemons.add', 'login', 'servertypes', 'statistics', 'worlds', 'setup'];
+    var templates = ['dashboard', 'networkmap', 'plugins/plugins', 'profile', 'daemons/daemons', 'daemons/add', 'daemons/edit', 'daemons/info', 'daemons/delete', 'daemons/shutdown', 'login', 'servertypes/servertypes', 'statistics', 'worlds/worlds', 'setup'];
     angular.forEach(templates, function(templateUrl) {
         templateUrl = 'parts/'+templateUrl+'.html';
         $http({method: 'GET', url: templateUrl}).success(function(data) {

@@ -93,11 +93,11 @@ io.on('connection', function(socket) {
                     socket.emit('daemons-res', daemons);
                 });
             } else if(data.type === "plugins") {
-                socket.emit('plugins-res', Plugin.prototype.getPlugins());
+                // TODO
             } else if(data.type === "worlds") {
-                //socket.emit('worlds-res', World.prototype.getWorlds());
+                // TODO
             } else if(data.type === "servertypes") {
-                //socket.emit('servertypes-res', Servertype.prototype.getServertypes());
+                // TODO
             }
         });
 
@@ -111,23 +111,30 @@ io.on('connection', function(socket) {
 
         socket.on('add-req', function(data) {
             if(data.type === "daemon") {
-                var newDaemon = new Daemon(data.name, data.ip, data.minport, data.maxport).save(function(success) {
+                var newDaemon = new Daemon(data.name, data.ip, data.minport, data.maxport, false).save(function(success) {
                     socket.emit('add-res', { success: success});
+                    Daemon.prototype.getDaemons(function(daemons) {
+                        io.sockets.emit('daemons-res', daemons);
+                    });
                 });
             } else if(data.type === "plugin") {
-                var newPlugin = new Plugin(data.name, data.version, data.size, data.hash);
-                newPlugin.save();
-
-                Plugin.prototype.loadPlugins();
+                // TODO
             } else if(data.type === "world") {
-                /*var newWorld = new World(...);
-                 newWorld.save();
-
-                 World.prototype.loadWorlds();*/
+                // TODO
             } else if(data.type === "servertype") {
-
+                // TODO
             } else {
                 log.warn("Unknown type to add!");
+            }
+        });
+
+        socket.on('del-req', function(data) {
+            if(data.type === "daemon") {
+                mongoClient.getDaemonModel().remove({ _id: data.id }).exec();
+
+                Daemon.prototype.getDaemons(function(daemons) {
+                    io.sockets.emit('daemons-res', daemons);
+                });
             }
         });
 
@@ -149,15 +156,15 @@ io.on('connection', function(socket) {
             switch(data.type) {
                 case "debugmode":
                     Config.setDebugMode(data.value);
-                    socket.emit("change-settings-res", { type: "debugmode", value: Config.isDebugMode() });
+                    io.sockets.emit("change-settings-res", { type: "debugmode", value: data.value });
                     break;
                 case "maintenancemode":
                     Config.setMaintenanceMode(data.value);
-                    socket.emit("change-settings-res", { type: "maintenancemode", value: Config.isMaintenanceMode() });
+                    io.sockets.emit("change-settings-res", { type: "maintenancemode", value: data.value });
                     break;
                 case "ssl":
                     Config.setHTTPSEnabled(data.value);
-                    socket.emit("change-settings-res", { type: "ssl", value: Config.isHTTPSEnabled() });
+                    io.sockets.emit("change-settings-res", { type: "ssl", value: data.value });
                     break;
             }
         });
