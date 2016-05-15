@@ -128,6 +128,20 @@ io.on('connection', function(socket) {
             }
         });
 
+        socket.on('daemon-req', function(data) {
+            mongoClient.getDaemonModel().findById(data.id, function(err, daemon) {
+                if(!err) {
+                    if(daemon == undefined) {
+                        socket.emit("daemon-res", { reason: "failed", error: "no-such-daemon" });
+                        return;
+                    }
+                    socket.emit("daemon-res", { reason: "success", daemon: daemon });
+                } else {
+                    socket.emit("daemon-res", { reason: "failed", error: "database-error" });
+                }
+            });
+        });
+
         socket.on('del-req', function(data) {
             if(data.type === "daemon") {
                 mongoClient.getDaemonModel().remove({ _id: data.id }).exec();

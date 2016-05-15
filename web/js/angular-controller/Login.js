@@ -27,6 +27,8 @@ app.controller('loginctrl', ['$scope', '$rootScope', 'Socket', '$location', '$co
                     }
                     $rootScope.loggedIn = true;
                     $location.path("/");
+                } else {
+                    $rootScope.sendMessage(data.error, true);
                 }
             });
         }

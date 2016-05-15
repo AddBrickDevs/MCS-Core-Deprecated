@@ -50,5 +50,10 @@
   "are-you-sure": "Bist du sicher?",
   "are-you-sure-delete-daemon": "Bist du sicher, dass du diesen Daemon löschen willst? Wenn du diesen Daemon gelöscht hast, kannst du ihn NICHT wiederherstellen!",
   "delete": "Ja, löschen!",
-  "dont-delete": "Nein, zurück!"
+  "dont-delete": "Nein, zurück!",
+
+  "error-add-daemon": "Der Daemon konnte nicht hinzugefügt werden!",
+  "error-edit-daemon": "Der Daemon konnte nicht bearbeitet werden!",
+  "database-error": "Ein unerwarteter Fehler ist aufgetreten!",
+  "no-such-user": "Anmeldung fehlgeschlagen! Überprüfe deine Anmeldedaten!"
 }

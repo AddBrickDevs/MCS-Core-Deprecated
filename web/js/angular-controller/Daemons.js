@@ -9,36 +9,59 @@ app.controller('daemonsctrl', ['$scope', '$rootScope', "Socket", function($scope
     Socket.emit('file-req', {type: "daemons"});
 }]);
 
-app.controller('daemonaddctrl', ['$scope', '$rootScope', "Socket", function($scope, $rootScope, Socket) {
-
-    $scope.checkForIp = function() {
-        // TODO
-    };
+app.controller('daemonaddctrl', ['$scope', '$rootScope', '$location', "Socket", function($scope, $rootScope, $location, Socket) {
 
     $scope.add_daemon = function() {
         Socket.emit('add-req', {
             type: "daemon",
-            name: $('#name').val(),
-            ip: $('#ip').val(),
-            minport: $('#min_port').val(),
-            maxport: $('#max_port').val()
+            name: $scope.name,
+            ip: $scope.ip,
+            minport: $scope.minport,
+            maxport: $scope.maxport
         });
     };
 
     Socket.on('add-res', function(data) {
         if(data.success) {
-            $rootScope.addMessageToQueue("success-add-daemon");
+            $location.path('/daemons');
         } else {
-            $rootScope.addMessageToQueue("error-add-daemon");
+            $rootScope.sendMessage("error-add-daemon");
         }
     });
 
 }]);
 
-app.controller('daemoneditctrl', ['$scope', '$rootScope', '$routeParams', "Socket", function($scope, $rootScope, $routeParams, Socket) {
+app.controller('daemoneditctrl', ['$scope', '$rootScope', '$location', '$routeParams', "Socket", function($scope, $rootScope, $location, $routeParams, Socket) {
 
     $scope.daemonId = $routeParams.id;
 
+    Socket.emit('daemon-req', {id: $scope.daemonId});
+    Socket.on('daemon-res', function(data) {
+        if(data.reason === "success") {
+            $scope.name = data.daemon.daemonname;
+            $scope.ip = data.daemon.daemonip;
+            $scope.minport = data.daemon.minport;
+            $scope.maxport = data.daemon.maxport;
+        }
+    });
+
+    var edit_daemon = function() {
+        Socket.emit('edit-req', {
+            type: "daemon",
+            name: $scope.name,
+            ip: $scope.ip,
+            minport: $scope.minport,
+            maxport: $scope.maxport
+        });
+    };
+
+    Socket.on('edit-res', function(data) {
+        if(data.success) {
+            $location.path('/daemons/' + $scope.daemonId + "/information");
+        } else {
+            $rootScope.sendMessage("error-edit-daemon");
+        }
+    });
 }]);
 
 app.controller('daemoninfoctrl', ['$scope', '$rootScope', '$routeParams', "Socket", function($scope, $rootScope, $routeParams, Socket) {
