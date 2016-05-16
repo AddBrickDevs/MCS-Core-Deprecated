@@ -158,11 +158,10 @@ angular.module('Services', []).factory('Socket', function($rootScope) {
 
     return {
         on: function(eventName, callback){
-            socket.on(eventName, function() {
+            socket.once(eventName, function() {
                 var args = arguments;
                 $rootScope.$apply(function() {
                     callback.apply(socket, args);
-                    callback = undefined;
                 });
             });
         },
