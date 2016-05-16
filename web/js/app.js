@@ -162,6 +162,7 @@ angular.module('Services', []).factory('Socket', function($rootScope) {
                 var args = arguments;
                 $rootScope.$apply(function() {
                     callback.apply(socket, args);
+                    callback = undefined;
                 });
             });
         },
