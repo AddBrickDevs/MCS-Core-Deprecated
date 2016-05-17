@@ -20,6 +20,6 @@ gulp.task('typescript', function () {
         .pipe(gulp.dest('./web'));
 });
 
-gulp.task('typescriptWeb', function () {
-    gulp.watch('./web/app/**/*.ts', ['typescript']);
+gulp.task('typescript:watch', function () {
+    gulp.watch('./web/**/*.ts', ['typescript']);
 });
