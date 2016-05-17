@@ -1,0 +1,8 @@
+# Jetbrains (Webstorm, IntelliJ, PHPStorm, ...)
+.idea
+
+# Dependency directory
+node_modules
+
+# MCS
+config.json
