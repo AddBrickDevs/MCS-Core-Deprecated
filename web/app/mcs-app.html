@@ -1,0 +1,30 @@
+<div class="body">
+    <div>
+        <div class="header">
+            <a class="nav-toggle" onclick="toggleNav();"><i class="fa fa-bars"></i> Navigation</a>
+
+            <div class="navigation">
+                <a [routerLink]=" ['/dashboard'] "><i class="fa fa-dashboard"></i><span>{{ 'dashboard' | translate }}</span></a>
+                <a [routerLink]=" ['/daemons'] "><i class="fa fa-server"></i><span>{{ 'daemons' | translate }}</span></a>
+                <a [routerLink]=" ['/plugins'] "><i class="fa fa-plug"></i><span>{{ 'plugins' | translate}}</span></a>
+                <a [routerLink]=" ['/worlds'] "><i class="fa fa-globe"></i><span>{{ 'worlds' | translate }}</span></a>
+                <a [routerLink]=" ['/servertypes'] "><i class="fa fa-gamepad"></i><span>{{ 'servertypes' | translate }}</span></a>
+                <a [routerLink]=" ['/statistics'] "><i class="fa fa-sitemap"></i><span>{{ 'statistics' | translate }}</span></a>
+                <a [routerLink]=" ['/settings'] "><i class="fa fa-gears"></i><span>{{ 'settings' | translate }}</span></a>
+            </div>
+        </div>
+        <hr/>
+    </div>
+
+    <div class="controller">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div ng-show="loggedIn">
+        <div class="footer">
+            <!-- MCS MANAGEMENT -->
+            <!-- MCS STATUS -->
+            <!-- ACCOUNT MANAGEMENT -->
+        </div>
+    </div>
+</div>
