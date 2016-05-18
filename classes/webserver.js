@@ -24,6 +24,7 @@ var startDate;
 var Webserver = function() {
     this.app = express();
     this.app.use(compression());
+    this.app.use('/node_modules', express.static(__dirname + "/../node_modules/"));
     this.app.use(serve);
 
     this.startDate = new Date();

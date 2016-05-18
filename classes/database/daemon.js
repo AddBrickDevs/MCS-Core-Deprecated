@@ -14,7 +14,7 @@ var mongoClient = require('../mongo.js');
  * @param ip The ip of the daemon
  * @param minport Minimum port for servers
  * @param maxport Maximum port for servers
- * @param online Describes Daemons online status
+ * @param online Describes DaemonsComponent online status
  * @param apikey API key for auth
  * @constructor Daemon
  */
