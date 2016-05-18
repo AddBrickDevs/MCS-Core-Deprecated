@@ -1,0 +1,54 @@
+<div [hidden]="!_userService.loggedIn">
+    <div class="title">
+        {{'settings' | translate}}
+    </div>
+    <div class="description">
+        {{'settings_description' | translate}}
+    </div>
+    <div class="container-fluid">
+        <h2>{{ 'user-management' | translate }}</h2>
+        <hr/><br/>
+        <div class="users">
+            <div *ngFor="#user in users">
+                <span>{{user.username}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h2>{{ 'spigot-settings' | translate }}</h2>
+        <hr/><br/>
+        <b>{{ 'spigot-version' | translate }}:</b>
+    </div>
+    <div class="container-fluid">
+        <h2>{{ 'mcs-settings' | translate }}</h2>
+        <hr/><br/>
+        <b>{{ 'current-version' | translate }}</b>: {{ version }}<br/>
+        <br/>
+        <b>{{ 'debug-mode' | translate }}</b>
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchDebugMode" ng-checked="debugMode" [(ngModel)]="debugMode" ng-change="toggleDebugMode()" >
+            <label class="onoffswitch-label" for="switchDebugMode">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <br/>
+        <b>{{ 'maintenance-mode' | translate }}</b>
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchMaintenanceMode" [(ngModel)]="maintenanceMode" ng-change="toggleMaintenanceMode()" >
+            <label class="onoffswitch-label" for="switchMaintenanceMode">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <br/>
+        <b>{{ 'ssl' | translate }}</b>
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchSSL" [(ngModel)]="sslEnabled" ng-change="toggleSSL()" >
+            <label class="onoffswitch-label" for="switchSSL">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+    </div>
+</div>
