@@ -3,17 +3,17 @@
     "host": "localhost",
     "database": "mcs",
     "port": 27017,
-    "user": "",
-    "password": ""
+    "user": "user",
+    "password": "pass"
   },
   "wi_port": 8080,
   "https": {
-    "enabled": true,
+    "enabled": false,
     "spdy": true
   },
   "cloudsystem_port": 1337,
   "listenip": "0.0.0.0",
   "setup": true,
-  "debug": true,
-  "maintenance": true
+  "debug": false,
+  "maintenance": false
 }

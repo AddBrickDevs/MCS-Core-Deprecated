@@ -94,7 +94,7 @@ Daemon.prototype.setMaxPort = function(value) {
 };
 
 /**
- * Gets the onlinestatus of DaemonsComponent
+ * Gets the onlinestatus of Daemons
  * @returns {*}
  */
 Daemon.prototype.isOnline = function() {
@@ -102,7 +102,7 @@ Daemon.prototype.isOnline = function() {
 };
 
 /**
- * Sets the onlinestatus of DaemonsComponent
+ * Sets the onlinestatus of Daemons
  * @param value The port
  */
 Daemon.prototype.setOnline = function(value) {
@@ -166,7 +166,7 @@ Daemon.prototype.getDaemons = function(callback) {
     var DaemonModel = mongoClient.getDaemonModel();
     DaemonModel.find({}, function(err, daemon) {
         if(err) {
-            log.error("An error occurred while getting DaemonsComponent!");
+            log.error("An error occurred while getting Daemons!");
         }
         if(daemon) {
             callback(daemon);
