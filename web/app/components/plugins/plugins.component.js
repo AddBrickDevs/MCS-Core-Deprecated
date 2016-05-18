@@ -9,25 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var socket_service_1 = require("./socket.service");
-var UserService = (function () {
-    function UserService(_socketService) {
-        this._socketService = _socketService;
-        this.loggedIn = false;
-        this.socket = _socketService.getSocket();
+var Plugins = (function () {
+    function Plugins() {
     }
-    UserService.prototype.isLoggedIn = function () {
-        return this.loggedIn;
-    };
-    UserService.prototype.logIn = function (username, password) {
-        this.loggedIn = true;
-        this.username = username;
-        this.password = password;
-    };
-    UserService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [socket_service_1.SocketService])
-    ], UserService);
-    return UserService;
+    Plugins = __decorate([
+        core_1.Component({
+            selector: 'plugins',
+            templateUrl: 'app/components/plugins/plugins.component.html',
+            providers: [],
+            directives: [],
+            pipes: []
+        }), 
+        __metadata('design:paramtypes', [])
+    ], Plugins);
+    return Plugins;
 }());
-exports.UserService = UserService;
+exports.Plugins = Plugins;

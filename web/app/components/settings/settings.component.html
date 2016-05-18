@@ -9,7 +9,7 @@
         <h2>{{ 'user-management' | translate }}</h2>
         <hr/><br/>
         <div class="users">
-            <div *ngFor="#user in users">
+            <div *ngFor="let user of users">
                 <span>{{user.username}}</span>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <br/>
         <b>{{ 'debug-mode' | translate }}</b>
         <div class="onoffswitch">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchDebugMode" ng-checked="debugMode" [(ngModel)]="debugMode" ng-change="toggleDebugMode()" >
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchDebugMode" (checked)="debugMode" [(ngModel)]="debugMode" (change)="toggleDebugMode()" >
             <label class="onoffswitch-label" for="switchDebugMode">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>
@@ -35,7 +35,7 @@
         <br/>
         <b>{{ 'maintenance-mode' | translate }}</b>
         <div class="onoffswitch">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchMaintenanceMode" [(ngModel)]="maintenanceMode" ng-change="toggleMaintenanceMode()" >
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchMaintenanceMode" [(ngModel)]="maintenanceMode" (change)="toggleMaintenanceMode()" >
             <label class="onoffswitch-label" for="switchMaintenanceMode">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>
@@ -44,7 +44,7 @@
         <br/>
         <b>{{ 'ssl' | translate }}</b>
         <div class="onoffswitch">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchSSL" [(ngModel)]="sslEnabled" ng-change="toggleSSL()" >
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchSSL" [(ngModel)]="sslEnabled" (change)="toggleSSL()" >
             <label class="onoffswitch-label" for="switchSSL">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>

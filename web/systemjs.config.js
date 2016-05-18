@@ -24,9 +24,6 @@
         },
         'ng2-translate' : {
             defaultExtension: 'js'
-        },
-        'socket.io-client': {
-            defaultExtension: 'js'
         }
     };
 

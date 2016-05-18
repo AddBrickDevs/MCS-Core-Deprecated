@@ -1,5 +1,5 @@
 <div class="body">
-    <div [hidden]="!_loginService.loggedIn">
+    <div [hidden]="!_userService.loggedIn">
         <div class="header">
             <a class="nav-toggle" onclick="toggleNav();"><i class="fa fa-bars"></i> Navigation</a>
 
@@ -20,7 +20,7 @@
         <router-outlet></router-outlet>
     </div>
 
-    <div [hidden]="!loggedIn">
+    <div [hidden]="!_userService">
         <div class="footer">
             <!-- MCS MANAGEMENT -->
             <!-- MCS STATUS -->

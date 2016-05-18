@@ -1,10 +1,8 @@
-import {Component} from '@angular/core';
-import {MCSApp} from './../../mcs-app';
+import {Component} from "@angular/core";
 
 @Component({
     selector: 'plugins',
-    templateUrl: 'app/components/plugins/plugins.html',
-    styleUrls: ['app/components/plugins/plugins.css'],
+    templateUrl: 'app/components/plugins/plugins.component.html',
     providers: [],
     directives: [],
     pipes: []
@@ -13,7 +11,4 @@ export class Plugins {
 
     constructor() {}
 
-    ngOnInit() {
-
-    }
 }

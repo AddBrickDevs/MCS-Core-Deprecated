@@ -8,26 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var socket_service_1 = require("./socket.service");
-var UserService = (function () {
-    function UserService(_socketService) {
-        this._socketService = _socketService;
-        this.loggedIn = false;
-        this.socket = _socketService.getSocket();
+var core_1 = require('@angular/core');
+var StatisticsComponent = (function () {
+    function StatisticsComponent() {
     }
-    UserService.prototype.isLoggedIn = function () {
-        return this.loggedIn;
-    };
-    UserService.prototype.logIn = function (username, password) {
-        this.loggedIn = true;
-        this.username = username;
-        this.password = password;
-    };
-    UserService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [socket_service_1.SocketService])
-    ], UserService);
-    return UserService;
+    StatisticsComponent = __decorate([
+        core_1.Component({
+            selector: 'statistics',
+            templateUrl: 'app/components/statistics/statistics.component.html',
+            providers: [],
+            directives: [],
+            pipes: []
+        }), 
+        __metadata('design:paramtypes', [])
+    ], StatisticsComponent);
+    return StatisticsComponent;
 }());
-exports.UserService = UserService;
+exports.StatisticsComponent = StatisticsComponent;

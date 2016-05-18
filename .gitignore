@@ -6,3 +6,9 @@ node_modules
 
 # MCS
 config.json
+
+# Typings
+typings/
+
+# Error Log
+npm-debug.log

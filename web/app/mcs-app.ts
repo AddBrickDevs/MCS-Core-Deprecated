@@ -1,17 +1,16 @@
-import {Component} from '@angular/core';
-import {Router, Routes, ROUTER_DIRECTIVES} from '@angular/router';
-import {Dashboard} from "./components/dashboard/dashboard";
-import {DaemonsComponent} from "./components/daemons/daemons";
-import {Plugins} from "./components/plugins/plugins";
-import {Worlds} from "./components/worlds/worlds";
-import {ServerTypes} from "./components/servertypes/servertypes";
-import {Statistics} from "./components/statistics/statistics";
-import {Settings} from "./components/settings/settings";
+import {Component} from "@angular/core";
+import {Router, Routes, ROUTER_DIRECTIVES} from "@angular/router";
+import {Dashboard} from "./components/dashboard/dashboard.component";
+import {DaemonsComponent} from "./components/daemons/daemons.component";
+import {Plugins} from "./components/plugins/plugins.component";
+import {WorldsComponent} from "./components/worlds/worlds.component";
+import {ServerTypesComponent} from "./components/servertypes/servertypes.component";
+import {StatisticsComponent} from "./components/statistics/statistics.component";
+import {SettingsComponent} from "./components/settings/settings.component";
 import {TranslatePipe, TranslateService} from "ng2-translate/ng2-translate";
-import {DaemonAddComponent} from "./components/daemons/add/add";
-import {UserService} from "./services/user.service.ts";
+import {UserService} from "./services/user.service";
 import {LoginComponent} from "./components/login/login.component";
-import {SocketService} from "./services/socket.service";
+import {SetupComponent} from "./components/setup/setup.component";
 
 @Component({
     selector: 'mcs-app',
@@ -24,21 +23,19 @@ import {SocketService} from "./services/socket.service";
 @Routes([
     { path: '/dashboard',        component: Dashboard },
     { path: '/daemons',          component: DaemonsComponent },
-    { path: '/daemons/add',      component: DaemonAddComponent},
     { path: '/plugins',          component: Plugins },
-    { path: '/worlds',           component: Worlds },
-    { path: '/servertypes',      component: ServerTypes },
-    { path: '/statistics',       component: Statistics },
-    { path: '/settings',         component: Settings },
-    { path: '/login',            component: LoginComponent }
+    { path: '/worlds',           component: WorldsComponent },
+    { path: '/servertypes',      component: ServerTypesComponent },
+    { path: '/statistics',       component: StatisticsComponent },
+    { path: '/settings',         component: SettingsComponent },
+    { path: '/login',            component: LoginComponent },
+    { path: '/setup',            component: SetupComponent}
 ])
 export class MCSApp {
 
-    constructor(private _translateService:TranslateService, private router:Router, public _loginService:UserService) {
-        _translateService.setDefaultLang('en_US');
-        _translateService.use('en_US');
-
-        SocketService.getInstance();
+    constructor(private _translateService:TranslateService, private router:Router, private _userService:UserService) {
+        _translateService.setDefaultLang('de_DE');
+        _translateService.use('de_DE');
 
         if(!this.router.serializeUrl(this.router.urlTree)) {
             this.router.navigateByUrl("/dashboard");

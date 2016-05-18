@@ -9,25 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var socket_service_1 = require("./socket.service");
-var UserService = (function () {
-    function UserService(_socketService) {
-        this._socketService = _socketService;
-        this.loggedIn = false;
-        this.socket = _socketService.getSocket();
+var OrderedPipe = (function () {
+    function OrderedPipe() {
     }
-    UserService.prototype.isLoggedIn = function () {
-        return this.loggedIn;
+    OrderedPipe.prototype.transform = function (array, args) {
+        return array;
     };
-    UserService.prototype.logIn = function (username, password) {
-        this.loggedIn = true;
-        this.username = username;
-        this.password = password;
-    };
-    UserService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [socket_service_1.SocketService])
-    ], UserService);
-    return UserService;
+    OrderedPipe = __decorate([
+        core_1.Pipe({ name: 'orderBy' }), 
+        __metadata('design:paramtypes', [])
+    ], OrderedPipe);
+    return OrderedPipe;
 }());
-exports.UserService = UserService;
+exports.OrderedPipe = OrderedPipe;

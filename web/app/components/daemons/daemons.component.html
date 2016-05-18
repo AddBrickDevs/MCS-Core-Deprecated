@@ -1,4 +1,4 @@
-<div [hidden]="!loggedIn">
+<div [hidden]="!_userService.loggedIn">
     <div class="ctrl-header">
         <div class="title">
             {{'daemons' | translate}}
@@ -7,7 +7,7 @@
             {{'daemons_description' | translate}}
         </div>
     </div>
-    <a [routerLink]="/daemons/add" class="button">{{'daemon_create' | translate}}</a>
+    <a href="/add" class="button">{{'daemon_create' | translate}}</a>
     <br/>
     <div class="daemon_list">
         <table width="100%">
@@ -18,16 +18,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ng-for="#daemon in daemons | orderBy: '-_id'">
+            <tr *ngFor="let daemon of daemons | orderBy: '-_id'">
                 <td>
                     <i class="fa fa-circle" style="color: #039000;" [hidden]="!daemon.online"></i>
                     <i class="fa fa-circle-o" style="color: #D40000;" [hidden]="daemon.online"></i>
-                    &nbsp; <a ng-href="/daemons/{{ daemon._id }}/information">{{daemon.daemonname}}</a>
+                    &nbsp; <a href="/daemons/{{ daemon._id }}/information">{{daemon.daemonname}}</a>
                 </td>
                 <td>
-                    <a ng-href="/daemons/{{ daemon._id }}/shutdown" ng-show="daemon.online"><i class="fa fa-power-off"></i></a>
-                    <a ng-href="/daemons/{{ daemon._id }}/edit"><i class="fa fa-pencil-square-o"></i></a>
-                    <a ng-href="/daemons/{{ daemon._id }}/delete"><i class="fa fa-trash-o"></i></a>
+                    <a href="/daemons/{{ daemon._id }}/shutdown" [hidden]="!daemon.online"><i class="fa fa-power-off"></i></a>
+                    <a href="/daemons/{{ daemon._id }}/edit"><i class="fa fa-pencil-square-o"></i></a>
+                    <a href="/daemons/{{ daemon._id }}/delete"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
             </tbody>
