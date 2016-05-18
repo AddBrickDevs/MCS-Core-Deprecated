@@ -3,12 +3,10 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {provide, enableProdMode} from '@angular/core';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router';
+import {UserService} from './app/services/user.service.ts'
 
 import {MCSApp} from './app/mcs-app';
-import {
-    TRANSLATE_PROVIDERS, TranslateLoader, TranslateStaticLoader,
-    TranslateService
-} from "ng2-translate/ng2-translate";
+import {TranslateLoader, TranslateStaticLoader, TranslateService} from "ng2-translate/ng2-translate";
 
 
 // enableProdMode()
@@ -21,6 +19,7 @@ bootstrap(MCSApp, [
         deps: [Http]
     }),
     TranslateService,
+    UserService,
     provide(APP_BASE_HREF, {useValue: '/'})
 ]).catch(err => console.error(err));
 

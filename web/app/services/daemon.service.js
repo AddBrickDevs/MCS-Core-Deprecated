@@ -9,19 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var DaemonsComponent = (function () {
-    function DaemonsComponent() {
+var DaemonService = (function () {
+    function DaemonService() {
+        this.daemons = [];
     }
-    DaemonsComponent = __decorate([
-        core_1.Component({
-            selector: 'daemons',
-            templateUrl: 'app/components/daemons/daemons.html',
-            providers: [],
-            directives: [],
-            pipes: []
-        }), 
+    DaemonService.prototype.ngOnInit = function () {
+        this.Socket.on('daemons-res', function (data) {
+            this.daemons = data;
+        });
+        this.Socket.emit('file-req', { type: "daemons" });
+    };
+    DaemonService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], DaemonsComponent);
-    return DaemonsComponent;
+    ], DaemonService);
+    return DaemonService;
 }());
-exports.DaemonsComponent = DaemonsComponent;
+exports.DaemonService = DaemonService;

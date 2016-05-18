@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var DaemonsComponent = (function () {
-    function DaemonsComponent() {
+var DaemonAddComponent = (function () {
+    function DaemonAddComponent() {
     }
-    DaemonsComponent = __decorate([
+    DaemonAddComponent = __decorate([
         core_1.Component({
-            selector: 'daemons',
-            templateUrl: 'app/components/daemons/daemons.html',
+            selector: 'daemon-add',
+            templateUrl: 'app/components/daemons/add/add.html',
             providers: [],
             directives: [],
             pipes: []
         }), 
         __metadata('design:paramtypes', [])
-    ], DaemonsComponent);
-    return DaemonsComponent;
+    ], DaemonAddComponent);
+    return DaemonAddComponent;
 }());
-exports.DaemonsComponent = DaemonsComponent;
+exports.DaemonAddComponent = DaemonAddComponent;

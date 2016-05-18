@@ -6,7 +6,8 @@
         'rxjs':                       '/node_modules/rxjs',
         'angular2-in-memory-web-api': '/node_modules/angular2-in-memory-web-api',
         '@angular':                   '/node_modules/@angular',
-        'ng2-translate':              'node_modules/ng2-translate'
+        'ng2-translate':              '/node_modules/ng2-translate',
+        'ng2-cookies':                '/node_modules/ng2-cookies'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
@@ -22,6 +23,9 @@
             defaultExtension: 'js'
         },
         'ng2-translate' : {
+            defaultExtension: 'js'
+        },
+        'socket.io-client': {
             defaultExtension: 'js'
         }
     };

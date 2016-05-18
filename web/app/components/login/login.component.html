@@ -1,0 +1,12 @@
+<div [hidden]="_loginService.loggedIn">
+    <div class="container-fluid tiny">
+        <h2>MCS <sup class="version-control">&alpha;</sup> - {{ 'login' | translate }}</h2>
+        <form novalidate class="form-fluid" (submit)="login()">
+            <input type="text" [(ngModel)]="username"  id="name" placeholder="{{ 'login-name' | translate }}" /><br/>
+            <input type="password" [(ngModel)]="password" id="password" placeholder="{{ 'login-password' | translate }}" /><br/><br/>
+            <label for="stay"><input type="checkbox" [(ngModel)]="stay" id="stay" /> {{ 'stay-logged-in'| translate }}</label>
+            <br/><br/>
+            <input type="submit" value="{{ 'login-confirm' | translate }}" />
+        </form>
+    </div>
+</div>

@@ -14,7 +14,7 @@ var mongoClient = require('../mongo.js');
  * @param ip The ip of the daemon
  * @param minport Minimum port for servers
  * @param maxport Maximum port for servers
- * @param online Describes Daemons online status
+ * @param online Describes DaemonsComponent online status
  * @param apikey API key for auth
  * @constructor Daemon
  */
@@ -94,7 +94,7 @@ Daemon.prototype.setMaxPort = function(value) {
 };
 
 /**
- * Gets the onlinestatus of Daemons
+ * Gets the onlinestatus of DaemonsComponent
  * @returns {*}
  */
 Daemon.prototype.isOnline = function() {
@@ -102,7 +102,7 @@ Daemon.prototype.isOnline = function() {
 };
 
 /**
- * Sets the onlinestatus of Daemons
+ * Sets the onlinestatus of DaemonsComponent
  * @param value The port
  */
 Daemon.prototype.setOnline = function(value) {
@@ -166,7 +166,7 @@ Daemon.prototype.getDaemons = function(callback) {
     var DaemonModel = mongoClient.getDaemonModel();
     DaemonModel.find({}, function(err, daemon) {
         if(err) {
-            log.error("An error occurred while getting Daemons!");
+            log.error("An error occurred while getting DaemonsComponent!");
         }
         if(daemon) {
             callback(daemon);

@@ -9,19 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var DaemonsComponent = (function () {
-    function DaemonsComponent() {
+var NotificationService = (function () {
+    function NotificationService() {
     }
-    DaemonsComponent = __decorate([
-        core_1.Component({
-            selector: 'daemons',
-            templateUrl: 'app/components/daemons/daemons.html',
-            providers: [],
-            directives: [],
-            pipes: []
-        }), 
+    NotificationService.prototype.sendMessage = function (message, error) {
+    };
+    NotificationService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], DaemonsComponent);
-    return DaemonsComponent;
+    ], NotificationService);
+    return NotificationService;
 }());
-exports.DaemonsComponent = DaemonsComponent;
+exports.NotificationService = NotificationService;

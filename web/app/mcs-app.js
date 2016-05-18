@@ -18,21 +18,27 @@ var servertypes_1 = require("./components/servertypes/servertypes");
 var statistics_1 = require("./components/statistics/statistics");
 var settings_1 = require("./components/settings/settings");
 var ng2_translate_1 = require("ng2-translate/ng2-translate");
-// import {Home} from './components/home/home';
-// import {About} from './components/about/about';
-// import {RepoBrowser} from './components/repo-browser/repo-browser';
+var add_1 = require("./components/daemons/add/add");
+var user_service_ts_1 = require("./services/user.service.ts");
+var login_component_1 = require("./components/login/login.component");
+var socket_service_1 = require("./services/socket.service");
 var MCSApp = (function () {
-    function MCSApp(translate) {
-        // var userLang = navigator.language.split('-')[0]; // use navigator lang if available
-        // userLang = /(fr|en)/gi.test(userLang) ? userLang : 'en';
-        // // optional, default is "en"
-        translate.setDefaultLang('de_DE');
-        // the lang to use, if the lang isn't available, it will use the loader defined to get them
-        translate.use('de_DE');
-        // if you manually want to get new translations, you can call this:
-        // use the loader defined (static by default) to get the translations
-        // translate.getTranslation(userLang);
+    function MCSApp(_translateService, router, _loginService) {
+        this._translateService = _translateService;
+        this.router = router;
+        this._loginService = _loginService;
+        _translateService.setDefaultLang('en_US');
+        _translateService.use('en_US');
+        socket_service_1.SocketService.getInstance();
+        if (!this.router.serializeUrl(this.router.urlTree)) {
+            this.router.navigateByUrl("/dashboard");
+        }
     }
+    MCSApp.prototype.isActive = function (str) {
+        if (this.router.serializeUrl(this.router.urlTree).split("/")[1] === str)
+            return true;
+        return false;
+    };
     MCSApp = __decorate([
         core_1.Component({
             selector: 'mcs-app',
@@ -44,14 +50,16 @@ var MCSApp = (function () {
         }),
         router_1.Routes([
             { path: '/dashboard', component: dashboard_1.Dashboard },
-            { path: '/daemons', component: daemons_1.Daemons },
+            { path: '/daemons', component: daemons_1.DaemonsComponent },
+            { path: '/daemons/add', component: add_1.DaemonAddComponent },
             { path: '/plugins', component: plugins_1.Plugins },
             { path: '/worlds', component: worlds_1.Worlds },
             { path: '/servertypes', component: servertypes_1.ServerTypes },
             { path: '/statistics', component: statistics_1.Statistics },
             { path: '/settings', component: settings_1.Settings },
+            { path: '/login', component: login_component_1.LoginComponent }
         ]), 
-        __metadata('design:paramtypes', [ng2_translate_1.TranslateService])
+        __metadata('design:paramtypes', [ng2_translate_1.TranslateService, router_1.Router, user_service_ts_1.UserService])
     ], MCSApp);
     return MCSApp;
 }());

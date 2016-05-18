@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Http} from '@angular/http';
+import {MCSApp} from './../../mcs-app';
 
 @Component({
     selector: 'plugins',
@@ -16,5 +16,4 @@ export class Plugins {
     ngOnInit() {
 
     }
-    
 }
