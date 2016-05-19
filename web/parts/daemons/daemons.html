@@ -1,0 +1,36 @@
+<div ng-if="loggedIn">
+    <div class="ctrl-header">
+        <div class="title">
+            {{'daemons' | translate}}
+        </div>
+        <div class="description">
+            {{'daemons_description' | translate}}
+        </div>
+    </div>
+    <a href="/daemons/add" class="button">{{'daemon_create' | translate}}</a>
+    <br/>
+    <div class="daemon_list">
+        <table width="100%">
+            <thead>
+                <tr style="text-align: left;">
+                    <th>{{'name' | translate}}</th>
+                    <th>{{'actions' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="daemon in daemons | orderBy: '-_id'">
+                    <td>
+                        <i class="fa fa-circle" style="color: #039000;" ng-show="daemon.online === true"></i>
+                        <i class="fa fa-circle-o" style="color: #D40000;" ng-show="daemon.online === false"></i>
+                        &nbsp; <a ng-href="/daemons/{{ daemon._id }}/information">{{daemon.daemonname}}</a>
+                    </td>
+                    <td>
+                        <a ng-href="/daemons/{{ daemon._id }}/shutdown" ng-show="daemon.online"><i class="fa fa-power-off"></i></a>
+                        <a ng-href="/daemons/{{ daemon._id }}/edit"><i class="fa fa-pencil-square-o"></i></a>
+                        <a ng-href="/daemons/{{ daemon._id }}/delete"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div ng-if="loggedIn">
+    <div class="ctrl-header">
+        <div class="title">
+            {{'daemon_shutdown' | translate}}
+        </div>
+        <div class="description">
+            <b>ID:</b> {{ daemonId }}
+        </div>
+    </div>
+    <a href="/daemons" class="button transparent">{{'back' | translate}}</a>
+    <br/>
+</div>

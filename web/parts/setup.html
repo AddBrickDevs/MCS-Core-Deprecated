@@ -1,0 +1,11 @@
+<div ng-if="setup" ng-controller="setupctrl">
+    <div class="container-fluid tiny">
+        <h2>MCS <sup>&alpha;</sup> - {{ 'setup' | translate }}</h2>
+        <form novalidate class="form-fluid" ng-submit="setup()">
+            <input type="text" ng-model="username" id="admin-name" placeholder="{{ 'setup-admin-name' | translate }}" /><br/>
+            <input type="password" ng-model="password" id="password" placeholder="{{ 'setup-admin-password' | translate }}" />
+            <br/><br/>
+            <input type="submit" value="{{ 'setup-confirm' | translate }}" />
+        </form>
+    </div>
+</div>
